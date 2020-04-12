@@ -22,3 +22,6 @@ https://github.com/alexanderjeurissen/ranger_devicons
 ## Fonts
 https://github.com/adobe-fonts/source-code-pro/  
 https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/SourceCodePro  
+
+## Doom-Emacs
+https://github.com/hlissner/doom-emacs  
