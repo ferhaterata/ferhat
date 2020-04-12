@@ -32,7 +32,8 @@
 !.spacemacs
 
 # doom-emacs
-!.doom-emacs
+!.doom.d/
+doom.d/.directory
 
 # vim configurations
 !.vimrc
