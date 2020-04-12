@@ -10,10 +10,14 @@
 .config/*
 
 # ranger configurations
-#!.config/ranger
-#.config/ranger/*
-#!.config/ranger/rifle.conf
-#!.config/ranger/scope.sh
+!.config/ranger
+.config/ranger/*
+!.config/ranger/plugins
+!.config/ranger/rc.conf
+!.config/ranger/README.md
+!.config/ranger/rifle.conf
+!.config/ranger/scope.sh
+!.config/ranger/commands.pyS
 
 # bash configurations
 !.bashrc
@@ -32,6 +36,7 @@
 !.vim/
 .vim/*
 !.vim/autoload
+    
 # ssh configurations
 #!.ssh/
 #.ssh/*
