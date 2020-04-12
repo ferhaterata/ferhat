@@ -31,6 +31,9 @@
 # spacemacs configuration
 !.spacemacs
 
+# doom-emacs
+!.doom-emacs
+
 # vim configurations
 !.vimrc
 !.vim/
