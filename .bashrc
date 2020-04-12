@@ -127,7 +127,7 @@ alias g='git'
 alias gs='g status'
 alias gd='g diff'
 alias ga='g add'
-alias gc='g commit'
+alias gc='g commit -m'
 alias gp='g push'
 
 # list directory
@@ -139,7 +139,9 @@ alias l='exa -a'
 alias lg='exa --long --git --git-ignore'
 
 alias lt='exa -lF --group-directories-first --tree'
-alias tree='lt'
 
 alias mv='mv -i'
 alias rm='rm -i'
+
+#https://sanctum.geek.nz/arabesque/vi-mode-in-bash/
+set -o vi

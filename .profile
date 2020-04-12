@@ -45,3 +45,6 @@ export GDK_DPI_SCALE=0.5
 
 # doom emacs utility binaries
 PATH="$HOME/doom-emacs/bin:$PATH"
+
+export EDITOR=vim
+export VISUAL=vim
