@@ -57,6 +57,8 @@ doom.d/.directory
 #.local/share/fonts/*
 .local/share/fonts/.directory
 .local/share/fonts/*/.directory
+.local/share/fonts/.uuid
+.local/share/fonts/*/.uuid
 !.local/share/fonts/adobe-fonts
 .local/share/fonts/adobe-fonts/source-code-pro/*
 
