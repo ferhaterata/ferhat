@@ -1,0 +1,29 @@
+#Ferhat Erata
+#blacklist top level folder
+/*
+
+#whitelist files & folders
+!.gitignore
+!README.md
+# 
+!.config
+.config/*
+# ranger configurations
+#!.config/ranger
+#.config/ranger/*
+#!.config/ranger/rifle.conf
+#!.config/ranger/scope.sh
+# bash configurations
+!.bashrc
+!.bash_profile
+!.bash_aliases
+!.profile
+# vim configurations
+!.vimrc
+!.vim/
+.vim/*
+!.vim/autoload
+# ssh configurations
+#!.ssh/
+#.ssh/*
+#!.ssh/config
