@@ -4,3 +4,6 @@
 [submodule ".local/share/fonts/adobe-fonts/source-code-pro"]
 	path = .local/share/fonts/adobe-fonts/source-code-pro
 	url = https://github.com/adobe-fonts/source-code-pro.git
+[submodule ".doom.d"]
+	path = .doom.d
+	url = https://github.com/ferhaterata/.doom.d
