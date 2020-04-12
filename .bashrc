@@ -127,6 +127,7 @@ alias g='git'
 alias gs='g status'
 alias gd='g diff'
 alias ga='g add'
+alias gc='g commit'
 
 alias mv='mv -i'
 alias rm='rm -i'
