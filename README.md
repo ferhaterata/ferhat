@@ -19,3 +19,6 @@ https://wiki.archlinux.org/index.php/ranger
 https://github.com/alexanderjeurissen/ranger_devicons  
 `sudo pip3 install ueberzug`  
 
+## Fonts
+https://github.com/adobe-fonts/source-code-pro/
+https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/SourceCodePro
