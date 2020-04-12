@@ -2,6 +2,6 @@
 	path = .config/ranger/plugins/ranger_devicons
 	url = https://github.com/alexanderjeurissen/ranger_devicons
 	
-[submodule "adobe-fonts/source-code-pro"]
-	path = adobe-fonts/source-code-pro
+[submodule ".local/share/fonts/adobe-fonts/source-code-pro"]
+	path = .local/share/fonts/adobe-fonts/source-code-pro
 	url = https://github.com/adobe-fonts/source-code-pro.git
