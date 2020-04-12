@@ -129,6 +129,7 @@ alias gd='g diff'
 alias ga='g add'
 alias gc='g commit -m'
 alias gp='g push'
+alias gr='g pull --rebase'
 
 # list directory
 alias ll='exa -lF --group-directories-first'

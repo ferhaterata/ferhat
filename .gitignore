@@ -17,7 +17,7 @@
 !.config/ranger/README.md
 !.config/ranger/rifle.conf
 !.config/ranger/scope.sh
-!.config/ranger/commands.pyS
+!.config/ranger/commands.py
 
 # bash configurations
 !.bashrc
