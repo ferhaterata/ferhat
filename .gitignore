@@ -21,6 +21,9 @@
 !.bash_aliases
 !.profile
 
+# GNU Readline
+!.inputrc
+
 # spacemacs configuration
 !.spacemacs
 
