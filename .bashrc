@@ -76,8 +76,8 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
 
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
@@ -120,3 +120,13 @@ fi
 alias sml='rlwrap sml'
 alias e='emacsclient -nc -s instance1'
 #--no-wait'
+
+alias ..='cd ..'
+
+alias g='git'
+alias gs='g status'
+alias gd='g diff'
+alias ga='g add'
+
+alias mv='mv -i'
+alias rm='rm -i'

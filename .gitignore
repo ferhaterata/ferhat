@@ -8,16 +8,22 @@
 # 
 !.config
 .config/*
+
 # ranger configurations
 #!.config/ranger
 #.config/ranger/*
 #!.config/ranger/rifle.conf
 #!.config/ranger/scope.sh
+
 # bash configurations
 !.bashrc
 !.bash_profile
 !.bash_aliases
 !.profile
+
+# spacemacs configuration
+!.spacemacs
+
 # vim configurations
 !.vimrc
 !.vim/
