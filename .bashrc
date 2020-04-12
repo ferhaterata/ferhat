@@ -128,6 +128,18 @@ alias gs='g status'
 alias gd='g diff'
 alias ga='g add'
 alias gc='g commit'
+alias gp='g push'
+
+# list directory
+alias ll='exa -lF --group-directories-first'
+# show hidden and 'dot' files
+alias la='exa -alF --group-directories-first'
+alias l='exa -a'
+# show directory with git info
+alias lg='exa --long --git --git-ignore'
+
+alias lt='exa -lF --group-directories-first --tree'
+alias tree='lt'
 
 alias mv='mv -i'
 alias rm='rm -i'
