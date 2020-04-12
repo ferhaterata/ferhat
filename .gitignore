@@ -36,7 +36,12 @@
 !.vim/
 .vim/*
 !.vim/autoload
-    
+
+# fonts
+!.local/share/fonts/
+#.local/share/fonts/*
+!.local/share/fonts/adobe-fonts
+
 # ssh configurations
 #!.ssh/
 #.ssh/*
