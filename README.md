@@ -12,3 +12,10 @@ https://wiki.archlinux.org/index.php/Readline
 
 * [Readline VI Editing Mode Cheat Sheet](https://catonmat.net/ftp/bash-vi-editing-mode-cheat-sheet.pdf)
 * [Readline Emacs Editing Mode Cheat Sheet](https://catonmat.net/ftp/readline-emacs-editing-mode-cheat-sheet.pdf)
+
+## Ranger
+https://github.com/ranger/ranger  
+https://wiki.archlinux.org/index.php/ranger  
+https://github.com/alexanderjeurissen/ranger_devicons  
+`sudo pip3 install ueberzug`  
+
