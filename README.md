@@ -17,12 +17,15 @@ https://wiki.archlinux.org/index.php/Fzf
 update: `cd ~/.fzf && git pull && ./install`  
 
 ## bat
-A cat(1) clone with wings.  
+a cat(1) clone with syntax highlighting and Git integration.   
 https://github.com/sharkdp/bat
+https://github.com/sharkdp/bat/releases   
+`sudo dpkg -i bat_0.13.0_amd64.deb `   
 
 ## forgit
 A utility tool powered by fzf for using git interactively.  
-https://github.com/wfxr/forgit
+https://github.com/wfxr/forgit  
+tracking .forgit.bash
 
 ## Readline
 GNU's Emacs and vi editing modes for command lines.   
