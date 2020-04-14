@@ -12,6 +12,9 @@ https://the.exa.website/#installation
 A command-line fuzzy finder   
 https://github.com/junegunn/fzf   
 https://wiki.archlinux.org/index.php/Fzf  
+`git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf`
+`~/.fzf/install`  
+update: `cd ~/.fzf && git pull && ./install`  
 
 ## bat
 A cat(1) clone with wings.  
