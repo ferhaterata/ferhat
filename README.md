@@ -20,7 +20,12 @@ update: `cd ~/.fzf && git pull && ./install`
 a cat(1) clone with syntax highlighting and Git integration.   
 https://github.com/sharkdp/bat
 https://github.com/sharkdp/bat/releases   
-`sudo dpkg -i bat_0.13.0_amd64.deb `   
+`sudo dpkg -i bat_0.13.0_amd64.deb # adapt version number and architecture`   
+
+## fd
+https://github.com/sharkdp/fd  
+https://github.com/sharkdp/fd/releases  
+`sudo dpkg -i fd_7.5.0_amd64.deb  # adapt version number and architecture`    
 
 ## forgit
 A utility tool powered by fzf for using git interactively.  
