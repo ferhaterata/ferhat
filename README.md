@@ -30,7 +30,19 @@ https://github.com/sharkdp/fd/releases
 ## forgit
 A utility tool powered by fzf for using git interactively.  
 https://github.com/wfxr/forgit  
-tracking .forgit.bash
+tracking .forgit.bash   
+
+## ag
+The Silver Searcher: A code-searching tool similar to ack, but faster.    
+https://github.com/ggreer/the_silver_searcher   
+`sudo apt-get install silversearcher-ag`  
+
+## fast-p
+Quickly find and open a pdf among a collection of thousands of unsorted pdfs through fzf (fuzzy finder)  
+https://github.com/bellecp/fast-p  
+`sudo apt-get install poppler-utils`
+download and follow installation steps: https://github.com/bellecp/fast-p/releases  
+clear cache: `fast-p --clear-cache'`
 
 ## Readline
 GNU's Emacs and vi editing modes for command lines.   
