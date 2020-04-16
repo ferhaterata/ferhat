@@ -24,6 +24,7 @@
 !.bash_profile
 !.bash_aliases
 !.profile
+!.forgit.bash
 
 # GNU Readline
 !.inputrc
