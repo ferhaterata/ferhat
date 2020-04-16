@@ -40,7 +40,7 @@ https://github.com/ggreer/the_silver_searcher
 ## fast-p
 Quickly find and open a pdf among a collection of thousands of unsorted pdfs through fzf (fuzzy finder)  
 https://github.com/bellecp/fast-p  
-`sudo apt-get install poppler-utils`
+`sudo apt-get install poppler-utils`  
 download and follow installation steps: https://github.com/bellecp/fast-p/releases  
 clear cache: `fast-p --clear-cache'`
 
