@@ -1,5 +1,9 @@
 # ferhat's dot files
 
+## xclip
+command line interface to X selections (clipboard)
+`sudo apt-get install xclip -y`   
+
 ## exa
 A modern replacement for ls.  
 https://the.exa.website/#installation  
