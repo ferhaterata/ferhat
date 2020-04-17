@@ -228,6 +228,21 @@ fi
 # j [dir name slug]<TAB>
 # jj [dir name slug]<TAB>
 
+fe() {
+  local IFS=$'\n'
+  local files
+  files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
+  [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+}
+
+fcd() {
+  local dir
+  dir=$(find ${1:-.} -path '*/\.*' -prune \
+                  -o -type d -print 2> /dev/null | fzf +m) &&
+  cd "$dir"
+}
+
+
 # https://github.com/bellecp/fast-p
 p () {
     open=xdg-open   # this will open pdf file withthe default PDF viewer on KDE, xfce, LXDE and perhaps on other desktops.
@@ -326,3 +341,4 @@ fshow() {
                 {}
 FZF-EOF"
 }
+

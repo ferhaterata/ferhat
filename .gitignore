@@ -50,6 +50,9 @@ doom.d/.directory
 .vim/*
 !.vim/autoload
 
+# SpaceVim
+!.SpaceVim.d
+
 # ssh configurations
 #!.ssh/
 #.ssh/*
