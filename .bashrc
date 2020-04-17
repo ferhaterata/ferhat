@@ -116,12 +116,17 @@ if ! shopt -oq posix; then
   fi
 fi
 
+if [ -x "`which vim 2>&1`" ]; then
+        export EDITOR=vim
+fi
+
 # Readline wrapper for SML
 alias sml='rlwrap sml'
-alias e='emacsclient -nc -s instance1'
 #--no-wait'
 
+alias cd..='cd ..'
 alias ..='cd ..'
+alias ...='cd ../..'
 
 alias g='git'
 alias gs='g status'
@@ -205,7 +210,7 @@ _fzf_comprun() {
 }
 
 # Press F1 to open the file with less without leaving fzf
-# Press CTRL-Y to copy the line to clipboard and aborts fzf (requires pbcopy)
+# Press CTRL-Y to copy the line to clipboard and aborts fzf 
 #fzf --bind 'f1:execute(bat --style=numbers --color=always {} | head -500),ctrl-y:execute-silent(echo {} | xclip -i -selection clipboard)+abort'
 
 ###################################################
@@ -216,8 +221,12 @@ if [ -d ~/.bash_completion.d ]; then
   done
 fi
 
+# classic jump
 # z [dir name slug]<TAB>
 # zz [dir name slug]<TAB>
+# fuzzy jump
+# j [dir name slug]<TAB>
+# jj [dir name slug]<TAB>
 
 # https://github.com/bellecp/fast-p
 p () {
