@@ -91,3 +91,8 @@ https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/SourceCodePro
 
 ## Doom-Emacs
 https://github.com/hlissner/doom-emacs  
+
+## NeoVim
+https://github.com/neovim/neovim/wiki/Installing-Neovim#appimage-universal-linux-package  
+`sudo snap install nvim --edge --classic`  
+`sudo snap install nvim --beta --classic`  
