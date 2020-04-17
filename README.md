@@ -1,7 +1,7 @@
 # ferhat's dot files
 
 ## xclip
-command line interface to X selections (clipboard)
+command line interface to X selections (clipboard)  
 `sudo apt-get install xclip -y`   
 
 ## exa
