@@ -92,6 +92,13 @@ https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/SourceCodePro
 ## Doom-Emacs
 https://github.com/hlissner/doom-emacs  
 
+## CTags
+`sudo apt-get install ctags`  
+In `~/.vimrc`, add `set tags=tags`  
+Go to your project directory, and run `ctags -R`  
+When editing, put your cursor over a variable, method or class and hit `Ctrl-]` to jump to its definition.  
+
+
 ## NeoVim
 https://github.com/neovim/neovim/wiki/Installing-Neovim#appimage-universal-linux-package  
 `sudo snap install nvim --edge --classic`  
