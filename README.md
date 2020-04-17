@@ -4,6 +4,10 @@
 command line interface to X selections (clipboard)  
 `sudo apt-get install xclip -y`   
 
+## highlight
+Universal source code to formatted text converter  
+`sudo apt-get install -y highlight`  
+
 ## exa
 A modern replacement for ls.  
 https://the.exa.website/#installation  
