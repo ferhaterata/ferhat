@@ -38,29 +38,6 @@ https://github.com/sharkdp/fd/releases
 ## fz
 Cli shell plugin, the missing fuzzy tab completion feature of z jump around command.   
 https://github.com/changyuheng/fz   
-1. Install fzf.
-    ```sh
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    ~/.fzf/install
-    ```
-
-2. Download z and fz.
-    ```sh
-    mkdir ~/.bash_completion.d
-    curl "https://raw.githubusercontent.com/rupa/z/master/{z.sh}" \
-        -o ~/.bash_completion.d/"#1"
-    curl "https://raw.githubusercontent.com/changyuheng/fz/master/{fz.sh}" \
-        -o ~/.bash_completion.d/z"#1"
-    ```
-
-3. Add the following content to `~/.bashrc`:
-    ```sh
-    if [ -d ~/.bash_completion.d ]; then
-      for file in ~/.bash_completion.d/*; do
-        . $file
-      done
-    fi
-    ```
 
 ## z
 z - jump around   
