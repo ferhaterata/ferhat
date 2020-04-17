@@ -1,0 +1,6 @@
+. "$HOME/.bashrc"
+
+# Shorten the Shell Prompt
+export PROMPT_DIRTRIM=1
+
+# setterm -linewrap off

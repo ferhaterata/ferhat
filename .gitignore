@@ -25,9 +25,17 @@
 !.bash_aliases
 !.profile
 !.forgit.bash
+    
+!.bash_completion.d
+
+!.bashrc-vscode
 
 # GNU Readline
 !.inputrc
+
+# emacs
+!.emacs
+!.emacs-profiles.el
 
 # spacemacs configuration
 !.spacemacs
