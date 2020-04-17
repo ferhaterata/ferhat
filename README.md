@@ -4,6 +4,12 @@
 command line interface to X selections (clipboard)  
 `sudo apt-get install xclip -y`   
 
+## htop
+htop is an interactive text-mode process viewer for Unix systems. It aims to be a better 'top'.  
+https://github.com/hishamhm/htop  
+`sudo snap install htop`  
+
+
 ## highlight
 Universal source code to formatted text converter  
 `sudo apt-get install -y highlight`  
@@ -59,6 +65,11 @@ https://github.com/bellecp/fast-p
 `sudo apt-get install poppler-utils`  
 download and follow installation steps: https://github.com/bellecp/fast-p/releases  
 clear cache: `fast-p --clear-cache'`
+
+## googler
+Google from the terminal  
+https://github.com/jarun/googler  
+`snap install googler`  
 
 ## Readline
 GNU's Emacs and vi editing modes for command lines.   
