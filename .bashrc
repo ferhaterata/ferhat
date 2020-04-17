@@ -116,12 +116,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-if [ -d ~/.bash_completion.d ]; then
-  for file in ~/.bash_completion.d/*; do
-    . $file
-  done
-fi
-
 # Readline wrapper for SML
 alias sml='rlwrap sml'
 alias e='emacsclient -nc -s instance1'
@@ -215,6 +209,15 @@ _fzf_comprun() {
 #fzf --bind 'f1:execute(bat --style=numbers --color=always {} | head -500),ctrl-y:execute-silent(echo {} | xclip -i -selection clipboard)+abort'
 
 ###################################################
+
+if [ -d ~/.bash_completion.d ]; then
+  for file in ~/.bash_completion.d/*; do
+    . $file
+  done
+fi
+
+# z [dir name slug]<TAB>
+# zz [dir name slug]<TAB>
 
 # https://github.com/bellecp/fast-p
 p () {

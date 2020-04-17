@@ -4,8 +4,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-[[ -n "$FZ_CMD" ]] || FZ_CMD=z
-[[ -n "$FZ_SUBDIR_CMD" ]] || FZ_SUBDIR_CMD=zz
+[[ -n "$FZ_CMD" ]] || FZ_CMD=j
+[[ -n "$FZ_SUBDIR_CMD" ]] || FZ_SUBDIR_CMD=jj
 
 [[ -n "$FZ_HISTORY_CD_CMD" ]] || FZ_HISTORY_CD_CMD=_z
 [[ -n "$FZ_SUBDIR_HISTORY_CD_CMD" ]] || \
@@ -163,7 +163,7 @@ __fz_generate_matches() {
 
 __fz_filter() {
     FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse \
-      --bind 'shift-tab:up,tab:down' $FZF_DEFAULT_OPTS" fzf
+      --bind 'shift-tab:up,tab:down'" fzf
 }
 
 __fz_bash_completion() {
