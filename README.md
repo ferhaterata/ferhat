@@ -93,11 +93,13 @@ https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/SourceCodePro
 https://github.com/hlissner/doom-emacs  
 
 ## CTags
+Exuberant Ctags
+http://ctags.sourceforge.net/
 `sudo apt-get install ctags`  
 In `~/.vimrc`, add `set tags=tags`  
 Go to your project directory, and run `ctags -R`  
 When editing, put your cursor over a variable, method or class and hit `Ctrl-]` to jump to its definition.  
-
+https://courses.cs.washington.edu/courses/cse451/10au/tutorials/tutorial_ctags.html
 
 ## NeoVim
 https://github.com/neovim/neovim/wiki/Installing-Neovim#appimage-universal-linux-package  
