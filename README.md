@@ -101,6 +101,13 @@ Go to your project directory, and run `ctags -R`
 When editing, put your cursor over a variable, method or class and hit `Ctrl-]` to jump to its definition.  
 https://courses.cs.washington.edu/courses/cse451/10au/tutorials/tutorial_ctags.html
 
+## python-pygments
+`sudo apt-get install python-pygments`  
+
+## Vim
+Building Vim from source: https://github.com/ycm-core/YouCompleteMe/wiki/Building-Vim-from-source   
+
+
 ## NeoVim
 https://github.com/neovim/neovim/wiki/Installing-Neovim#appimage-universal-linux-package  
 `sudo snap install nvim --edge --classic`  
