@@ -116,8 +116,15 @@ if ! shopt -oq posix; then
   fi
 fi
 
-if [ -x "`which vim 2>&1`" ]; then
-        export EDITOR=vim
+if [ -x "`which nvim 2>&1`" ]; then
+    export EDITOR=nvim
+  # alias vim='nvim'
+elif [ -x "`which vim 2>&1`" ]; then
+    export EDITOR=vim
+fi
+
+if [ -f ~/.github_token ]; then
+    . ~/.github_token
 fi
 
 # Readline wrapper for SML

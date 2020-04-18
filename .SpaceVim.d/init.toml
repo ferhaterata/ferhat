@@ -9,12 +9,12 @@
 # All SpaceVim option below [option] section
 [options]
     # bootstrap functions for customizations
-    bootstrap_before = "mysvim#before"
-    # Not used yet: bootstrap_after = "mysvim#after"
+    bootstrap_before = "myspacevim#before"
+    bootstrap_after = "myspacevim#after"
     # set spacevim theme. by default colorscheme layer is not loaded,
     # if you want to use more colorscheme, please load the colorscheme
     # layer
-    colorscheme = "onedark"
+    colorscheme = "onedark" 
     colorscheme_bg = "dark"
     # Disable guicolors in basic mode, many terminal do not support 24bit
     # true colors
@@ -30,6 +30,46 @@
     enable_vimfiler_filetypeicon = true
     filemanager = "nerdtree" 
     filetree_direction = "left"
+    # left sections of statusline
+    statusline_left_sections = [
+       'winnr',
+       'filename',
+       'major mode',
+       'syntax checking'
+       'minor mode lighters',
+       'version control info',
+    ]
+    # right sections of statusline
+    statusline_right_sections = [
+       'fileformat', 
+       'cursorpos',
+       'date',
+       'time'
+       'percentage',
+    ]
+
+    # 'winnr' window number
+    # 'syntax checking'
+    # 'filename' file name
+    # 'fileformat' file format
+    # 'major mode'
+    # 'minor mode lighters'
+    # 'cursorpos' cursor position
+    # 'percentage' content range
+    # 'date' date
+    # 'time' time
+    # 'whitespace' line number with trailing space at the end
+    # 'battery status' battery status
+    # 'input method' input method
+    # 'search status' search index
+    buffer_index_type = 0 # 4
+    windows_index_type = 1 # 3
+    enable_os_fileformat_icon = true
+    enable_tabline_ft_icon = true
+    project_rooter_patterns = ['.project','.git/', '_darcs/', '.hg/', '.bzr/', '.svn/']
+    # The , key does repeat last f, F, t and T in vim, but in SpaceVim it is the language specified Leader key. 
+    # To disable this feature, set the option enable_language_specific_leader to false.
+    enable_language_specific_leader = false
 
 # Enable autocomplete layer
 [[layers]]
@@ -42,53 +82,99 @@ auto_completion_enable_snippets_in_popup = true
 name = 'shell'
 default_position = 'bottom'
 default_height = 30
- 
+
+# https://spacevim.org/layers/fzf/
 [[layers]]
-name = "fzf"
+  name = "fzf"
+
+# https://spacevim.org/layers/ctrlp/
+#[[layers]]
+#  name = "ctrlp"
+
+# https://spacevim.org/layers/unite/
+#[[layers]]
+#  name = "unite"
 
 [[layers]]
-name = "VersionControl"
+  name = "VersionControl"
 
 [[layers]]
-name = "git"
+  name = "git"
+  git-plugin = "fugitive" #gina
 
 [[layers]]
-name = "colorscheme"
+  name = "colorscheme"
 
 [[layers]]
-name = "ui"
+  name = "ui"
 
 [[layers]]
-name = "lang#sh"
+  name = "lang#sh"
 
 [[layers]]
-    name = "checkers"
+  name = "checkers"
 
+# https://spacevim.org/layers/edit/
 [[layers]]
-    name = "edit"
+  name = "edit"
 
+# https://spacevim.org/layers/core/statusline/
 [[layers]]
-name = "core#statusline" 
+  name = "core#statusline" 
 
+#
 [[custom_plugins]]
-    name = 'ryanoasis/vim-devicons'
-    merged = 0
+  name = 'ryanoasis/vim-devicons'
+  merged = false
 
-[[layers]]
-    name = "lang#latex" 
-
-[[layers]]
-    name = "lang#markdown"
-
-[[layers]]
-    name = "tmux"
-#   tmux_navigator_modifier = "alt"
-
+# 
 [[custom_plugins]]
-name = 'erickzanardo/vim-xclip'
+  name = 'erickzanardo/vim-xclip'
+
+# https://github.com/jlanzarotta/bufexplorer
+[[custom_plugins]]
+  name = 'jlanzarotta/bufexplorer'
+  on_cmd = ["ToggleBufExplorer", "BufExplorerVerticalSplit" ,"BufExplorerHorizontalSplit"]
+  merged = false
+
+# https://spacevim.org/layers/lang/latex/
+[[layers]]
+  name = "lang#latex" 
 
 [[layers]]
-name = "unite"
+  name = "lang#markdown"
+
+[[layers]]
+  name = "tmux"
+# tmux_navigator_modifier = "alt"
+
+# https://spacevim.org/layers/gtags/
+[[layers]]
+  name = "gtags"
+  gtagslabel = "pygments"
 
 [[layers]]
   name = "lang#ocaml"
+
+# https://spacevim.org/layers/github/
+[[layers]]
+  name = "github"
+
+# https://spacevim.org/layers/debug/
+[[layers]]
+  name = "debug"
+
+# https://spacevim.org/layers/lang/c/
+[[layers]]
+  name = "lang#c"
+  clang_executable = "/usr/bin/clang"
+  [layer.clang_std]
+    c = "c11"
+    cpp = "c++1z"
+    objc = "c11"
+    objcpp = "c++1z"
+
+# https://spacevim.org/layers/lang/vim/
+[[layers]]
+  name = "lang#vim"
+

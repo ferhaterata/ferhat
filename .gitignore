@@ -25,7 +25,7 @@
 !.bash_aliases
 !.profile
 !.forgit.bash
-    
+.github_token    
 !.bash_completion.d
 
 !.bashrc-vscode
