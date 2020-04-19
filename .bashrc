@@ -127,6 +127,9 @@ if [ -f ~/.github_token ]; then
     . ~/.github_token
 fi
 
+# to disable freeze of terminal with Ctrl+S
+stty -ixon
+
 # Readline wrapper for SML
 alias sml='rlwrap sml'
 #--no-wait'

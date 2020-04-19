@@ -21,15 +21,9 @@
     enable_guicolors = true
     # Disable statusline separator, if you want to use other value, please
     # install nerd fonts
+    enable_statusline_mode = true
     statusline_separator = "arrow"
     statusline_inactive_separator = "arrow"
-    buffer_index_type = 4
-    enable_tabline_filetype_icon = true
-    enable_statusline_mode = true
-    enable_vimfiler_gitstatus = true
-    enable_vimfiler_filetypeicon = true
-    filemanager = "nerdtree" 
-    filetree_direction = "left"
     # left sections of statusline
     statusline_left_sections = [
        'winnr',
@@ -47,7 +41,6 @@
        'time'
        'percentage',
     ]
-
     # 'winnr' window number
     # 'syntax checking'
     # 'filename' file name
@@ -62,14 +55,21 @@
     # 'battery status' battery status
     # 'input method' input method
     # 'search status' search index
-    buffer_index_type = 0 # 4
-    windows_index_type = 1 # 3
+    # buffer_index_type = 0 # 4
+    # windows_index_type = 1 # 3
     enable_os_fileformat_icon = true
-    enable_tabline_ft_icon = true
+    # enable_tabline_ft_icon = true
+    # enable_tabline_filetype_icon = true
+    enable_vimfiler_gitstatus = true
+    enable_vimfiler_filetypeicon = true
+
+    filemanager = "nerdtree" 
+    filetree_direction = "left"
     project_rooter_patterns = ['.project','.git/', '_darcs/', '.hg/', '.bzr/', '.svn/']
     # The , key does repeat last f, F, t and T in vim, but in SpaceVim it is the language specified Leader key. 
     # To disable this feature, set the option enable_language_specific_leader to false.
     enable_language_specific_leader = false
+    enable_statusline_tag = true
 
 # Enable autocomplete layer
 [[layers]]
@@ -106,9 +106,6 @@ default_height = 30
   name = "colorscheme"
 
 [[layers]]
-  name = "ui"
-
-[[layers]]
   name = "lang#sh"
 
 [[layers]]
@@ -121,22 +118,45 @@ default_height = 30
 # https://spacevim.org/layers/core/statusline/
 [[layers]]
   name = "core#statusline" 
+  enable = false
 
-#
+# https://spacevim.org/layers/ui/
+# https://github.com/majutsushi/tagbar
+# https://github.com/mhinz/vim-startify
+# https://github.com/Yggdroot/indentLine
+[[layers]]
+  name = "ui"
+  enable_sidebar = false # merges vimfiller with tagbar
+
+# https://github.com/ryanoasis/vim-devicons
 [[custom_plugins]]
   name = 'ryanoasis/vim-devicons'
   merged = false
 
-# 
+# https://github.com/simnalamburt/vim-mundo
 [[custom_plugins]]
-  name = 'erickzanardo/vim-xclip'
+  name = 'simnalamburt/vim-mundo'
+  on_cmd = ["MundoToggle", "MundoHide", "MundoShow"] 
+  merged = false
 
 # https://github.com/jlanzarotta/bufexplorer
 [[custom_plugins]]
   name = 'jlanzarotta/bufexplorer'
-  on_cmd = ["ToggleBufExplorer", "BufExplorerVerticalSplit" ,"BufExplorerHorizontalSplit"]
+  on_cmd = ["ToggleBufExplorer", "BufExplorerVerticalSplit", "BufExplorerHorizontalSplit"]
   merged = false
 
+# https://github.com/MattesGroeger/vim-bookmarks
+[[custom_plugins]]
+  name = 'MattesGroeger/vim-bookmarks'
+  on_cmd = ['BookmarkShowAll', 'BookmarkToggle', 'BookmarkAnnotate', 'BookmarkNext', 'BookmarkPrev' ]
+  merged = false
+
+# https://github.com/junegunn/rainbow_parentheses.vim
+[[custom_plugins]]
+  name = 'junegunn/rainbow_parentheses.vim'
+  on_cmd = ["RainbowParentheses", "RainbowParenthesesColors"]
+  merged = false
+  
 # https://spacevim.org/layers/lang/latex/
 [[layers]]
   name = "lang#latex" 
@@ -177,4 +197,24 @@ default_height = 30
 # https://spacevim.org/layers/lang/vim/
 [[layers]]
   name = "lang#vim"
+
+# https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/layers/tools.vim
+# https://github.com/junegunn/rainbow_parentheses.vim
+# https://github.com/itchyny/calendar.vim
+# https://github.com/tpope/vim-scriptease
+# https://github.com/simnalamburt/vim-mundo
+# https://github.com/junegunn/limelight.vim
+# https://github.com/junegunn/goyo.vim
+# https://github.com/mbbill/fencview
+# https://github.com/lymslive/vimloo
+# https://github.com/lymslive/vnote
+#[[layers]]
+#  name = "tools"
+# 
+[[layers]]
+  name = "tools#zeal"
+
+# https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/layers/incsearch.vim
+[[layers]]
+  name = "incsearch"
 
