@@ -110,5 +110,6 @@ Building Vim from source: https://github.com/ycm-core/YouCompleteMe/wiki/Buildin
 
 ## NeoVim
 https://github.com/neovim/neovim/wiki/Installing-Neovim#appimage-universal-linux-package  
+https://github.com/neovim/neovim/wiki/Installing-Neovim#install-from-source   
 `sudo snap install nvim --edge --classic`  
 `sudo snap install nvim --beta --classic`  
