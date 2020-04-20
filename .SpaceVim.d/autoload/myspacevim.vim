@@ -4,9 +4,9 @@ function! myspacevim#before() abort
 
 	let g:github_dashboard = { 'username': 'ferhaterata', 'password': $GITHUB_TOKEN }
   let g:gista#client#default_username = 'ferhaterata'
+
   call SpaceVim#custom#SPC('nore', ['a', 'u'], 'MundoToggle', 'toggle undo tree', 1)
   call SpaceVim#custom#SPC('nore', ['b', 'i'], 'ToggleBufExplorer', 'toggle buffer explorer', 1)
-  call SpaceVim#custom#SPC('nore', ['[SPC]'], 'ToggleBufExplorer', 'toggle buffer explorer', 1)
   call SpaceVim#custom#SPC('nore', ['b', 'v'], 'BufExplorerVerticalSplit', 'open horizontal BufExplorer', 1)
   call SpaceVim#custom#SPC('nore', ['b', 'h'], 'BufExplorerHorizontalSplit', 'open vertical BufExplorer', 1)
 
@@ -17,9 +17,9 @@ function! myspacevim#before() abort
   nnoremap <silent> mn :<C-u>BookmarkNext<Cr>
   nnoremap <silent> mp :<C-u>BookmarkPrev<Cr>
   nnoremap <silent> <F7> :MundoToggle<CR>o
-
+ 
   let g:airline#extensions#bookmark#enabled = 0  
-
+   
   " Activation based on file type
   augroup rainbow_lisp
     autocmd!
@@ -28,7 +28,6 @@ function! myspacevim#before() abort
 
   let g:rainbow#max_level = 16
   let g:rainbow#pairs = [['(', ')'], ['[', ']'],['{','}']]
-
   " List of colors that you do not want. ANSI code or #RRGGBB
   let g:rainbow#blacklist = [233, 234]
 
@@ -42,9 +41,22 @@ function! myspacevim#before() abort
         \ { 'type': 'commands',  'header': ['   Commands']       },
         \ ] 
 
+  augroup leaderf 
+    let g:Lf_WindowPosition = 'popup'
+    let g:Lf_PreviewInPopup = 1
+    call SpaceVim#custom#SPC('nore', ['[SPC]'], 'Leaderf file --fullPath '
+        \ . SpaceVim#plugins#projectmanager#current_root(), 'find files in current project', 1)
+  augroup END
+
+  " to override a bug in spacevim
+  function! StartifyEntryFormat()
+      return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
+  endfunction 
+
 endfunction
 
 function! myspacevim#after() abort
+  let g:Lf_CommandMap = {'<C-J>': ['<TAB>', '<C-J>'], '<C-K>': ['<S-TAB>','<C-K>']}
 endfunction
 
 " returns all modified files of the current git repo

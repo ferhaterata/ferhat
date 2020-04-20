@@ -83,6 +83,11 @@ name = 'shell'
 default_position = 'bottom'
 default_height = 30
 
+# https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/layers/core.vim
+[[layers]]
+    name = 'core'
+    filetree_show_hidden = true
+
 # https://spacevim.org/layers/fzf/
 [[layers]]
   name = "fzf"
@@ -120,6 +125,10 @@ default_height = 30
   name = "core#statusline" 
   enable = false
 
+# https://spacevim.org/layers/core/tabline/
+[[layers]]
+  name = "core#tabline"
+
 # https://spacevim.org/layers/ui/
 # https://github.com/majutsushi/tagbar
 # https://github.com/mhinz/vim-startify
@@ -156,6 +165,16 @@ default_height = 30
   name = 'junegunn/rainbow_parentheses.vim'
   on_cmd = ["RainbowParentheses", "RainbowParenthesesColors"]
   merged = false
+  
+# https://github.com/Yggdroot/LeaderF
+#[[custom_plugins]]
+#  name = 'Yggdroot/LeaderF'
+#  merged = false
+
+# https://spacevim.org/layers/leaderf/
+# https://github.com/Yggdroot/LeaderF
+[[layers]]
+  name = "leaderf"
   
 # https://spacevim.org/layers/lang/latex/
 [[layers]]
@@ -195,14 +214,15 @@ default_height = 30
     objcpp = "c++1z"
 
 # https://spacevim.org/layers/lang/vim/
+# https://github.com/lervag/vimtex
 [[layers]]
   name = "lang#vim"
 
 # https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/layers/tools.vim
 # https://github.com/junegunn/rainbow_parentheses.vim
-# https://github.com/itchyny/calendar.vim
-# https://github.com/tpope/vim-scriptease
 # https://github.com/simnalamburt/vim-mundo
+# https://github.com/tpope/vim-scriptease
+# https://github.com/itchyny/calendar.vim
 # https://github.com/junegunn/limelight.vim
 # https://github.com/junegunn/goyo.vim
 # https://github.com/mbbill/fencview
@@ -210,7 +230,7 @@ default_height = 30
 # https://github.com/lymslive/vnote
 #[[layers]]
 #  name = "tools"
-# 
+
 [[layers]]
   name = "tools#zeal"
 
@@ -218,3 +238,13 @@ default_height = 30
 [[layers]]
   name = "incsearch"
 
+# https://spacevim.org/layers/language-server-protocol/
+[[layers]]
+  name = "lsp"
+  
+[[layers]]
+  name = "lang#xml"
+
+[[layers]]
+  name = "lang#json"
+  
