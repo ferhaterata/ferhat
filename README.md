@@ -102,14 +102,16 @@ When editing, put your cursor over a variable, method or class and hit `Ctrl-]` 
 https://courses.cs.washington.edu/courses/cse451/10au/tutorials/tutorial_ctags.html
 
 ## python-pygments
+Pygments is a generic syntax highlighter written in Python   
+https://github.com/pygments/pygments  
 `sudo apt-get install python-pygments`  
 
 ## Vim
-Building Vim from source: https://github.com/ycm-core/YouCompleteMe/wiki/Building-Vim-from-source   
-
+Building Vim from source: https://github.com/ycm-core/YouCompleteMe/wiki/Building-Vim-from-source  
 
 ## NeoVim
 https://github.com/neovim/neovim/wiki/Installing-Neovim#appimage-universal-linux-package  
-https://github.com/neovim/neovim/wiki/Installing-Neovim#install-from-source   
-`sudo snap install nvim --edge --classic`  
-`sudo snap install nvim --beta --classic`  
+Building Vim from source: https://github.com/neovim/neovim/wiki/Installing-Neovim#install-from-source   
+Setting up Python for Neovim: https://github.com/deoplete-plugins/deoplete-jedi/wiki/Setting-up-Python-for-Neovim   
+`pip3 install --user neovim`
+  
