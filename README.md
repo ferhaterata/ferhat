@@ -111,6 +111,7 @@ Building Vim from source: https://github.com/ycm-core/YouCompleteMe/wiki/Buildin
 example configuration: 
   https://github.com/axiaoxin/vim-settings  
   https://dougblack.io/words/a-good-vimrc.html  
+  Better Defaults: https://github.com/liuchengxu/vim-better-default/wiki/a-brief-introduction-to-key-bindings  
   
 
 ## NeoVim
