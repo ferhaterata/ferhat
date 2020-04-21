@@ -108,10 +108,19 @@ https://github.com/pygments/pygments
 
 ## Vim
 Building Vim from source: https://github.com/ycm-core/YouCompleteMe/wiki/Building-Vim-from-source  
+example configuration: 
+  https://github.com/axiaoxin/vim-settings  
+  https://dougblack.io/words/a-good-vimrc.html  
+  
 
 ## NeoVim
 https://github.com/neovim/neovim/wiki/Installing-Neovim#appimage-universal-linux-package  
 Building Vim from source: https://github.com/neovim/neovim/wiki/Installing-Neovim#install-from-source   
 Setting up Python for Neovim: https://github.com/deoplete-plugins/deoplete-jedi/wiki/Setting-up-Python-for-Neovim   
 `pip3 install --user neovim`
-  
+ 
+## SpaceVim
+https://spacevim.org/  
+  Documentation: https://spacevim.org/documentation  
+  Available Layers: https://spacevim.org/layers/   
+  Available Options: https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim.vim  
