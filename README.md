@@ -124,3 +124,9 @@ https://spacevim.org/
   Documentation: https://spacevim.org/documentation  
   Available Layers: https://spacevim.org/layers/   
   Available Options: https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim.vim  
+  Space: https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/mapping/space.vim   
+  Leader: https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/mapping/leader.vim   
+  z: https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/mapping/z.vim  
+  g: https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/mapping/g.vim   
+  leaderF: https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/layers/leaderf.vim   
+  fzf: https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/layers/fzf.vim   
