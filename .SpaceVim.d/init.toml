@@ -14,14 +14,15 @@
     # set spacevim theme. by default colorscheme layer is not loaded,
     # if you want to use more colorscheme, please load the colorscheme
     # layer
-    colorscheme = "onedark" 
+    colorscheme = "gruvbox" # g:spacevim_colorscheme # molokai  
+    # 'gruvbox', 'molokai', 'onedark', 'jellybeans', 'one', 'nord', 'hybrid', 'NeoSolarized', 'material', 'srcery',
     colorscheme_bg = "dark"
     # Disable guicolors in basic mode, many terminal do not support 24bit
     # true colors
     enable_guicolors = true
     # Disable statusline separator, if you want to use other value, please
     # install nerd fonts
-    enable_statusline_mode = true
+    enable_statusline_mode = false
     statusline_separator = "arrow"
     statusline_inactive_separator = "arrow"
     # left sections of statusline
@@ -59,7 +60,6 @@
     # windows_index_type = 1 # 3
     enable_os_fileformat_icon = true
     # enable_tabline_ft_icon = true
-    # enable_tabline_filetype_icon = true
     enable_vimfiler_gitstatus = true
     enable_vimfiler_filetypeicon = true
 
@@ -92,6 +92,11 @@ default_height = 30
 [[layers]]
   name = "fzf"
 
+# https://spacevim.org/layers/leaderf/
+# https://github.com/Yggdroot/LeaderF
+[[layers]]
+  name = "leaderf"
+  
 # https://spacevim.org/layers/ctrlp/
 #[[layers]]
 #  name = "ctrlp"
@@ -165,17 +170,22 @@ default_height = 30
   name = 'junegunn/rainbow_parentheses.vim'
   on_cmd = ["RainbowParentheses", "RainbowParenthesesColors"]
   merged = false
-  
+
+# https://github.com/tpope/vim-vinegar 
+[[custom_plugins]]
+  name = 'tpope/vim-vinegar'
+  merged = false
+
+# https://github.com/ferhaterata/open-pdf 
+#[[custom_plugins]]
+#  name = 'ferhaterata/open-pdf'
+#  merged = false
+
 # https://github.com/Yggdroot/LeaderF
 #[[custom_plugins]]
 #  name = 'Yggdroot/LeaderF'
 #  merged = false
 
-# https://spacevim.org/layers/leaderf/
-# https://github.com/Yggdroot/LeaderF
-[[layers]]
-  name = "leaderf"
-  
 # https://spacevim.org/layers/lang/latex/
 [[layers]]
   name = "lang#latex" 

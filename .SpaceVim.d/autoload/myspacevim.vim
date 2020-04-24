@@ -16,10 +16,15 @@ function! myspacevim#before() abort
   nnoremap <silent> ma :<C-u>BookmarkShowAll<Cr>
   nnoremap <silent> mn :<C-u>BookmarkNext<Cr>
   nnoremap <silent> mp :<C-u>BookmarkPrev<Cr>
-  nnoremap <silent> <F7> :MundoToggle<CR>o
- 
+  " 
+  nnoremap <silent> <F7> :MundoToggle<CR>
+  nnoremap <silent> U :MundoToggle<CR>
+  " 
+  let g:netrw_browsex_viewer="xdg-open"
+
   let g:airline#extensions#bookmark#enabled = 0  
-   
+  let g:bufferline_echo = 0 
+
   " Activation based on file type
   augroup rainbow_lisp
     autocmd!
@@ -48,6 +53,10 @@ function! myspacevim#before() abort
         \ . SpaceVim#plugins#projectmanager#current_root(), 'find files in current project', 1)
   augroup END
 
+  if has('nvim') 
+     call SpaceVim#custom#SPC('nore', ['a', 't'], 'call myspacevim#openterminal()', 'open-shell', 1)
+  endif
+
   " to override a bug in spacevim
   function! StartifyEntryFormat()
       return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
@@ -56,9 +65,25 @@ function! myspacevim#before() abort
 endfunction
 
 function! myspacevim#after() abort
-  let g:Lf_CommandMap = {'<C-J>': ['<TAB>', '<C-J>'], '<C-K>': ['<S-TAB>','<C-K>']}
+  let g:Lf_CommandMap = {'<c-j>': ['<tab>', '<c-j>'], '<c-k>': ['<s-tab>','<c-k>']}
+  nnoremap <c-p> :FZF<cr>
+  set showmode 
 endfunction
 
+function! myspacevim#openterminal() abort 
+  if has('nvim') || exists(':tnoremap') == 2
+    exe 'tnoremap <silent><C-Right> <C-\><C-n>:<C-u>wincmd l<CR>'
+    exe 'tnoremap <silent><C-Left>  <C-\><C-n>:<C-u>wincmd h<CR>'
+    exe 'tnoremap <silent><C-Up>    <C-\><C-n>:<C-u>wincmd k<CR>'
+    exe 'tnoremap <silent><C-Down>  <C-\><C-n>:<C-u>wincmd j<CR>'
+    exe 'tnoremap <silent><M-Left>  <C-\><C-n>:<C-u>bprev<CR>'
+    exe 'tnoremap <silent><M-Right>  <C-\><C-n>:<C-u>bnext<CR>'
+    exe 'tnoremap <silent><esc>     <C-\><C-n>'
+    exe 'edit term://bash' 
+  endif
+  " in window gvim, use <C-d> to close terminal buffer
+endfunction
+  
 " returns all modified files of the current git repo
 " `2>/dev/null` makes the command fail quietly, so that when we are not
 " in a git repo, the list will be empty

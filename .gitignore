@@ -45,7 +45,7 @@
 doom.d/.directory
 
 # vim configurations
-!.vimrc
+!.vimrc-my
 !.vim/
 .vim/*
 !.vim/autoload
@@ -74,4 +74,5 @@ doom.d/.directory
 !.local/share/fonts/adobe-fonts
 .local/share/fonts/adobe-fonts/source-code-pro/*
 
-
+# star dictionaries
+!.dict

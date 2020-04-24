@@ -1,0 +1,294 @@
+set nocompatible
+set runtimepath=~/.vim-my,$VIMRUNTIME
+
+" https://github.com/junegunn/vim-plug#example
+" Specify a directory for plugins
+" - For Neovim: stdpath('data') . '/plugged'
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim-my/plugged')
+
+" https://github.com/vim-airline/vim-airline/
+Plug 'vim-airline/vim-airline' "Setting up my status bar
+Plug 'vim-airline/vim-airline-themes'
+Plug 'airblade/vim-gitgutter' "Shows changes if you're working with git
+" https://github.com/tpope/vim-fugitive
+Plug 'tpope/vim-fugitive'
+
+" 
+Plug 'junegunn/goyo.vim'  "Simple writing theme that looks nice with markdown
+
+"Syntax
+Plug 'tpope/vim-markdown'
+Plug 'ap/vim-css-color' "Displays a preview of colors with CSS (like VS Code)
+" https://github.com/lervag/vimtex
+Plug 'lervag/vimtex'
+
+"Color-schemes
+Plug 'morhetz/gruvbox' "My favorite theme
+Plug 'jacoborus/tender.vim'
+Plug 'joshdick/onedark.vim'
+
+" Multiple Plug commands can be written in a single line using | separators
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
+" On-demand loading
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" https://github.com/Xuyuanp/nerdtree-git-plugin
+
+" Plugin outside ~/.vim/plugged with post-update hook
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+" https://github.com/tpope/vim-sensible
+" Plug 'tpope/vim-sensible'
+
+"https://github.com/mhinz/vim-startify
+Plug 'mhinz/vim-startify'
+
+"  
+Plug 'ryanoasis/vim-devicons'
+
+" https://github.com/jiangmiao/auto-pairs
+Plug 'jiangmiao/auto-pairs'
+
+" https://github.com/easymotion/vim-easymotion
+" https://github.com/haya14busa/incsearch.vim
+" https://github.com/haya14busa/incsearch-easymotion.vim
+"
+" https://github.com/justinmk/vim-sneak
+" https://github.com/tpope/vim-surround
+" https://github.com/preservim/nerdcommenter
+" Plug 'preservim/nerdcommenter'
+" https://github.com/kien/rainbow_parentheses.vim
+"
+"
+" https://github.com/terryma/vim-multiple-cursors
+" https://github.com/mg979/vim-visual-multi
+" Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+"
+" https://github.com/godlygeek/tabular
+"
+" https://github.com/majutsushi/tagbar
+" https://github.com/ludovicchabant/vim-gutentags
+" https://github.com/editorconfig/editorconfig-vim
+" https://github.com/Yggdroot/indentLine
+"
+"
+" https://github.com/Yggdroot/LeaderF
+" https://github.com/junegunn/fzf.vim
+" https://github.com/ctrlpvim/ctrlp.vim
+" 
+" https://github.com/ycm-core/YouCompleteMe
+"
+" https://github.com/MattesGroeger/vim-bookmarks
+" 
+" https://github.com/vim-syntastic/syntastic
+"
+" https://github.com/phongvcao/vim-stardict.git
+Plug 'phongvcao/vim-stardict'
+"
+" Initialize plugin system
+call plug#end()
+
+"Color schemes need to be below everything else that effects color apparently.
+"If no things will load out of order and not work properly. 
+colorscheme gruvbox  "Setting up Gruvbox and airline, (colors)
+let g:airline_theme='gruvbox'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#tabline#buffer_idx_format = {
+        \ '0': '0 ',
+        \ '1': '1 ',
+        \ '2': '2 ',
+        \ '3': '3 ',
+        \ '4': '4 ',
+        \ '5': '5 ',
+        \ '6': '6 ',
+        \ '7': '7 ',
+        \ '8': '8 ',
+        \ '9': '9 '
+        \}
+let g:solarized_termcolors=256
+let g:airline#extensions#tabline#keymap_ignored_filetypes =
+        \ ['vimfiler', 'nerdtree']
+let g:airline#extensions#tabline#excludes = []
+set background=dark
+
+" returns all modified files of the current git repo
+" `2>/dev/null` makes the command fail quietly, so that when we are not
+" in a git repo, the list will be empty
+function! s:gitModified()
+    let files = systemlist('git ls-files -m 2>/dev/null')
+    return map(files, "{'line': v:val, 'path': v:val}")
+endfunction
+
+" same as above, but show untracked files, honouring .gitignore
+function! s:gitUntracked()
+    let files = systemlist('git ls-files -o --exclude-standard 2>/dev/null')
+    return map(files, "{'line': v:val, 'path': v:val}")
+endfunction
+
+let g:startify_lists = [
+    \ { 'type': 'dir',       'header': ['   My most recently used files in the current directory: '. getcwd()] },
+    \ { 'type': 'files',     'header': ['   My most recently used files:']            },
+    \ { 'type': 'sessions',  'header': ['   Sessions']       },
+    \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+    \ { 'type': function('s:gitModified'),  'header': ['   git modified']},
+    \ { 'type': function('s:gitUntracked'), 'header': ['   git untracked']},
+    \ { 'type': 'commands',  'header': ['   Commands']       },
+    \ ] 
+
+set encoding=UTF-8
+filetype plugin indent on  "Enabling Plugin & Indent
+syntax on  "Turning Syntax on
+set laststatus=2
+autocmd! bufwritepost .vimrc-my source %
+set autoread
+set hlsearch
+
+set wildmenu
+set number relativenumber  "Setting line numbers
+set ignorecase     " Case insensitive search
+set nowrap         " Do not wrap long lines
+set nu rnu
+set spelllang=en_us,
+"set spell
+set showcmd        " Show partial commands in status line and Selected characters/lines in visual mode
+set backspace=indent,eol,start  "Making sure backspace works
+set noruler        "Setting up rulers & spacing, tabs
+set ruler          " Show the ruler
+set confirm
+set shiftwidth=4   " Use indents of 4 spaces
+set autoindent
+set smartindent
+set tabstop=4      " An indentation every four columns
+set softtabstop=4  " Let backspace delete indent
+set smartcase      " ... but case sensitive when uc present
+set autowrite      " Automatically write a file when leaving a modified buffer
+set mousehide      " Hide the mouse cursor while typing
+set expandtab  
+set splitright     " Puts new vsplit windows to the right of the current
+set splitbelow     " Puts new split windows to the bottom of the current
+set hidden         " Allow buffer switching without saving
+
+set showmode       " Show current mode in command-line
+set showmatch      " Show matching brackets/parentthesis
+
+set matchtime=5    " Show matching time
+set report=0       " Always report changed lines
+set linespace=0    " No extra spaces between rows
+set pumheight=20   " Avoid the pop up menu occupying the whole screen
+
+set expandtab    " Tabs are spaces, not tabs
+set hls is  "Making sure search highlights words as we type them
+set ic
+set laststatus=1 "Setting the size for the command area, and airline status bar :was 2
+set cmdheight=1
+
+" Neovim has set these as default
+if !has('nvim')
+  set nocompatible
+  syntax on                      " Syntax highlighting
+  filetype plugin indent on      " Automatically detect file types
+  set autoindent                 " Indent at the same level of the previous line
+  set autoread                   " Automatically read a file changed outside of vim
+  set backspace=indent,eol,start " Backspace for dummies
+  set complete-=i                " Exclude files completion
+  set display=lastline           " Show as much as possible of the last line
+  set encoding=utf-8             " Set default encoding
+  set history=10000              " Maximum history record
+  set hlsearch                   " Highlight search terms
+  set incsearch                  " Find as you type search
+  set laststatus=2               " Always show status line
+  set mouse=a                    " Automatically enable mouse usage
+  set smarttab                   " Smart tab
+  set ttyfast                    " Faster redrawing
+  set viminfo+=!                 " Viminfo include !
+  set wildmenu                   " Show list instead of just completing
+  set ttymouse=xterm2
+endif
+
+set shortmess=atOI " No help Uganda information, and overwrite read messages to avoid PRESS ENTER prompts
+"set scrolljump=5   " Line to scroll when cursor leaves screen
+"set scrolloff=3    " Minumum lines to keep above and below cursor
+set t_Co=256       " Use 256 colors
+" http://stackoverflow.com/questions/6427650/vim-in-tmux-background-color-changes-when-paging/15095377#15095377
+set t_ut=
+
+set winminheight=0
+set wildmode=list:longest,full
+
+set listchars=tab:→\ ,eol:↵,trail:·,extends:↷,precedes:↶
+set whichwrap+=<,>,h,l  " Allow backspace and cursor keys to cross line boundaries
+
+set termencoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+
+set wildignore+=*swp,*.class,*.pyc,*.png,*.jpg,*.gif,*.zip
+set wildignore+=*/tmp/*,*.o,*.obj,*.so     " Unix
+set wildignore+=*\\tmp\\*,*.exe            " Windows
+
+" Visual shifting (does not exit Visual mode)
+vnoremap < <gv
+vnoremap > >gv
+" Treat long lines as break lines (useful when moving around in them)
+nmap j gj
+nmap k gk
+vmap j gj
+vmap k gk
+
+
+set nobackup
+set noswapfile
+set nowritebackup
+
+set foldenable
+set foldmarker={,}
+set foldlevel=0
+set foldmethod=marker
+" set foldcolumn=3
+set foldlevelstart=99
+
+"set background=dark         " Assume dark background
+set cursorline              " Highlight current line
+set fileformats=unix,dos,mac        " Use Unix as the standard file type
+set number                  " Line numbers on
+set relativenumber          " Relative numbers on
+set fillchars=stl:\ ,stlnc:\ ,fold:\ ,vert:│
+
+" Annoying temporary files
+set directory=/tmp//,.
+set backupdir=/tmp//,.
+if v:version >= 703
+  set undodir=/tmp//,.
+endif
+
+highlight clear SignColumn  " SignColumn should match background
+" highlight clear LineNr      " Current line number row will have same background color in relative mode
+
+if has('unnamedplus')
+  set clipboard=unnamedplus,unnamed
+else
+  set clipboard+=unnamed
+endif
+
+if has('persistent_undo')
+  set undofile             " Persistent undo
+  set undolevels=1000      " Maximum number of changes that can be undone
+  set undoreload=10000     " Maximum number lines to save for undo on a buffer reload
+endif
+
+if has('gui_running')
+  set guioptions-=r        " Hide the right scrollbar
+  set guioptions-=L        " Hide the left scrollbar
+  set guioptions-=T
+  set guioptions-=e
+  set shortmess+=c
+  " No annoying sound on errors
+  set noerrorbells
+  set novisualbell
+  set visualbell t_vb=
+endif
+
+

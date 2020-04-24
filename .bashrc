@@ -118,9 +118,10 @@ fi
 
 if [ -x "`which nvim 2>&1`" ]; then
     export EDITOR=nvim
-  # alias vim='nvim'
+    alias vim='nvim'
 elif [ -x "`which vim 2>&1`" ]; then
     export EDITOR=vim
+    alias vi='vim'
 fi
 
 if [ -f ~/.github_token ]; then
@@ -153,6 +154,8 @@ alias la='exa -alF --group-directories-first'
 alias l='exa -a'
 # show directory with git info
 alias lg='exa --long --git --git-ignore'
+# list directory with their inode, block count, and hard link count
+alias lle='exa -lhd --group --inode --links --blocks'
 
 alias lt='exa -lF --group-directories-first --tree'
 
