@@ -9,6 +9,9 @@ htop is an interactive text-mode process viewer for Unix systems. It aims to be 
 https://github.com/hishamhm/htop  
 `sudo snap install htop`  
 
+## most
+browse or page through a text file   
+`sudo apt install most`
 
 ## highlight
 Universal source code to formatted text converter  
