@@ -131,3 +131,10 @@ https://spacevim.org/
   g: https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/mapping/g.vim   
   leaderF: https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/layers/leaderf.vim   
   fzf: https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/layers/fzf.vim   
+
+# sdcv
+StarDict Command-Line Version (SDCV) dictionary program  
+https://github.com/Dushistov/sdcv   
+https://vimawesome.com/plugin/vim-stardict  
+`sudo apt install sdcv`   
+
