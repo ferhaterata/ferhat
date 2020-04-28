@@ -70,6 +70,7 @@
     # To disable this feature, set the option enable_language_specific_leader to false.
     enable_language_specific_leader = false
     enable_statusline_tag = true
+    disabled_plugins = ["nerdtree-git-plugin", "statusline"]
 
 # Enable autocomplete layer
 [[layers]]
@@ -142,6 +143,11 @@ default_height = 30
   name = "ui"
   enable_sidebar = false # merges vimfiller with tagbar
 
+# https://github.com/Xuyuanp/nerdtree-git-plugin
+[[custom_plugins]]
+  name = 'Xuyuanp/nerdtree-git-plugin'
+  merged = false
+
 # https://github.com/ryanoasis/vim-devicons
 [[custom_plugins]]
   name = 'ryanoasis/vim-devicons'
@@ -174,6 +180,16 @@ default_height = 30
 # https://github.com/tpope/vim-vinegar 
 [[custom_plugins]]
   name = 'tpope/vim-vinegar'
+  merged = false
+
+# "https://github.com/tiagofumo/vim-nerdtree-syntax-highlight
+# [[custom_plugins]]
+  # name = 'tiagofumo/vim-nerdtree-syntax-highlight'
+  # merged = false
+
+# https://github.com/phongvcao/vim-stardict.git
+[[custom_plugins]]
+  name = 'phongvcao/vim-stardict'
   merged = false
 
 # https://github.com/ferhaterata/open-pdf 
@@ -244,7 +260,13 @@ default_height = 30
 [[layers]]
   name = "tools#zeal"
 
+
 # https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/layers/incsearch.vim
+# haya14busa/incsearch.vim
+# haya14busa/incsearch-fuzzy.vim
+# haya14busa/vim-asterisk
+# haya14busa/incsearch-easymotion.vim
+# osyo-manga/vim-over
 [[layers]]
   name = "incsearch"
 

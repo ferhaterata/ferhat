@@ -4,6 +4,7 @@
 
 #whitelist files & folders
 !.gitignore
+!.gitconfig
 !README.md
 # 
 !.config
@@ -46,12 +47,13 @@ doom.d/.directory
 
 # vim configurations
 !.vimrc-my
-!.vim/
-.vim/*
-!.vim/autoload
+!.vim-my/
+.vim-my/*
+!.vim-my/autoload
 
 # SpaceVim
 !.SpaceVim.d
+.netrwhist
 
 # ssh configurations
 #!.ssh/
@@ -76,3 +78,5 @@ doom.d/.directory
 
 # star dictionaries
 !.dict
+# vim stardict - sdcv plugin
+# 

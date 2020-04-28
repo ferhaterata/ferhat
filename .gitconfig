@@ -1,0 +1,10 @@
+[user]
+	name = Ferhat Erata
+	email = ferhat.erata@yale.edu
+[core]
+	editor = nvim
+	excludesfile = ~/.gitexcludes
+[color]
+	ui = true
+[merge]
+	tool = vimdiff
