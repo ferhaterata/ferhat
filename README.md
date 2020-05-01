@@ -13,7 +13,7 @@ cd tmux
 sh autogen.sh
 ./configure
 make && sudo make install
-````
+````  
 
 ## xclip
 command line interface to X selections (clipboard)  
