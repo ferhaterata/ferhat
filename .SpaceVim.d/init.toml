@@ -8,13 +8,13 @@
 
 # All SpaceVim option below [option] section
 [options]
-    # bootstrap functions for customizations
-    bootstrap_before = "myspacevim#before"
-    bootstrap_after = "myspacevim#after"
-    # set spacevim theme. by default colorscheme layer is not loaded,
-    # if you want to use more colorscheme, please load the colorscheme
-    # layer
-    colorscheme = "gruvbox" # g:spacevim_colorscheme # molokai  
+  # bootstrap functions for customizations
+  bootstrap_before = "myspacevim#before"
+  bootstrap_after = "myspacevim#after"
+  # set spacevim theme. by default colorscheme layer is not loaded,
+  # if you want to use more colorscheme, please load the colorscheme
+  # layer
+  colorscheme = "gruvbox" # g:spacevim_colorscheme # molokai  
     # 'gruvbox', 'molokai', 'onedark', 'jellybeans', 'one', 'nord', 'hybrid', 'NeoSolarized', 'material', 'srcery',
     colorscheme_bg = "dark"
     # Disable guicolors in basic mode, many terminal do not support 24bit
@@ -22,7 +22,7 @@
     enable_guicolors = true
     # Disable statusline separator, if you want to use other value, please
     # install nerd fonts
-    enable_statusline_mode = false
+    enable_statusline_mode = true
     statusline_separator = "arrow"
     statusline_inactive_separator = "arrow"
     # left sections of statusline
@@ -62,8 +62,9 @@
     # enable_tabline_ft_icon = true
     enable_vimfiler_gitstatus = true
     enable_vimfiler_filetypeicon = true
-
-    filemanager = "nerdtree" 
+    enable_vimfiler_welcome = 0
+    
+    filemanager = "defx" #"nerdtree" 
     filetree_direction = "left"
     project_rooter_patterns = ['.project','.git/', '_darcs/', '.hg/', '.bzr/', '.svn/']
     # The , key does repeat last f, F, t and T in vim, but in SpaceVim it is the language specified Leader key. 
@@ -71,37 +72,54 @@
     enable_language_specific_leader = false
     enable_statusline_tag = true
     disabled_plugins = ["nerdtree-git-plugin", "statusline"]
+    # in order to use s for easymotion 
+    windows_leader = ''
+    github_username = 'ferhat.erata'
+    commandline_prompt = '' #'➭'
+    # enable_googlesuggest = false
+    # enable_ycm = true
 
 # Enable autocomplete layer
 [[layers]]
-name = 'autocomplete'
-auto_completion_return_key_behavior = "complete"
-auto_completion_tab_key_behavior = "smart"
-auto_completion_enable_snippets_in_popup = true
+  name = 'autocomplete'
+  autocomplete_method = "deoplate"
+  auto_completion_return_key_behavior = "smart"
+  auto_completion_tab_key_behavior = "smart"
+  auto_completion_enable_snippets_in_popup = true
+  auto_completion_complete_with_key_sequence = "jk"
 
 [[layers]]
-name = 'shell'
-default_position = 'bottom'
-default_height = 30
+  name = 'shell'
+  default_position = 'bottom'
+  default_height = 30
 
 # https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/layers/core.vim
 [[layers]]
-    name = 'core'
-    filetree_show_hidden = true
+  name = 'core'
+  filetree_show_hidden = true
 
+# https://spacevim.org/documentation/#fuzzy-finder
+# (unite, denite, leaderf, ctrlp and fzf layer)
+#  
 # https://spacevim.org/layers/fzf/
 [[layers]]
   name = "fzf"
-
+# 
 # https://spacevim.org/layers/leaderf/
 # https://github.com/Yggdroot/LeaderF
 [[layers]]
   name = "leaderf"
-  
-# https://spacevim.org/layers/ctrlp/
+#
+# https://spacevim.org/layers/denite/
+# https://github.com/Shougo/denite.nvim
+# https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/layers/denite.vim
 #[[layers]]
+#  name = "denite" 
+#
+#https://spacevim.org/layers/ctrlp/
+# [[layers]]
 #  name = "ctrlp"
-
+#
 # https://spacevim.org/layers/unite/
 #[[layers]]
 #  name = "unite"
@@ -144,9 +162,9 @@ default_height = 30
   enable_sidebar = false # merges vimfiller with tagbar
 
 # https://github.com/Xuyuanp/nerdtree-git-plugin
-[[custom_plugins]]
-  name = 'Xuyuanp/nerdtree-git-plugin'
-  merged = false
+# [[custom_plugins]]
+  # name = 'Xuyuanp/nerdtree-git-plugin'
+  # merged = false
 
 # https://github.com/ryanoasis/vim-devicons
 [[custom_plugins]]
@@ -166,9 +184,14 @@ default_height = 30
   merged = false
 
 # https://github.com/MattesGroeger/vim-bookmarks
+# [[custom_plugins]]
+  # name = 'MattesGroeger/vim-bookmarks'
+  # on_cmd = ['BookmarkShowAll', 'BookmarkToggle', 'BookmarkAnnotate', 'BookmarkNext', 'BookmarkPrev' ]
+  # merged = false
+
+# https://github.com/kshenoy/vim-signature 
 [[custom_plugins]]
-  name = 'MattesGroeger/vim-bookmarks'
-  on_cmd = ['BookmarkShowAll', 'BookmarkToggle', 'BookmarkAnnotate', 'BookmarkNext', 'BookmarkPrev' ]
+  name = 'kshenoy/vim-signature'
   merged = false
 
 # https://github.com/junegunn/rainbow_parentheses.vim
@@ -178,14 +201,29 @@ default_height = 30
   merged = false
 
 # https://github.com/tpope/vim-vinegar 
-[[custom_plugins]]
-  name = 'tpope/vim-vinegar'
-  merged = false
+# [[custom_plugins]]
+  # name = 'tpope/vim-vinegar'
+  # merged = false
+
+# https://github.com/justinmk/vim-dirvish
+# [[custom_plugins]]
+  # name = 'justinmk/vim-dirvish'
+  # merged = false
+
+# https://github.com/kristijanhusak/vim-dirvish-git
+# [[custom_plugins]]
+  # name = 'kristijanhusak/vim-dirvish-git'
+  # merged = false
 
 # "https://github.com/tiagofumo/vim-nerdtree-syntax-highlight
 # [[custom_plugins]]
   # name = 'tiagofumo/vim-nerdtree-syntax-highlight'
   # merged = false
+
+# https://github.com/mg979/vim-visual-multi
+[[custom_plugins]]
+  name = 'mg979/vim-visual-multi'
+  merged = false
 
 # https://github.com/phongvcao/vim-stardict.git
 [[custom_plugins]]
@@ -209,6 +247,7 @@ default_height = 30
 [[layers]]
   name = "lang#markdown"
 
+# https://spacevim.org/layers/tmux/
 [[layers]]
   name = "tmux"
 # tmux_navigator_modifier = "alt"

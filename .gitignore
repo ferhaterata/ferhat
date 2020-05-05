@@ -4,6 +4,7 @@
 
 #whitelist files & folders
 !.gitignore
+!.gitignore_global
 !.gitconfig
 !README.md
 # 
@@ -33,6 +34,9 @@
 
 # GNU Readline
 !.inputrc
+
+# tmux
+!.tmux.conf
 
 # emacs
 !.emacs

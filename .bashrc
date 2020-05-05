@@ -138,7 +138,10 @@ alias sml='rlwrap sml'
 alias cd..='cd ..'
 alias ..='cd ..'
 alias ...='cd ../..'
+alias ....='cd ../../..'
 
+# Git Specific
+# git commit all with message -- no quotes needed
 alias g='git'
 alias gs='g status'
 alias gd='g diff'
@@ -147,6 +150,9 @@ alias gc='g commit -m'
 alias gp='g push'
 alias gr='g pull --rebase'
 
+# tmux stuff
+alias t='tmux'
+ 
 # list directory
 alias ll='exa -lF --group-directories-first'
 # show hidden and 'dot' files
@@ -170,7 +176,6 @@ set -o vi
 
 ###################################################
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
 [ -f ~/.forgit.bash ] && source ~/.forgit.bash
 
 export FZF_DEFAULT_OPTS='--inline-info --no-height --no-reverse' 
