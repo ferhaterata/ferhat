@@ -1,5 +1,20 @@
 # ferhat's dot files
 
+## tmux
+terminal m
+https://github.com/tmux/tmux   
+cheatsheat: https://gist.github.com/andreyvit/2921703  
+tmux + vim: https://www.bugsnag.com/blog/tmux-and-vim  
+prerequisites:`sudo apt install libevent-dev ncurses-* build-essential pkg-config`   
+install: https://github.com/tmux/tmux/wiki/Installing   
+````bash
+git clone https://github.com/tmux/tmux.git
+cd tmux
+sh autogen.sh
+./configure
+make && sudo make install
+````  
+
 ## xclip
 command line interface to X selections (clipboard)  
 `sudo apt-get install xclip -y`   
