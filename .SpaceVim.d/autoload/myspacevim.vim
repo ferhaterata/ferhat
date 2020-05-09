@@ -77,14 +77,17 @@ function! myspacevim#before() abort
   call SpaceVim#custom#SPC('nore', ['b', 'i'], 'ToggleBufExplorer', 'toggle buffer explorer', 1)
   call SpaceVim#custom#SPC('nore', ['b', 'v'], 'BufExplorerVerticalSplit', 'open horizontal BufExplorer', 1)
   call SpaceVim#custom#SPC('nore', ['b', 'h'], 'BufExplorerHorizontalSplit', 'open vertical BufExplorer', 1)
+  " --popup-height=0.75 
   call SpaceVim#custom#SPC('nore', ['[SPC]'], 'Leaderf file --fullPath '
-        \ . SpaceVim#plugins#projectmanager#current_root() . " --popup" , 'find files in current project', 1)
-  call SpaceVim#custom#SPC('nore', ['f', 'r'], 'Leaderf mru' , 'open recent files', 1)
+        \ . SpaceVim#plugins#projectmanager#current_root() . " --popup " , 'find files in current project', 1)
+  call SpaceVim#custom#SPC('nore', ['f', 'r'], 'Leaderf mru --popup' , 'open recent files', 1)
   call SpaceVim#custom#SPC('nore', ['b', 'b'], 'Leaderf buffer --popup ' , 'buffer list', 1)
   if has('nvim') 
      call SpaceVim#custom#SPC('nore', ['a', 't'], 'call myspacevim#openterminal()', 'open-shell', 1)
   endif
-  
+  call SpaceVim#custom#SPC('nnore', ['f', 'b'], 'SignatureListBufferMark', 'list bookmarks (signature)', 1)
+
+
   " bookmark key binding
   " nnoremap <silent> mm :<C-u>BookmarkToggle<Cr>
   " nnoremap <silent> mi :<C-u>BookmarkAnnotate<Cr>
@@ -179,21 +182,27 @@ function! myspacevim#after() abort
   set updatetime=1000 " Update sign column every quarter second
   set clipboard=unnamedplus
 
+  "https://github.com/Shougo/echodoc.vim
+  set cmdheight=1    " Better display for messages
+  let g:echodoc#enable_at_startup = 1
+  " To use a custom highlight for the popup window,
+  " change Pmenu to your highlight group
+  highlight link EchoDocPopup Pmenu
+  let g:echodoc#type = 'popup'
+  if has('nvim') 
+    "neovim's floating text feature.
+    let g:echodoc#type = 'floating'
+    "let g:echodoc#type = 'virtual'
+  endif
+
   let g:gitgutter_max_signs = 99999
-  "let g:gitgutter_sign_modified_removed = '≃'
-  "highlight clear SignColumn  " SignColumn should match background
-  "hi! link GitGutterAdd GruvboxGreenSign
-  "hi! GitGutterAdd ctermfg=142 ctermbg=237 guifg=#b8bb26 guibg=#1d2021
-  "hi! link GitGutterChange GruvboxAquaSign
-  "hi! GitGutterChange ctermfg=108 ctermbg=237 guifg=#8ec07c guibg=#1d2021
-  "hi! link GitGutterDelete GruvboxRedSign
-  "hi! GitGutterDelete ctermfg=167 ctermbg=237 guifg=#fb4934 guibg=#1d2021
-  "hi! link GitGutterChangeDelete GruvboxAquaSign
-  "hi! GitGutterChangeDelete ctermfg=108 ctermbg=237 guifg=#8ec07c guibg=#1d2021
+  let g:gitgutter_preview_win_floating = 1 
 
   nmap gp <Plug>(GitGutterPreviewHunk)
   nmap gs <Plug>(GitGutterStageHunk)
   nmap gu <Plug>(GitGutterUndoHunk)
+  nmap [c <Plug>(GitGutterPrevHunk)
+  nmap ]c <Plug>(GitGutterNextHunk)
 
   nmap <Leader>hp <Plug>(GitGutterPreviewHunk)
   nmap <Leader>hs <Plug>(GitGutterStageHunk)
@@ -219,6 +228,7 @@ function! myspacevim#after() abort
     \ "Unknown"   : "?", 
     \ 'Ignored'   : ""
     \ }
+  " ﰂ ﯰ 
 
   let g:webdevicons_conceal_nerdtree_brackets = 1
   let g:webdevicons_enable_nerdtree = 1
@@ -252,6 +262,7 @@ function! myspacevim#after() abort
     \ 'Unknown'   : '?'
     \ }
 
+  "Defx
   nnoremap <silent>- :Defx `expand('%:p:h')` -auto-recursive-level=1 -split=no -show-ignored-files -search=`expand('%:p')` -new<CR>
 
   augroup defx_my_init
@@ -354,6 +365,12 @@ function! myspacevim#after() abort
     nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
   endif
 
+  if has('nvim') 
+    if g:spacevim_colorscheme ==# 'gruvbox' 
+      hi! link Pmenu SignColumn  
+    endif
+  endif
+  
 endfunction
 
 function! myspacevim#openterminal() abort 
