@@ -3,7 +3,7 @@
 	email = ferhat.erata@yale.edu
 [core]
 	editor = nvim
-	excludesfile = ~/.gitexcludes
+	excludesfile = /home/ferhat/.gitignore_global
 [color]
 	ui = true
 [merge]

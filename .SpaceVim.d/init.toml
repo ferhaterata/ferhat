@@ -78,11 +78,12 @@
     commandline_prompt = '' #'➭'
     # enable_googlesuggest = false
     # enable_ycm = true
+    error_symbol =   '✗'
 
 # Enable autocomplete layer
 [[layers]]
   name = 'autocomplete'
-  autocomplete_method = "deoplate"
+  autocomplete_method = "deoplete"
   auto_completion_return_key_behavior = "smart"
   auto_completion_tab_key_behavior = "smart"
   auto_completion_enable_snippets_in_popup = true
@@ -229,6 +230,11 @@
 [[custom_plugins]]
   name = 'phongvcao/vim-stardict'
   merged = false
+
+# https://github.com/wincent/terminus.git
+# [[custom_plugins]]
+#  name = 'wincent/terminus.git'
+#  merged = false
 
 # https://github.com/ferhaterata/open-pdf 
 #[[custom_plugins]]

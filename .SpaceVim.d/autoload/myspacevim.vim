@@ -1,7 +1,13 @@
 function! myspacevim#before() abort
 	set ignorecase
 	set smartcase
-  
+
+  set ttimeoutlen=10 "Terminus changes this to 10ms
+  " in insert mode completion blinks in vim and konsole
+  " let &t_SI = "\<Esc>[6 q"
+  " let &t_SR = "\<Esc>[4 q"
+  " let &t_EI = "\<Esc>[2 q"
+
 " | Shortcuts        | Description                                                     |
 " | ---------------- | --------------------------------------------------------------- |
 " | Basic            |                                                                 |
@@ -222,35 +228,6 @@ function! myspacevim#after() abort
   " enable open and close folder/directory glyph flags (disabled by default with 0)
   let g:DevIconsEnableFoldersOpenClose = 1
   
-  "Highlight full name (not only icons). You need to add this if you don't have vim-devicons and want highlight.
-  "let g:NERDTreeFileExtensionHighlightFullName = 1
-  "let g:NERDTreeExactMatchHighlightFullName = 1
-  "let g:NERDTreePatternMatchHighlightFullName = 1 
-  "let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match 
-  "let g:NERDTreeHighlightFoldersFullNamDCommenterInvertus the folder name
-  "let g:NERDTreeLimitedSyntax = 1
-
-  " NERDTress File highlighting
-  function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
-  exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
-  exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-  endfunction
-
-  au VimEnter * call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
-  au VimEnter * call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
-  au VimEnter * call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
-  au VimEnter * call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
-  au VimEnter * call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
-  au VimEnter * call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
-  au VimEnter * call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
-  au VimEnter * call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
-  au VimEnter * call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
-  au VimEnter * call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
-  au VimEnter * call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
-  au VimEnter * call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
-  au VimEnter * call NERDTreeHighlightFile('rb', 'Red', 'none', '#ffa500', '#151515')
-  au VimEnter * call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
-
   hi! link NERDTreeFlags Comment
   hi! link NERDTreeDir Identifier  
 
@@ -275,6 +252,18 @@ function! myspacevim#after() abort
     \ 'Unknown'   : '?'
     \ }
 
+  nnoremap <silent>- :Defx `expand('%:p:h')` -auto-recursive-level=1 -split=no -show-ignored-files -search=`expand('%:p')` -new<CR>
+
+  augroup defx_my_init
+    au!
+    autocmd FileType defx call s:defx_my_setting()
+  augroup END
+
+	function! s:defx_my_setting() abort
+    silent! nunmap <buffer> -
+	  nnoremap <silent><buffer><expr>- defx#do_action('cd', ['..'])
+  endfunction
+
   " Make Y yank the rest of the line, as you would expect it to
   nnoremap Y y$
   " Move to the start of line
@@ -289,7 +278,14 @@ function! myspacevim#after() abort
   "nnoremap <silent> <Tab> :normal %<CR>
   "xnoremap <silent> <Tab> :normal %<CR>m`gv``
   "nnoremap <C-O> :normal <C-O><CR>         
-  "nnoremap <C-I> :normal <C-I><CR>   
+  "
+  " g; older position on the change list
+  " g, new position on the change list
+  " g' jump to mark 
+  
+  "https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim.vim#L1172
+  nnoremap <C-I> <C-I>   
+
   "call SpaceVim#mapping#space#def('nnoremap', ['j', 'b'], '<C-o>', 'jump-backward', 1)
   "call SpaceVim#mapping#space#def('nnoremap', ['j', 'f'], '<C-i>', 'jump-forward', 0)
   
@@ -357,7 +353,7 @@ function! myspacevim#after() abort
   if maparg('<C-L>', 'n') ==# ''
     nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
   endif
-  
+
 endfunction
 
 function! myspacevim#openterminal() abort 

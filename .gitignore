@@ -37,6 +37,7 @@
 
 # tmux
 !.tmux.conf
+!.tmux-line.conf
 
 # emacs
 !.emacs
