@@ -1,3 +1,5 @@
+" https://github.com/JetBrains/ideavim
+" ====================================
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -5,7 +7,7 @@ set nocompatible
 " search for actions: :actionlist <patter>
 
 set number                        " line numbers
-
+set relativenumber
 set hlsearch                      " highlight search occurrences
 set ignorecase                    " ignore case in search patterns
 set smartcase                     " no ignore case when pattern is uppercase
@@ -17,21 +19,69 @@ set history=10000                 " keep x lines of command line history
 set scrolloff=5 sidescrolloff=10  " keep some lines before and after the cursor visible
 set clipboard=unnamedplus,unnamed,ideaput " integrate with system clipboard
 
-" set multiple-cursors
-set commentary
-set surround                      " emulate vim-surround plugin
-
-
-" set <leader> to <space>
-let mapleader=" "			" leader is comma ('\')
-let maplocalleader=","		" localleader is comma ('')
+set visualbell
+set noerrorbells
 
 set ttimeout
-set ttimeoutlen=100
+set ttimeoutlen=400
+
+"nnoremap <SPACE> <Nop>
+let mapleader = "\\"
+let maplocalleader=","		
+
+" https://github.com/JetBrains/ideavim/blob/master/doc/emulated-plugins.md
+" ========================================================================
+" https://github.com/JetBrains/ideavim/blob/master/doc/set-commands.md
+set ideamarks 
+set ideajoin                      "https://github.com/JetBrains/ideavim/wiki/%60ideajoin%60-examples"
+" Commands: <A-n>, <A-x>, <A-p>, g<A-n>
+set multiple-cursors              "https://github.com/terryma/vim-multiple-cursors"
+" Commands: gcc, gc + motion, v_gc
+set commentary                    "https://github.com/tpope/vim-commentary 
+" Commands: ys, cs, ds, S
+set surround                      "https://github.com/tpope/vim-surround                      
+" Commands: gr, grr
+set ReplaceWithRegister           "https://github.com/vim-scripts/ReplaceWithRegister"
+" Additional text objects: aa, ia
+set argtextobj                    "https://www.vim.org/scripts/script.php?script_id=2699"
+let g:argtextobj_pairs="(:),{:},<:>"
+" Additional text objects: ae, ie
+set textobj-entire                "https://github.com/kana/vim-textobj-entire"
+" Commands: https://github.com/AlexPl292/IdeaVim-EasyMotion#supported-commands 
+set easymotion                    "https://github.com/AlexPl292/IdeaVim-EasyMotion"
+
+" `s{char}{label}`
+" nmap s <Plug>(easymotion-f)
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-f2)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
+"  Default Mapping |  <Plug> command       |
+"  -----------------------------------------------------------------
+"   <ll>f{char}    |  <Plug>(easymotion-f) |  mapped to fn
+"   <ll>F{char}    |  <Plug>(easymotion-F) |  mapped to Fn
+"   <ll>t{char}    |  <Plug>(easymotion-t) |  mapped to tn
+"   <ll>T{char}    |  <Plug>(easymotion-T) |  mapped to Tn
+"
+"   <ll>w          |  <Plug>(easymotion-w) |
+"   <ll>W          |  <Plug>(easymotion-W) |
+"   <ll>b          |  <Plug>(easymotion-b) |
+"   <ll>B          |  <Plug>(easymotion-B) |
+"   <ll>e          |  <Plug>(easymotion-e) |
+"   <ll>E          |  <Plug>(easymotion-E) |
+"   <ll>ge         |  <Plug>(easymotion-ge |
+"   <ll>gE         |  <Plug>(easymotion-gE |
+"   <ll>j          |  <Plug>(easymotion-j) |
+"   <ll>k          |  <Plug>(easymotion-k) |
+"   <ll>n          |  <Plug>(easymotion-n) |
+"   <ll>N          |  <Plug>(easymotion-N) |
+"   <ll>s          |  <Plug>(easymotion-s) |  mapped to sn
+" ========================================================================
 
 " smash escape
 inoremap jk <Esc>
-inoremap kj <Esc>
 
 "Allow normal up/down movement across wrapped lines
 noremap j gj
@@ -39,12 +89,20 @@ noremap k gk
 
 nnoremap L $
 nnoremap H ^
-noremap ; :
 
-" <leader>v brings up .vimrc
-" <leader>V reloads it and makes all changes active (file has to be saved first)
-noremap <leader>vv :e! $MYVIMRC<CR>
-noremap <silent> <leader>vr :source $MYVIMRC<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>set ideajoin
+" Bash like
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+inoremap <C-d> <Delete>
+
+nnoremap <space>fs <Esc>:w<CR>
+"nnoremap <space>q <Esc>:q<CR>
+
+" <leader>vv brings up .vimrc
+" <leader>vr reloads it and makes all changes active (file has to be saved first)
+noremap <leader>vv :e! /home/ferhat/.ideavimrc<CR>
+noremap <silent> <leader>vr :source /home/ferhat/.ideavimrc<CR>:echo 'vimrc reloaded'<CR>
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " Fix some vim annoyances
@@ -63,46 +121,377 @@ vnoremap = =gv
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 " IDEA specific
-nmap <leader>? :action GotoAction<CR>
-
-" change font size
-nmap + :action EditorIncreaseFontSize<CR>
-nmap - :action EditorDecreaseFontSize<CR>
-nmap <leader>= :action EditorResetFontSize<CR>
-
-" code navigation
-
-" https://youtrack.jetbrains.com/issue/VIM-44
-nnoremap <c-o> :action Back<cr>
-nnoremap <c-i> :action Forward<cr>
 
 nmap <leader>e :action GotoFile<CR>
 nmap <leader>a :action FindInPath<CR>
+" Shift + F6 in idea.
+" Alt + R, then R (through the menu bar) also seems to work fine
+nmap <Leader>r :action RenameElement<CR>
+" Ctrl + F12 in idea.
+map <Leader>s :action FileStructurePopup<CR>
+" Perhaps just use the Idea shortcut Ctrl-Alt-B
+" Alt + N, then m (through the menu bar) also seems to work, but it is
+" non-unique.
+
+" Jump to next/previous error, show error description
+" https://stackoverflow.com/questions/13346245/keyboard-shortcut-to-display-error-in-intellij
+map <Leader>e :action ShowErrorDescription<CR>
+map <Space>en :action GotoNextError<CR>
+" Alt + F7 in idea. 
+" Find usages in file is Ctrl + F7. 
+" Alt + E, then F, then U (through the menu bar) also seems to work fine.
+map <Leader>f :action FindUsages<CR>
+" Alt + Insert in idea.
+map <Leader>g :action Generate<CR>
+" F12 
+map <space>ww <c-w>w
+" Possibly redundant given "Run Anything" DoubleCtrl
+map <Leader>r :action ChooseRunConfiguration<CR>
+" This is Ctrl-W in the default keymap, but we are using it for Vim.
+vmap v :action EditorSelectWord<CR>
+"vmap V :action EditorSelectWord<CR>
+"
+nnoremap <C-CR> :action ShowIntentionActions<CR>
+
+nnoremap <space>fr  :action RecentFiles<CR>
+nnoremap <space>q   :action CloseContent<cr>
+nnoremap <space>bd <Esc>:q<CR>
+
+nnoremap <space>s :action SearchEverywhere<cr>
+nnoremap <c-p>    :action SearchEverywhere<cr>
+
+nnoremap <space>E :action Switcher<cr>
+nnoremap <space>jt :action FileStructurePopup<cr>
+nnoremap <space>jT :action GotoSymbol<cr>
+nnoremap <space>ja :action GotoAction<cr>
+nnoremap <space>db :action ToggleLineBreakpoint<cr>
+nnoremap <space>fu :action FindUsages<cr>
+nnoremap <space>fp :action FindInPath<CR>
+"nnoremap <space>k :action HighlightUsagesInFile<cr>
+"nnoremap \r :action RunClass<cr>
+"nnoremap \R :action Run<cr>
+"nnoremap \d :action DebugClass<cr>
+"nnoremap \D :action Debug<cr>
+"nnoremap \c :action CheckStyleCurrentFileAction<cr>
+
+"IntelliJ bindings that work fine
+"================================
+"Ctrl-N to find classes.
+"Ctrl-Shift-N to find any files.
+"Alt+Enter for Quick Fixes.
+"Ctrl+Tab for the Switcher.
+"Ctrl-E for Recently Opened Files.
+"Ctrl-Shift-E for Recently Edited Files.
+"Shift-Alt-C for Recent Changes.
+"Double-pressing Shift to Search Everywhere.
+"Ctrl+Shift+Backspace for Last Edit Location.
+
+" https://github.com/JetBrains/ideavim/blob/master/src/com/maddyhome/idea/vim/package-info.java
+"
+" * 2. Normal mode
+" *
+" * tag                    action
+" * -------------------------------------------------------------------------------------------------------------------
+" *
+" * |CTRL-A|               {@link com.maddyhome.idea.vim.action.change.change.number.ChangeNumberIncAction}
+" * |CTRL-E|               {@link com.maddyhome.idea.vim.action.motion.scroll.MotionScrollLineDownAction}
+" * |CTRL-G|               {@link com.maddyhome.idea.vim.action.file.FileGetFileInfoAction}
+" * |<BS>|                 {@link com.maddyhome.idea.vim.action.motion.leftright.MotionLeftWrapAction}
+" * |CTRL-H|               {@link com.maddyhome.idea.vim.action.motion.leftright.MotionLeftWrapAction}
+"
+" * |<Tab>|                TO BE IMPLEMENTED
+" * |CTRL-I|               {@link com.maddyhome.idea.vim.action.motion.mark.MotionJumpNextAction}
+" * |CTRL-O|               {@link com.maddyhome.idea.vim.action.motion.mark.MotionJumpPreviousAction}
+" built-in navigation to navigated items works better
+nnoremap <c-o> :action Back<cr>
+nnoremap <c-i> :action Forward<cr>
+" but preserve ideavim defaults
+nnoremap g<c-o> <c-o>
+nnoremap g<c-i> <c-i>
+" * |'|                    {@link com.maddyhome.idea.vim.action.motion.mark.MotionGotoMarkLineAction}
+" * |''|                   ?
+"
+" * |CTRL-U|               {@link com.maddyhome.idea.vim.action.motion.scroll.MotionScrollHalfPageUpAction}
+" * |CTRL-D|               {@link com.maddyhome.idea.vim.action.motion.scroll.MotionScrollHalfPageDownAction}
+" * |CTRL-B|               {@link com.maddyhome.idea.vim.action.motion.scroll.MotionScrollPageUpAction}
+" * |CTRL-F|               {@link com.maddyhome.idea.vim.action.motion.scroll.MotionScrollPageDownAction}
+"
+" * |CTRL-P|               {@link com.maddyhome.idea.vim.action.motion.updown.MotionUpCtrlPAction}
+" * |u|                    {@link com.maddyhome.idea.vim.action.change.UndoAction}
+" * |CTRL-R|               {@link com.maddyhome.idea.vim.action.change.RedoAction}
+" * |CTRL-V|               {@link com.maddyhome.idea.vim.action.motion.visual.VisualToggleBlockModeAction}
+" * |CTRL-]|               {@link com.maddyhome.idea.vim.action.motion.search.GotoDeclarationAction}
+" * |.|                    {@link com.maddyhome.idea.vim.action.change.RepeatChangeAction}
+" * |:|                    {@link com.maddyhome.idea.vim.action.ExEntryAction}
+" * |;|                    {@link com.maddyhome.idea.vim.action.motion.leftright.MotionLastMatchCharAction}
+" * |<CR>|                 {@link com.maddyhome.idea.vim.action.motion.updown.EnterNormalAction}
+"
+" * |$|                    {@link com.maddyhome.idea.vim.action.motion.leftright.MotionLastColumnAction}
+" * |%|                    {@link com.maddyhome.idea.vim.action.motion.updown.MotionPercentOrMatchAction}
+"
+" * |<|                    {@link com.maddyhome.idea.vim.action.change.shift.ShiftLeftMotionAction}
+" * |<<|                   translated to <_
+" * |=|                    {@link com.maddyhome.idea.vim.action.change.shift.AutoIndentMotionAction}
+" * |==|                   translated to =_
+" * |>|                    {@link com.maddyhome.idea.vim.action.change.shift.ShiftRightMotionAction}
+" * |>>|                   translated to >_
+"
+" * |star|                 {@link com.maddyhome.idea.vim.action.motion.search.SearchWholeWordForwardAction}
+" * |/|                    {@link com.maddyhome.idea.vim.action.motion.search.SearchEntryFwdAction}
+" * |?|                    {@link com.maddyhome.idea.vim.action.motion.search.SearchEntryRevAction}
+" * |#|                    {@link com.maddyhome.idea.vim.action.motion.search.SearchWholeWordBackwardAction}
+" built in search looks better
+nnoremap g/ :action Find<cr>
+" but preserve ideavim search
+nnoremap / /
+" clear the search buffer when hitting return
+nnoremap <cr> :nohlsearch<cr>
+"
+" * |CTRL-N|               {@link com.maddyhome.idea.vim.action.motion.updown.MotionDownCtrlNAction}
+" * |CTRL-M|               {@link com.maddyhome.idea.vim.action.motion.updown.MotionDownFirstNonSpaceAction}
+"
+" * |<NL>|                 {@link com.maddyhome.idea.vim.action.motion.updown.MotionDownNotLineWiseAction}
+" * |CTRL-W|               see window commands
+"
+" * |CTRL-X|               {@link com.maddyhome.idea.vim.action.change.change.number.ChangeNumberDecAction}
+" * |CTRL-Y|               {@link com.maddyhome.idea.vim.action.motion.scroll.MotionScrollLineUpAction}
+" * |CTRL-6|               {@link com.maddyhome.idea.vim.action.file.FilePreviousAction}
+" * |CTRL-\CTRL-N|         {@link com.maddyhome.idea.vim.action.ResetModeAction}
+" * |<Space>|              {@link com.maddyhome.idea.vim.action.motion.leftright.MotionRightWrapAction}
+" * |!|                    {@link com.maddyhome.idea.vim.action.change.change.FilterMotionAction}
+" * |!!|                   translated to !_
+" * |quote|                handled by command key parser
+" * |&|                    {@link com.maddyhome.idea.vim.action.change.change.ChangeLastSearchReplaceAction}
+" * |(|                    {@link com.maddyhome.idea.vim.action.motion.text.MotionSentencePreviousStartAction}
+" * |)|                    {@link com.maddyhome.idea.vim.action.motion.text.MotionSentenceNextStartAction}
+" * |+|                    {@link com.maddyhome.idea.vim.action.motion.updown.MotionDownFirstNonSpaceAction}
+" * |,|                    {@link com.maddyhome.idea.vim.action.motion.leftright.MotionLastMatchCharReverseAction}
+" * |-|                    {@link com.maddyhome.idea.vim.action.motion.updown.MotionUpFirstNonSpaceAction}
+" * |@|                    {@link com.maddyhome.idea.vim.action.macro.PlaybackRegisterAction}
+" * |A|                    {@link com.maddyhome.idea.vim.action.change.insert.InsertAfterLineEndAction}
+" * |B|                    {@link com.maddyhome.idea.vim.action.motion.text.MotionBigWordLeftAction}
+" * |C|                    {@link com.maddyhome.idea.vim.action.change.change.ChangeEndOfLineAction}
+" * |D|                    {@link com.maddyhome.idea.vim.action.change.delete.DeleteEndOfLineAction}
+" * |E|                    {@link com.maddyhome.idea.vim.action.motion.text.MotionBigWordEndRightAction}
+" * |F|                    {@link com.maddyhome.idea.vim.action.motion.leftright.MotionLeftMatchCharAction}
+" * |G|                    {@link com.maddyhome.idea.vim.action.motion.updown.MotionGotoLineLastAction}
+" * |H|                    {@link com.maddyhome.idea.vim.action.motion.screen.MotionFirstScreenLineAction}
+" * |I|                    {@link com.maddyhome.idea.vim.action.change.insert.InsertBeforeFirstNonBlankAction}
+" * |J|                    {@link com.maddyhome.idea.vim.action.change.delete.DeleteJoinLinesSpacesAction}
+" * |K|                    {@link com.maddyhome.idea.vim.action.editor.VimQuickJavaDoc}
+" * |L|                    {@link com.maddyhome.idea.vim.action.motion.screen.MotionLastScreenLineAction}
+" * |M|                    {@link com.maddyhome.idea.vim.action.motion.screen.MotionMiddleScreenLineAction}
+" * |N|                    {@link com.maddyhome.idea.vim.action.motion.search.SearchAgainPreviousAction}
+" * |O|                    {@link com.maddyhome.idea.vim.action.change.insert.InsertNewLineAboveAction}
+" * |P|                    {@link com.maddyhome.idea.vim.action.copy.PutTextBeforeCursorAction}
+" * |Q|                    TO BE IMPLEMENTED
+" * |R|                    {@link com.maddyhome.idea.vim.action.change.change.ChangeReplaceAction}
+" * |S|                    {@link com.maddyhome.idea.vim.action.change.change.ChangeLineAction}
+" * |T|                    {@link com.maddyhome.idea.vim.action.motion.leftright.MotionLeftTillMatchCharAction}
+" * |U|                    ?
+" * |V|                    {@link com.maddyhome.idea.vim.action.motion.visual.VisualToggleLineModeAction}
+" * |W|                    {@link com.maddyhome.idea.vim.action.motion.text.MotionBigWordRightAction}
+" * |X|                    {@link com.maddyhome.idea.vim.action.change.delete.DeleteCharacterLeftAction}
+" * |Y|                    {@link com.maddyhome.idea.vim.action.copy.YankLineAction}
+" * |ZZ|                   {@link com.maddyhome.idea.vim.action.file.FileSaveCloseAction}
+" * |ZQ|                   {@link com.maddyhome.idea.vim.action.file.FileSaveCloseAction}
+" * |[|                    see bracket commands
+" * |]|                    see bracket commands
+" * |^|                    {@link com.maddyhome.idea.vim.action.motion.leftright.MotionFirstNonSpaceAction}
+" * |_|                    {@link com.maddyhome.idea.vim.action.motion.updown.MotionDownLess1FirstNonSpaceAction}
+" * |`|                    {@link com.maddyhome.idea.vim.action.motion.mark.MotionGotoMarkAction}
+" * |``|                   ?
+" * ...
+" * |0|                    {@link com.maddyhome.idea.vim.action.motion.leftright.MotionFirstColumnAction}
+" * |a|                    {@link com.maddyhome.idea.vim.action.change.insert.InsertAfterCursorAction}
+" * |b|                    {@link com.maddyhome.idea.vim.action.motion.text.MotionWordLeftAction}
+" * |c|                    {@link com.maddyhome.idea.vim.action.change.change.ChangeMotionAction}
+" * |cc|                   translated to c_
+" * |d|                    {@link com.maddyhome.idea.vim.action.change.delete.DeleteMotionAction}
+" * |dd|                   translated to d_
+" * |do|                   TO BE IMPLEMENTED
+" * |dp|                   TO BE IMPLEMENTED
+" * |e|                    {@link com.maddyhome.idea.vim.action.motion.text.MotionWordEndRightAction}
+" * |f|                    {@link com.maddyhome.idea.vim.action.motion.leftright.MotionRightMatchCharAction}
+" * |g|                    see commands starting with 'g'
+" * |h|                    {@link com.maddyhome.idea.vim.action.motion.leftright.MotionLeftAction}
+" * |i|                    {@link com.maddyhome.idea.vim.action.change.insert.InsertBeforeCursorAction}
+" * |j|                    {@link com.maddyhome.idea.vim.action.motion.updown.MotionDownAction}
+" * |k|                    {@link com.maddyhome.idea.vim.action.motion.updown.MotionUpAction}
+" * |l|                    {@link com.maddyhome.idea.vim.action.motion.leftright.MotionRightAction}
+" * |m|                    {@link com.maddyhome.idea.vim.action.motion.mark.MotionMarkAction}
+" * |n|                    {@link com.maddyhome.idea.vim.action.motion.search.SearchAgainNextAction}
+" * |o|                    {@link com.maddyhome.idea.vim.action.change.insert.InsertNewLineBelowAction}
+" * |p|                    {@link com.maddyhome.idea.vim.action.copy.PutTextAfterCursorAction}
+" * |q|                    {@link com.maddyhome.idea.vim.action.macro.ToggleRecordingAction}
+" * |r|                    {@link com.maddyhome.idea.vim.action.change.change.ChangeCharacterAction}
+" * |s|                    {@link com.maddyhome.idea.vim.action.change.change.ChangeCharactersAction}
+" * |t|                    {@link com.maddyhome.idea.vim.action.motion.leftright.MotionRightTillMatchCharAction}
+" * |v|                    {@link com.maddyhome.idea.vim.action.motion.visual.VisualToggleCharacterModeAction}
+" * |w|                    {@link com.maddyhome.idea.vim.action.motion.text.MotionWordRightAction}
+" * |x|                    {@link com.maddyhome.idea.vim.action.change.delete.DeleteCharacterRightAction}
+" * |y|                    {@link com.maddyhome.idea.vim.action.copy.YankMotionAction}
+" * |yy|                   translated to y_
+" * |z|                    see commands starting with 'z'
+" * |{|                    {@link com.maddyhome.idea.vim.action.motion.text.MotionParagraphPreviousAction}
+" * |bar|                  {@link com.maddyhome.idea.vim.action.motion.leftright.MotionColumnAction}
+" * |}|                    {@link com.maddyhome.idea.vim.action.motion.text.MotionParagraphNextAction}
+" * |~|                    {@link com.maddyhome.idea.vim.action.change.change.ChangeCaseToggleCharacterAction}
+" * |<C-End>|              {@link com.maddyhome.idea.vim.action.motion.updown.MotionGotoLineLastEndAction}
+" * |<C-Home>|             {@link com.maddyhome.idea.vim.action.motion.updown.MotionGotoLineFirstAction}
+" * |<C-Left>|             {@link com.maddyhome.idea.vim.action.motion.text.MotionWordLeftAction}
+" * |<C-Right>|            {@link com.maddyhome.idea.vim.action.motion.text.MotionWordRightAction}
+" * |<C-Down>|             {@link com.maddyhome.idea.vim.action.motion.scroll.CtrlDownAction}
+" * |<C-Up>|               {@link com.maddyhome.idea.vim.action.motion.scroll.CtrlUpAction}
+" * |<Del>|                {@link com.maddyhome.idea.vim.action.change.delete.DeleteCharacterAction}
+" * |<Down>|               {@link com.maddyhome.idea.vim.action.motion.updown.MotionArrowDownAction}
+" * |<End>|                {@link com.maddyhome.idea.vim.action.motion.leftright.MotionEndAction}
+" * |<F1>|                 IntelliJ help
+" * |<Home>|               {@link com.maddyhome.idea.vim.action.motion.leftright.MotionHomeAction}
+" * |<Insert>|             {@link com.maddyhome.idea.vim.action.change.insert.InsertBeforeCursorAction}
+" * |<Left>|               {@link com.maddyhome.idea.vim.action.motion.leftright.MotionArrowLeftAction}
+" * |<PageDown>|           {@link com.maddyhome.idea.vim.action.motion.scroll.MotionScrollPageDownAction}
+" * |<PageUp>|             {@link com.maddyhome.idea.vim.action.motion.scroll.MotionScrollPageUpAction}
+" * |<Right>|              {@link com.maddyhome.idea.vim.action.motion.leftright.MotionArrowRightAction}
+" * |<S-Down>|             {@link com.maddyhome.idea.vim.action.motion.updown.MotionShiftDownAction}
+" * |<S-Left>|             {@link com.maddyhome.idea.vim.action.motion.leftright.MotionShiftLeftAction}
+" * |<S-Right>|            {@link com.maddyhome.idea.vim.action.motion.leftright.MotionShiftRightAction}
+" * |<S-Up>|               {@link com.maddyhome.idea.vim.action.motion.updown.MotionShiftUpAction}
+" * |<S-Home>|             {@link com.maddyhome.idea.vim.action.motion.leftright.MotionShiftHomeAction}
+" * |<S-End>|              {@link com.maddyhome.idea.vim.action.motion.leftright.MotionShiftEndAction}
+" * |<Up>|                 {@link com.maddyhome.idea.vim.action.motion.updown.MotionArrowUpAction}
+"
+
+" * 2.2. Window commands
+" *
+" * tag                    action
+" * -------------------------------------------------------------------------------------------------------------------
+" *
+" * |CTRL-W_W|             {@link com.maddyhome.idea.vim.action.window.WindowPrevAction}
+" * |CTRL-W_w|             {@link com.maddyhome.idea.vim.action.window.WindowNextAction}
+" * |CTRL-W_c|             {@link com.maddyhome.idea.vim.action.window.CloseWindowAction}
+nnoremap <space>wd <c-w>c
+" * |CTRL-W_h|             {@link com.maddyhome.idea.vim.action.window.WindowLeftAction}
+" * |CTRL-W_j|             {@link com.maddyhome.idea.vim.action.window.WindowDownAction}
+" * |CTRL-W_k|             {@link com.maddyhome.idea.vim.action.window.WindowUpAction}
+" * |CTRL-W_l|             {@link com.maddyhome.idea.vim.action.window.WindowRightAction}
+" easy window navigation
+nnoremap <c-l> <c-w>l
+nnoremap <space>wl <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <space>wj <c-w>j
+nnoremap <c-h> <c-w>h
+nnoremap <space>wh <c-w>h
+nnoremap <c-k> <c-w>k
+nnoremap <space>wk <c-w>k
+nnoremap <c-s-tab> gT
+nnoremap <c-tab> gt
+" * |CTRL-W_o|             {@link com.maddyhome.idea.vim.action.window.WindowOnlyAction}
+" * |CTRL-W_s|             {@link com.maddyhome.idea.vim.action.window.HorizontalSplitAction}
+nnoremap <space>ws <c-w>s
+" * |CTRL-W_S|             {@link com.maddyhome.idea.vim.action.window.HorizontalSplitAction}
+" * |CTRL-W_v|             {@link com.maddyhome.idea.vim.action.window.VerticalSplitAction}
+nnoremap <space>wv <c-w>v
+"
+" * |CTRL-W_<Down>|        {@link com.maddyhome.idea.vim.action.window.WindowDownAction}
+" * |CTRL-W_<Up>|          {@link com.maddyhome.idea.vim.action.window.WindowUpAction}
+" * |CTRL-W_<Left>|        {@link com.maddyhome.idea.vim.action.window.WindowLeftAction}
+" * |CTRL-W_<Right>|       {@link com.maddyhome.idea.vim.action.window.WindowRightAction}
+"
+" * |CTRL-W_CTRL-H|        {@link com.maddyhome.idea.vim.action.window.WindowLeftAction}
+" * |CTRL-W_CTRL-J|        {@link com.maddyhome.idea.vim.action.window.WindowDownAction}
+" * |CTRL-W_CTRL-K|        {@link com.maddyhome.idea.vim.action.window.WindowUpAction}
+" * |CTRL-W_CTRL-L|        {@link com.maddyhome.idea.vim.action.window.WindowRightAction}
+nnoremap <space>wu :action ReopenClosedTab<cr>
+" * 2.3. Square bracket commands
+" *
+" * tag                    action
+" * -------------------------------------------------------------------------------------------------------------------
+nnoremap [<space> O<esc>j
+nnoremap ]<space> o<esc>k
+" * |[(|                   {@link com.maddyhome.idea.vim.action.motion.text.MotionUnmatchedParenOpenAction}
+" * |])|                   {@link com.maddyhome.idea.vim.action.motion.text.MotionUnmatchedParenCloseAction}
+" * |[M|                   {@link com.maddyhome.idea.vim.action.motion.text.MotionMethodPreviousEndAction}
+" * |]M|                   {@link com.maddyhome.idea.vim.action.motion.text.MotionMethodNextEndAction}
+nnoremap [q :action PreviousOccurence<cr>
+nnoremap ]q :action NextOccurence<cr>
+" * |[m|                   {@link com.maddyhome.idea.vim.action.motion.text.MotionMethodPreviousStartAction}
+" * |]m|                   {@link com.maddyhome.idea.vim.action.motion.text.MotionMethodNextStartAction}
+nnoremap [m :action MethodUp<cr>
+nnoremap ]m :action MethodDown<cr>
+" * |[[|                   {@link com.maddyhome.idea.vim.action.motion.text.MotionSectionBackwardStartAction}
+" * |]]|                   {@link com.maddyhome.idea.vim.action.motion.text.MotionSectionForwardEndAction}
+nnoremap [c :action VcsShowPrevChangeMarker<cr>
+nnoremap ]c :action VcsShowNextChangeMarker<cr>
+" * |[]|                   {@link com.maddyhome.idea.vim.action.motion.text.MotionSectionBackwardEndAction}
+" * |][|                   {@link com.maddyhome.idea.vim.action.motion.text.MotionSectionForwardStartAction}
+" * |[p|                   {@link com.maddyhome.idea.vim.action.copy.PutVisualTextAfterCursorNoIndentAction}
+" * |[p|                   {@link com.maddyhome.idea.vim.action.copy.PutTextAfterCursorNoIndentAction}
+" * |]p|                   {@link com.maddyhome.idea.vim.action.copy.PutVisualTextAfterCursorNoIndentAction}
+" * |]p|                   {@link com.maddyhome.idea.vim.action.copy.PutTextAfterCursorNoIndentAction}
+" * |[{|                   {@link com.maddyhome.idea.vim.action.motion.text.MotionUnmatchedBraceOpenAction}
+" * |]}|                   {@link com.maddyhome.idea.vim.action.motion.text.MotionUnmatchedBraceCloseAction}
+" * |[P|                   {@link com.maddyhome.idea.vim.action.copy.PutVisualTextBeforeCursorNoIndentAction}
+" * |[P|                   {@link com.maddyhome.idea.vim.action.copy.PutTextBeforeCursorNoIndentAction}
+" * |]P|                   {@link com.maddyhome.idea.vim.action.copy.PutVisualTextBeforeCursorNoIndentAction}
+" * |]P|                   {@link com.maddyhome.idea.vim.action.copy.PutTextBeforeCursorNoIndentAction}
+
+" * 2.4. Commands starting with 'g'
+" *
+" * tag                    action
+" * -------------------------------------------------------------------------------------------------------------------
+" *
+" * |g_CTRL-G|             {@link com.maddyhome.idea.vim.action.file.FileGetLocationInfoAction}
+" * |g_CTRL-H|             {@link com.maddyhome.idea.vim.action.motion.select.SelectEnableBlockModeAction}
+" * |g#|                   {@link com.maddyhome.idea.vim.action.motion.search.SearchWordBackwardAction}
+" * |g$|                   {@link com.maddyhome.idea.vim.action.motion.leftright.MotionLastScreenColumnAction}
+" * |g&|                   {@link com.maddyhome.idea.vim.action.change.change.ChangeLastGlobalSearchReplaceAction}
+" * |v_g'|                 {@link com.maddyhome.idea.vim.action.motion.mark.MotionGotoFileMarkLineNoSaveJumpAction}
+" * |g'|                   {@link com.maddyhome.idea.vim.action.motion.mark.MotionGotoMarkLineNoSaveJumpAction}
+" * |g`|                   {@link com.maddyhome.idea.vim.action.motion.mark.MotionGotoMarkNoSaveJumpAction}
+" * |gstar|                {@link com.maddyhome.idea.vim.action.motion.search.SearchWordForwardAction}
+" * |g0|                   {@link com.maddyhome.idea.vim.action.motion.leftright.MotionFirstScreenColumnAction}
+" * |g8|                   {@link com.maddyhome.idea.vim.action.file.FileGetHexAction}
+" * |gD|                   {@link com.maddyhome.idea.vim.action.motion.search.GotoDeclarationAction}
+" * |gE|                   {@link com.maddyhome.idea.vim.action.motion.text.MotionBigWordEndLeftAction}
+" * |gH|                   {@link com.maddyhome.idea.vim.action.motion.select.SelectEnableLineModeAction}
+" * |gI|                   {@link com.maddyhome.idea.vim.action.change.insert.InsertLineStartAction}
+" * |gJ|                   {@link com.maddyhome.idea.vim.action.change.delete.DeleteJoinLinesAction}
+" * |gN|                   {@link com.maddyhome.idea.vim.action.motion.gn.VisualSelectPreviousSearch}
+" * |gN|                   {@link com.maddyhome.idea.vim.action.motion.gn.GnPreviousTextObject}
+" * |gP|                   {@link com.maddyhome.idea.vim.action.copy.PutVisualTextBeforeCursorMoveCursorAction}
+" * |gP|                   {@link com.maddyhome.idea.vim.action.copy.PutTextBeforeCursorActionMoveCursor}
+" * |gT|                   {@link com.maddyhome.idea.vim.action.motion.tabs.MotionPreviousTabAction}
+" * |gU|                   {@link com.maddyhome.idea.vim.action.change.change.ChangeCaseUpperMotionAction}
+" * |g^|                   {@link com.maddyhome.idea.vim.action.motion.leftright.MotionFirstScreenNonSpaceAction}
+" * |g_|                   {@link com.maddyhome.idea.vim.action.motion.leftright.MotionLastNonSpaceAction}
+" * |ga|                   {@link com.maddyhome.idea.vim.action.file.FileGetAsciiAction}
+"
+" * |gd|                   {@link com.maddyhome.idea.vim.action.motion.search.GotoDeclarationAction}
 nmap gr :action ShowUsages<CR>
 nmap gi :action GotoImplementation<CR>
 nmap gs :action GotoSuperMethod<CR>
-
-nmap l :action NextTab<CR>
-nmap L :action PreviousTab<CR>
-
-nmap <C-p> :action ParameterInfo<CR>
-imap <C-p> <C-o>:action ParameterInfo<CR>
-nmap <leader>n :action GotoNextError<CR>
-
-
-nmap <leader>ri :action Inline<CR>
-nmap <leader>rr :action RenameElement<CR>
-nmap <leader>rev :action IntroduceVariable<CR>
-vmap <leader>rev :action IntroduceVariable<CR>
-nmap <leader>rem :action ExtractMethod<CR>
-vmap <leader>rem :action ExtractMethod<CR>
-nmap <leader>rm :action Move<CR>
-nmap <leader>ro :action OptimizeImports<CR>
-nmap <leader>rG :action Generate<CR>
-
-nmap <leader>f  :action ReformatCode<CR>
-
-nmap <, :action MoveElementLeft<CR>
-nmap >, :action MoveElementRight<CR>
-
-nmap <leader>gr :action Vcs.RollbackChangedLines<CR>
+nnoremap gc :action CommentByLineComment<CR>
+vnoremap gc :action CommentByLineComment<CR>
+"
+" * |ge|                   {@link com.maddyhome.idea.vim.action.motion.text.MotionWordEndLeftAction}
+" * |gg|                   {@link com.maddyhome.idea.vim.action.motion.updown.MotionGotoLineFirstAction}
+" * |gh|                   {@link com.maddyhome.idea.vim.action.motion.select.SelectEnableCharacterModeAction}
+" * |gi|                   {@link com.maddyhome.idea.vim.action.change.insert.InsertAtPreviousInsertAction}
+" * |gk|                   {@link com.maddyhome.idea.vim.action.motion.updown.MotionUpNotLineWiseAction}
+" * |gn|                   {@link com.maddyhome.idea.vim.action.motion.gn.VisualSelectNextSearch}
+" * |gn|                   {@link com.maddyhome.idea.vim.action.motion.gn.GnNextTextObject}
+" * |gm|                   {@link com.maddyhome.idea.vim.action.motion.leftright.MotionMiddleColumnAction}
+" * |go|                   {@link com.maddyhome.idea.vim.action.motion.text.MotionNthCharacterAction}
+" * |gp|                   {@link com.maddyhome.idea.vim.action.copy.PutVisualTextAfterCursorMoveCursorAction}
+" * |gp|                   {@link com.maddyhome.idea.vim.action.copy.PutTextAfterCursorActionMoveCursor}
+" * |gq|                   {@link com.maddyhome.idea.vim.action.change.change.ReformatCodeMotionAction}
+" * |gt|                   {@link com.maddyhome.idea.vim.action.motion.tabs.MotionNextTabAction}
+" * |gu|                   {@link com.maddyhome.idea.vim.action.change.change.ChangeCaseLowerMotionAction}
+" * |gv|                   {@link com.maddyhome.idea.vim.action.motion.visual.VisualSelectPreviousAction}
+" * |g@|                   {@link com.maddyhome.idea.vim.action.change.OperatorAction}
+" * |g~|                   {@link com.maddyhome.idea.vim.action.change.change.ChangeCaseToggleMotionAction}
+" * |g<End>|               {@link com.maddyhome.idea.vim.action.motion.leftright.MotionLastScreenColumnAction}
+" * |g<Home>|              {@link com.maddyhome.idea.vim.action.motion.leftright.MotionFirstScreenColumnAction}
+" * |g<Up>|                {@link com.maddyhome.idea.vim.action.motion.updown.MotionUpNotLineWiseAction}
+" *
