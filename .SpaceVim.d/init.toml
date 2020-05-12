@@ -15,34 +15,35 @@
   # if you want to use more colorscheme, please load the colorscheme
   # layer
   colorscheme = "gruvbox" # g:spacevim_colorscheme # molokai  
-    # 'gruvbox', 'molokai', 'onedark', 'jellybeans', 'one', 'nord', 'hybrid', 'NeoSolarized', 'material', 'srcery',
-    colorscheme_bg = "dark"
-    # Disable guicolors in basic mode, many terminal do not support 24bit
-    # true colors
-    enable_guicolors = true
-    # Disable statusline separator, if you want to use other value, please
-    # install nerd fonts
-    enable_statusline_mode = true
-    statusline_separator = "arrow"
-    statusline_inactive_separator = "arrow"
-    # left sections of statusline
-    statusline_left_sections = [
-       'winnr',
-       'filename',
-       'major mode',
-       'syntax checking'
-       'minor mode lighters',
-       'version control info',
-    ]
-    # right sections of statusline
-    statusline_right_sections = [
-       'fileformat', 
-       'cursorpos',
-       'date',
-       'time'
-       'percentage',
-    ]
-    # 'winnr' window number
+  # colorscheme = "one" # g:spacevim_colorscheme # molokai
+  # 'gruvbox', 'molokai', 'onedark', 'jellybeans', 'one', 'nord', 'hybrid', 'NeoSolarized', 'material', 'srcery',
+  colorscheme_bg = "dark"
+  # Disable guicolors in basic mode, many terminal do not support 24bit
+  # true colors
+  enable_guicolors = true
+  # Disable statusline separator, if you want to use other value, please
+  # install nerd fonts
+  enable_statusline_mode = true
+  statusline_separator = "arrow"
+  statusline_inactive_separator = "arrow"
+  # left sections of statusline
+  statusline_left_sections = [
+    'winnr',
+    'filename',
+    'major mode',
+    'syntax checking'
+    'minor mode lighters',
+    'version control info',
+  ]
+  # right sections of statusline
+  statusline_right_sections = [
+    'fileformat', 
+    'cursorpos',
+    'date',
+    'time'
+    'percentage',
+  ]
+  # 'winnr' window number
     # 'syntax checking'
     # 'filename' file name
     # 'fileformat' file format
@@ -63,7 +64,7 @@
     enable_vimfiler_gitstatus = true
     enable_vimfiler_filetypeicon = true
     enable_vimfiler_welcome = 0
-    
+    # https://github.com/SpaceVim/SpaceVim/blob/master/config/plugins/defx.vim
     filemanager = "defx" #"nerdtree" 
     filetree_direction = "left"
     project_rooter_patterns = ['.project','.git/', '_darcs/', '.hg/', '.bzr/', '.svn/']
@@ -78,12 +79,30 @@
     commandline_prompt = '' #'➭'
     # enable_googlesuggest = false
     # enable_ycm = true
-    error_symbol =   '✗'
+    error_symbol = '✗'
+    autocomplete_parens = true
+    autocomplete_method = "coc"
 
 # Enable autocomplete layer
+# neoclide/coc
+# cd ~/.cache/vimfiles/repos/github.com/neoclide/coc.nvim
+# git clean -xfd
+# yarn install --frozen-lockfile
+# -----------
+# https://github.com/neoclide/coc-sources [coc-dictionary, coc-tag, coc-word]
+# https://github.com/neoclide/coc-vimtex
+# https://github.com/neoclide/coc-json 
+# https://github.com/fannheyward/coc-texlab
+# https://github.com/fannheyward/coc-xml
+# https://github.com/oncomouse/coc-bibtex
+# https://github.com/neoclide/coc-tabnine
+# https://github.com/neoclide/coc-prettier [JavaScript / TypeScript / CSS / JSON]
+# https://github.com/neoclide/coc-java
+# https://github.com/neoclide/coc-snippets
+# https://github.com/clangd/coc-clangd 
+# https://github.com/weirongxu/coc-explorer
 [[layers]]
   name = 'autocomplete'
-  autocomplete_method = "deoplete"
   auto_completion_return_key_behavior = "smart"
   auto_completion_tab_key_behavior = "smart"
   auto_completion_enable_snippets_in_popup = true
@@ -108,6 +127,7 @@
 # 
 # https://spacevim.org/layers/leaderf/
 # https://github.com/Yggdroot/LeaderF
+# https://github.com/SpaceVim/SpaceVim/blob/master/config/plugins/LeaderF.vim
 [[layers]]
   name = "leaderf"
 #
@@ -157,6 +177,7 @@
 # https://spacevim.org/layers/ui/
 # https://github.com/majutsushi/tagbar
 # https://github.com/mhinz/vim-startify
+# https://github.com/SpaceVim/SpaceVim/blob/master/config/plugins/vim-startify.vim
 # https://github.com/Yggdroot/indentLine
 [[layers]]
   name = "ui"
@@ -236,6 +257,11 @@
 #  name = 'wincent/terminus.git'
 #  merged = false
 
+# https://github.com/bohlender/vim-smt2
+[[custom_plugins]]
+  name = 'bohlender/vim-smt2'
+  merged = false
+
 # https://github.com/ferhaterata/open-pdf 
 #[[custom_plugins]]
 #  name = 'ferhaterata/open-pdf'
@@ -246,12 +272,9 @@
 #  name = 'Yggdroot/LeaderF'
 #  merged = false
 
-# https://spacevim.org/layers/lang/latex/
+# https://github.com/neoformat/neoformat
 [[layers]]
-  name = "lang#latex" 
-
-[[layers]]
-  name = "lang#markdown"
+  name = "format"
 
 # https://spacevim.org/layers/tmux/
 [[layers]]
@@ -263,31 +286,9 @@
   name = "gtags"
   gtagslabel = "pygments"
 
-[[layers]]
-  name = "lang#ocaml"
-
 # https://spacevim.org/layers/github/
 [[layers]]
   name = "github"
-
-# https://spacevim.org/layers/debug/
-[[layers]]
-  name = "debug"
-
-# https://spacevim.org/layers/lang/c/
-[[layers]]
-  name = "lang#c"
-  clang_executable = "/usr/bin/clang"
-  [layer.clang_std]
-    c = "c11"
-    cpp = "c++1z"
-    objc = "c11"
-    objcpp = "c++1z"
-
-# https://spacevim.org/layers/lang/vim/
-# https://github.com/lervag/vimtex
-[[layers]]
-  name = "lang#vim"
 
 # https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/layers/tools.vim
 # https://github.com/junegunn/rainbow_parentheses.vim
@@ -305,7 +306,6 @@
 [[layers]]
   name = "tools#zeal"
 
-
 # https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/layers/incsearch.vim
 # haya14busa/incsearch.vim
 # haya14busa/incsearch-fuzzy.vim
@@ -316,12 +316,84 @@
   name = "incsearch"
 
 # https://spacevim.org/layers/language-server-protocol/
+# https://github.com/neoclide/coc.nvim
 [[layers]]
   name = "lsp"
-  
+  filetypes = [
+    # "rust", # curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    "javascript", # sudo npm install -g javascript-typescript-langserver
+    "sh", # sudo npm i -g bash-language-server 
+    "python", #pip install --user python-language-server
+#    "c", #https://clangd.llvm.org/installation.html
+#    "cpp" #https://clangd.llvm.org/installation.html
+  ]
+
+# https://github.com/jackguo380/vim-lsp-cxx-highlight
+[[custom_plugins]]
+  name = 'jackguo380/vim-lsp-cxx-highlight'
+  merged = false
+
+# https://github.com/pboettch/vim-cmake-syntax
+[[custom_plugins]]
+  name = 'pboettch/vim-cmake-syntax'
+  merged = false
+
+# https://spacevim.org/layers/lang/vim/
+# https://github.com/lervag/vimtex
+[[layers]]
+  name = "lang#vim"
+
+# https://github.com/fannheyward/coc-xml
 [[layers]]
   name = "lang#xml"
 
+# https://github.com/neoclide/coc-json 
 [[layers]]
   name = "lang#json"
+
+# https://spacevim.org/layers/lang/java/
+[[layers]]
+  name = "lang#java"
+
+# https://spacevim.org/layers/debug/
+[[layers]]
+  name = "debug"
+
+# https://spacevim.org/layers/lang/c/
+# https://github.com/xavierd/clang_complete (if coc is selected for autocomplete)
+[[layers]]
+  name = "lang#c"
+  clang_executable = "/usr/bin/clang"
+  libclang_path = "/usr/lib/llvm-6.0/lib/"
+  [layer.clang_std]
+    c = "c11"
+    cpp = "c++17"
+    objc = "c11"
+    objcpp = "c++1z"
+
+# https://spacevim.org/layers/lang/latex/
+# pip install proselint # https://github.com/amperser/proselint/
+# https://github.com/lervag/vimtex
+# https://github.com/neoclide/coc-vimtex
+# https://github.com/fannheyward/coc-texlab
+# https://github.com/oncomouse/coc-bibtex
+[[layers]]
+  name = "lang#latex" 
   
+# https://spacevim.org/layers/lang/markdown/
+# https://github.com/mzlogin/vim-markdown-toc
+# https://github.com/lvht/tagbar-markdown
+# https://github.com/gabrielelana/vim-markdown
+[[layers]]
+  name = "lang#markdown"
+# sudo npm -g install remark
+# sudo npm -g install remark-cli
+# sudo npm -g install remark-stringify
+# sudo npm -g install remark-frontmatter
+# sudo npm -g install wcwidth
+# sudo apt install php*
+
+# 
+[[layers]]
+  name = "lang#ocaml"
+

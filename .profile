@@ -47,3 +47,17 @@ PATH="$HOME/doom-emacs/bin:$PATH"
 
 # https://spacevim.org/layers/gtags/
 export GTAGSLABEL=pygments
+
+# Autocorrect typos in path names when using `cd`
+shopt -s cdspell
+
+# Case-insensitive globbing (used in pathname expansion)
+shopt -s nocaseglob
+
+# Prefer US English and use UTF-8
+export LC_ALL="en_US.UTF-8"
+export LANG="en_US"
+
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+export PATH=$PATH:$JAVA_HOME/bin
+

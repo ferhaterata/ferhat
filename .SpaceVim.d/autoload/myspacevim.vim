@@ -43,7 +43,7 @@ function! myspacevim#before() abort
 " | `] spc`          | insert space below                                              |
 " | `g p`            | select pasted text                                              |
 "
-" https://github.com/mg979/vim-visual-multi 
+" https://github.com/mg979/vim-visual-multi
 " let g:VM_leader = '\'
 " Exit                  <Esc>       quit VM
 " Find Under            <C-n>       select the word under cursor
@@ -54,12 +54,12 @@ function! myspacevim#before() abort
 " Start Regex Search    \\/         create a selection with regex search
 " Add Cursor At Pos     \\\         add a single cursor at current position
 " Reselect Last         \\gS        reselect set of regions of last VM session
-  let g:VM_mouse_mappings = 1 
+  let g:VM_mouse_mappings = 1
 " Mouse Cursor    <C-LeftMouse>     create a cursor where clicked
 " Mouse Word      <C-RightMouse>    select a word where clicked
 " Mouse Column    <M-C-RightMouse>  create a column, from current cursor to
 "                                   clicked position
-" 
+"
 " Find Next               n         find next occurrence
 " Find Prev               N         find previous occurrence
 " Goto Next               ]         go to next selected region
@@ -68,7 +68,7 @@ function! myspacevim#before() abort
 " Seek Prev             <C-b>       fast go to previous (from previous page)
 " Skip Region             q         skip and find to next
 " Remove Region           Q         remove region under cursor
-" 
+"
 
 	let g:github_dashboard = { 'username': 'ferhaterata', 'password': $GITHUB_TOKEN }
   let g:gista#client#default_username = 'ferhaterata'
@@ -77,12 +77,12 @@ function! myspacevim#before() abort
   call SpaceVim#custom#SPC('nore', ['b', 'i'], 'ToggleBufExplorer', 'toggle buffer explorer', 1)
   call SpaceVim#custom#SPC('nore', ['b', 'v'], 'BufExplorerVerticalSplit', 'open horizontal BufExplorer', 1)
   call SpaceVim#custom#SPC('nore', ['b', 'h'], 'BufExplorerHorizontalSplit', 'open vertical BufExplorer', 1)
-  " --popup-height=0.75 
+  " --popup-height=0.75
   call SpaceVim#custom#SPC('nore', ['[SPC]'], 'Leaderf file --fullPath '
         \ . SpaceVim#plugins#projectmanager#current_root() . " --popup " , 'find files in current project', 1)
   call SpaceVim#custom#SPC('nore', ['f', 'r'], 'Leaderf mru --popup' , 'open recent files', 1)
   call SpaceVim#custom#SPC('nore', ['b', 'b'], 'Leaderf buffer --popup ' , 'buffer list', 1)
-  if has('nvim') 
+  if has('nvim')
      call SpaceVim#custom#SPC('nore', ['a', 't'], 'call myspacevim#openterminal()', 'open-shell', 1)
   endif
   call SpaceVim#custom#SPC('nnore', ['f', 'b'], 'SignatureListBufferMark', 'list bookmarks (signature)', 1)
@@ -98,7 +98,7 @@ function! myspacevim#before() abort
   " vim-signature
   let g:SignatureMap = {
     \ 'Leader'             :  "m",
-    \ 'PlaceNextMark'      :  "m,", 
+    \ 'PlaceNextMark'      :  "m,",
     \ 'ToggleMarkAtLine'   :  "m.",
     \ 'PurgeMarksAtLine'   :  "m-",
     \ 'DeleteMark'         :  "dm",
@@ -119,7 +119,7 @@ function! myspacevim#before() abort
     \ 'ListBufferMarks'    :  "m/",
     \ 'ListBufferMarkers'  :  "m?"
     \ }
-   
+
   " NERDCommenter
   nmap <silent> gc <Plug>NERDCommenterInvert
   xmap <silent> gc <Plug>NERDCommenterInvert
@@ -145,40 +145,28 @@ function! myspacevim#before() abort
 
   " startify
   let g:startify_lists = [
-        \ { 'type': 'dir',       'header': ['   My most recently used files in the current directory: '. getcwd()] },
-        \ { 'type': 'files',     'header': ['   My most recently used files:']            },
-        \ { 'type': 'sessions',  'header': ['   Sessions']       },
-        \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-        \ { 'type': function('s:gitModified'),  'header': ['   git modified']},
-        \ { 'type': function('s:gitUntracked'), 'header': ['   git untracked']},
-        \ { 'type': 'commands',  'header': ['   Commands']       },
-        \ ] 
+    \ { 'type': 'dir',       'header': ['   My most recently used files in the current directory: '. getcwd()] },
+    \ { 'type': 'files',     'header': ['   My most recently used files:']            },
+    \ { 'type': 'sessions',  'header': ['   Sessions']       },
+    \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+    \ { 'type': function('s:gitModified'),  'header': ['   git modified']},
+    \ { 'type': function('s:gitUntracked'), 'header': ['   git untracked']},
+    \ { 'type': 'commands',  'header': ['   Commands']       },
+    \ ]
+
+  let g:startify_bookmarks = [ {'i': '~/.init.toml'},  {'b': '~/.bashrc'}  ]
 
   " to override a bug in spacevim
   function! StartifyEntryFormat()
       return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
-  endfunction 
-
-  set listchars=tab:→\ ,eol:↵,trail:·,extends:↷,precedes:↶
+  endfunction
 
 endfunction
 
 function! myspacevim#after() abort
 
-  nnoremap <c-p> :FZF<cr>
 
-  augroup leaderf
-    "let g:Lf_WindowPosition = 'popup'
-    highlight Lf_hl_popup_inputText guifg=#ddc7a1 guibg=#1d2021 gui=NONE ctermfg=223 ctermbg=237 cterm=NONE
-    highlight Lf_hl_popup_window guifg=#ddc7a1 guibg=#1d2021 gui=NONE ctermfg=223 ctermbg=237 cterm=NONE
-    let g:Lf_CommandMap = {'<c-j>': ['<tab>', '<c-j>'], '<c-k>': ['<s-tab>','<c-k>']}
-    let g:Lf_PreviewInPopup = 1
-    let g:Lf_PopupColorscheme = 'default'
-    let g:colors_name = 'gruvbox_material'
-  augroup END
-
-  "set cmdheight=1    " Better display for messages
-  set showmode 
+  set showmode
   set updatetime=1000 " Update sign column every quarter second
   set clipboard=unnamedplus
 
@@ -189,14 +177,14 @@ function! myspacevim#after() abort
   " change Pmenu to your highlight group
   highlight link EchoDocPopup Pmenu
   let g:echodoc#type = 'popup'
-  if has('nvim') 
+  if has('nvim')
     "neovim's floating text feature.
     let g:echodoc#type = 'floating'
     "let g:echodoc#type = 'virtual'
   endif
 
   let g:gitgutter_max_signs = 99999
-  let g:gitgutter_preview_win_floating = 1 
+  let g:gitgutter_preview_win_floating = 1
 
   nmap gp <Plug>(GitGutterPreviewHunk)
   nmap gs <Plug>(GitGutterStageHunk)
@@ -211,22 +199,22 @@ function! myspacevim#after() abort
   let g:NERDTreeMinimalUI=1
   let g:NERDTreeDirArrows=0
   let g:NERDTreeRespectWildIgnore=1
-  
+
   let g:NERDTreeGitStatusWithFlags = 1
   let g:NERDTreeDirArrowExpandable = ''
   let g:NERDTreeDirArrowCollapsible = ''
-  let g:NERDTreeHijackNetrw = 0 "will not open up a window level NERDTree instead of a netrw in the target window."  
+  let g:NERDTreeHijackNetrw = 0 "will not open up a window level NERDTree instead of a netrw in the target window."
   let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "",
     \ "Staged"    : "",
-    \ "Untracked" : "ﰣ", 
     \ "Renamed"   : "",
     \ "Unmerged"  : "",
     \ "Deleted"   : "",
-    \ 'Dirty'     : "",
+    \ "Dirty"     : "",
     \ "Clean"     : "",
-    \ "Unknown"   : "?", 
-    \ 'Ignored'   : ""
+    \ "Unknown"   : "?",
+    \ "Untracked" : "ﰣ",
+    \ "Ignored"   : ""
     \ }
   " ﰂ ﯰ 
 
@@ -237,9 +225,9 @@ function! myspacevim#after() abort
   let g:WebDevIconsUnicodeDecorateFolderNodes = 1
   " enable open and close folder/directory glyph flags (disabled by default with 0)
   let g:DevIconsEnableFoldersOpenClose = 1
-  
+
   hi! link NERDTreeFlags Comment
-  hi! link NERDTreeDir Identifier  
+  hi! link NERDTreeDir Identifier
 
   hi link DefxIconsMarkIcon Statement
   hi link DefxIconsCopyIcon WarningMsg
@@ -253,7 +241,7 @@ function! myspacevim#after() abort
 
   let g:defx_git#indicators = {
     \ 'Modified'  : '•',
-    \ 'Staged'    : '',
+    \ 'Staged'    : '',
     \ 'Untracked' : 'ᵁ',
     \ 'Renamed'   : '',
     \ 'Unmerged'  : '≠',
@@ -263,7 +251,7 @@ function! myspacevim#after() abort
     \ }
 
   "Defx
-  nnoremap <silent>- :Defx `expand('%:p:h')` -auto-recursive-level=1 -split=no -show-ignored-files -search=`expand('%:p')` -new<CR>
+  nnoremap <silent>- :Defx `expand('%:p:h')` -split=no -show-ignored-files -search=`expand('%:p')` -new<CR>
 
   augroup defx_my_init
     au!
@@ -288,18 +276,18 @@ function! myspacevim#after() abort
 
   "nnoremap <silent> <Tab> :normal %<CR>
   "xnoremap <silent> <Tab> :normal %<CR>m`gv``
-  "nnoremap <C-O> :normal <C-O><CR>         
+  "nnoremap <C-O> :normal <C-O><CR>
   "
   " g; older position on the change list
   " g, new position on the change list
-  " g' jump to mark 
-  
+  " g' jump to mark
+
   "https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim.vim#L1172
-  nnoremap <C-I> <C-I>   
+  nnoremap <C-I> <C-I>
 
   "call SpaceVim#mapping#space#def('nnoremap', ['j', 'b'], '<C-o>', 'jump-backward', 1)
   "call SpaceVim#mapping#space#def('nnoremap', ['j', 'f'], '<C-i>', 'jump-forward', 0)
-  
+
   " to override a bug in spacevim
   " https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/layers/incsearch.vim
   "nnoremap <silent> n n:AirlineRefresh<CR>
@@ -316,7 +304,7 @@ function! myspacevim#after() abort
   map *  <Plug>(incsearch-nohl-*)
   map #  <Plug>(incsearch-nohl-#)
   map g* <Plug>(incsearch-nohl-g*)
-  map g# <Plug>(incsearch-nohl-g#) 
+  map g# <Plug>(incsearch-nohl-g#)
 
   " https://github.com/haya14busa/incsearch-fuzzy.vim
   function! s:config_fuzzyall(...) abort
@@ -365,15 +353,61 @@ function! myspacevim#after() abort
     nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
   endif
 
-  if has('nvim') 
-    if g:spacevim_colorscheme ==# 'gruvbox' 
-      hi! link Pmenu SignColumn  
+  if has('nvim')
+    if g:spacevim_colorscheme ==# 'gruvbox'
+      "highlight! link Pmenu SignColumn
+      highlight! Pmenu guibg=#282828 guifg=#ebdbb2
     endif
   endif
   
+  " Highlight the symbol and its references when holding the cursor.
+  autocmd CursorHold * silent call CocActionAsync('highlight')
+
+  " Customize fzf colors to match your color scheme
+  let g:fzf_colors =
+  \ { 'fg':      ['fg', 'Normal'],
+    \ 'bg':      ['bg', 'Normal'],
+    \ 'hl':      ['fg', 'Special'],
+    \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+    \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+    \ 'hl+':     ['fg', 'Statement'],
+    \ 'info':    ['fg', 'PreProc'],
+    \ 'border':  ['fg', 'Ignore'],
+    \ 'prompt':  ['fg', 'Conditional'],
+    \ 'pointer': ['fg', 'Exception'],
+    \ 'marker':  ['fg', 'Keyword'],
+    \ 'spinner': ['fg', 'Label'],
+    \ 'header':  ['fg', 'Comment'] }
+
+  nnoremap <c-p> :FZF<cr>
+
+  augroup leaderf
+    "let g:Lf_WindowPosition = 'popup'
+    "if g:spacevim_colorscheme ==# 'gruvbox'
+      "highlight Lf_hl_popup_inputText guifg=#ddc7a1 guibg=#1d2021 gui=NONE ctermfg=223 ctermbg=237 cterm=NONE
+      "highlight Lf_hl_popup_window guifg=#ddc7a1 guibg=#1d2021 gui=NONE ctermfg=223 ctermbg=237 cterm=NONE
+      highlight! link Lf_hl_popup_inputText SignColumn
+      highlight! link Lf_hl_popup_window SignColumn
+    "endif
+    let g:Lf_CommandMap = {'<c-j>': ['<tab>', '<c-j>'], '<c-k>': ['<s-tab>','<c-k>']}
+    let g:Lf_PreviewInPopup = 1
+    let g:Lf_PopupColorscheme = 'default'
+    let g:colors_name = 'gruvbox_material'
+  augroup END
+
+  let g:clang_library_path='/usr/lib/llvm-6.0/lib/' 
+
+  call add(g:indentLine_fileTypeExclude, 'coc-explorer')
+
+  let g:markdown_fenced_languages = ['css', 'js=javascript']
+
+  " coc.nvim uses jsonc as configuration file format, the same as VSCode
+  " To get correct comment highlighting
+  autocmd FileType json syntax match Comment +\/\/.\+$+
+
 endfunction
 
-function! myspacevim#openterminal() abort 
+function! myspacevim#openterminal() abort
   if has('nvim') || exists(':tnoremap') == 2
     exe 'tnoremap <silent><C-Right> <C-\><C-n>:<C-u>wincmd l<CR>'
     exe 'tnoremap <silent><C-Left>  <C-\><C-n>:<C-u>wincmd h<CR>'
@@ -382,11 +416,11 @@ function! myspacevim#openterminal() abort
     exe 'tnoremap <silent><M-Left>  <C-\><C-n>:<C-u>bprev<CR>'
     exe 'tnoremap <silent><M-Right>  <C-\><C-n>:<C-u>bnext<CR>'
     exe 'tnoremap <silent><esc>     <C-\><C-n>'
-    exe 'edit term://bash' 
+    exe 'edit term://bash'
   endif
   " in window gvim, use <C-d> to close terminal buffer
 endfunction
-  
+
 " returns all modified files of the current git repo
 " `2>/dev/null` makes the command fail quietly, so that when we are not
 " in a git repo, the list will be empty
