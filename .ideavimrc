@@ -13,7 +13,6 @@ set ignorecase                    " ignore case in search patterns
 set smartcase                     " no ignore case when pattern is uppercase
 set incsearch                     " show search results while typing
 set wrapscan                      " searches wrap around the end of the file
-set digraph
 set gdefault                      " substitute all occurrences in line per default
 set history=10000                 " keep x lines of command line history
 set scrolloff=3 sidescrolloff=10  " keep some lines before and after the cursor visible
@@ -28,7 +27,7 @@ set ttimeoutlen=400
 "nnoremap <SPACE> <Nop>
 let mapleader = "\\"
 let maplocalleader=","		
-
+set lookupkeys+=<C-K>
 " https://github.com/JetBrains/ideavim/blob/master/doc/emulated-plugins.md
 " ========================================================================
 set ideamarks                     "https://github.com/JetBrains/ideavim/blob/master/doc/set-commands.md" 
@@ -101,8 +100,8 @@ inoremap <C-d> <Delete>
 
 " <leader>vv brings up .vimrc
 " <leader>vr reloads it and makes all changes active (file has to be saved first)
-noremap <space>oe :e! /home/ferhat/.ideavimrc<CR>
-noremap <silent><space>R :source /home/ferhat/.ideavimrc<CR>:echo 'vimrc reloaded'<CR>
+noremap <leader>oe :e! /home/ferhat/.ideavimrc<CR>
+noremap <leader>R :source /home/ferhat/.ideavimrc<CR>:echo 'vimrc reloaded'<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " Fix some vim annoyances
@@ -122,29 +121,11 @@ vnoremap = =gv
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 " IDEA specific
 " Action List: https://gist.github.com/ferhaterata/29fe8977145c7d7aadc8cb49eb0302a5
-nnoremap <leader>E  :action Switcher<cr>
+nnoremap <leader>E :action Switcher<cr>
 nnoremap <leader>e :action GotoFile<CR>
 nnoremap <leader>a :action FindInPath<CR>
-" Shift + F6 in idea.
-" Alt + R, then R (through the menu bar) also seems to work fine
-nnoremap <Leader>r :action RenameElement<CR>
-" Ctrl + F12 in idea.
 map <Leader>s :action FileStructurePopup<CR>
-" Perhaps just use the Idea shortcut Ctrl-Alt-B
-" Alt + N, then m (through the menu bar) also seems to work, but it is
-" non-unique.
 
-" Jump to next/previous error, show error description
-" https://stackoverflow.com/questions/13346245/keyboard-shortcut-to-display-error-in-intellij
-map <Leader>e :action ShowErrorDescription<CR>
-" Alt + F7 in idea. 
-" Find usages in file is Ctrl + F7. 
-" Alt + E, then F, then U (through the menu bar) also seems to work fine.
-map <Leader>f :action FindUsages<CR>
-" Alt + Insert in idea.
-map <Leader>g :action Generate<CR>
-" Possibly redundant given "Run Anything" DoubleCtrl
-map <Leader>r :action ChooseRunConfiguration<CR>
 " This is Ctrl-W in the default keymap, but we are using it for Vim.
 vmap v :action EditorSelectWord<CR>
 "vmap V :action EditorSelectWord<CR>
@@ -173,18 +154,18 @@ nnoremap <space>gS    :action ActivateVersionControlToolWindow<CR>
 vnoremap <space>gS    :action ActivateVersionControlToolWindow<CR>
 
 " check the action list
-nmap <leader>al    :actionlist<CR>
-vmap <leader>al    :actionlist<CR>
+nmap <space>al     :actionlist<CR>
+vmap <space>al     :actionlist<CR>
 nmap <space><space> :action GotoAction<CR>
 nmap <space>aa     :action $SelectAll<CR>
 
 " search
 nnoremap <c-p>     :action SearchEverywhere<cr>
-nnoremap <space>s  :action SearchEverywhere<cr>
 
 " replace in project
-nmap <space>rp     :action ReplaceInPath<CR>
-vmap <space>rp     :action FindInPath<CR>
+nnoremap <space>rp :action ReplaceInPath<CR>
+vnoremap <space>rp :action FindInPath<CR>
+nnoremap <space>rn :action RenameElement<CR>
 
 " file commands
 nnoremap <space>fr :action RecentFiles<CR>
@@ -196,7 +177,6 @@ nnoremap <space>fT :action SelectInProjectView<CR>
 " file save
 nnoremap <space>fs :action SaveAll<CR>
 nnoremap <space>fS :action ReformatCode<CR><Esc>:w<CR>
-nnoremap <space><tab> :action RecentFiles<CR>
 nnoremap <space>fc :action CheckStyleCurrentFileAction<cr>
 
 " bookmarks
@@ -204,9 +184,15 @@ nnoremap <space>fb :action ShowBookmarks<CR>
 nnoremap <space>tb :action ToggleBookmark<CR>
 
 " find in files
-nnoremap <space>fu :action FindUsages<cr>
 nnoremap <space>fp :action FindInPath<CR>
 nnoremap <space>fd :action SmartSearchAction<CR>
+nnoremap <space>fu :action FindUsages<cr>
+nnoremap <space>fg :action Generate<CR>
+" Alt + F7 in idea. 
+" Find usages in file is Ctrl + F7. 
+map <Leader>f :action FindUsages<CR>
+" Alt + Insert in idea.
+map <Leader>g :action Generate<CR>
 
 " jumps
 nnoremap <space>jt :action FileStructurePopup<cr>
@@ -217,21 +203,41 @@ nnoremap <space>jj :action AceAction<CR>
 nnoremap <space>jl :action AceLineAction<CR>
 nnoremap <space>js :action GotoSuperMethod<CR>
 nnoremap <space>jS :action GotoSymbol<CR>
+
 " debug and run
 nnoremap <space>db :action ToggleLineBreakpoint<cr>
 nnoremap <space>tt :action ToggleLineBreakpoint<CR>
 nnoremap <space>dD :action DebugClass<CR>
 nnoremap <space>dd :action Debug<CR>
+" Possibly redundant given "Run Anything" DoubleCtrl
+map      <Leader>r :action ChooseRunConfiguration<CR>
 nnoremap <space>rR :action RunClass<CR>
 nnoremap <space>rr :action Run<CR>
 nnoremap <space>ss :action Stop<CR>
+
 " errors
 nnoremap <space>ee :action ShowErrorDescription<CR>
+" Jump to next/previous error, show error description
+map      <Leader>e :action ShowErrorDescription<CR>
 nnoremap <space>en :action GotoNextError<CR>
 
 nnoremap <space>cc :action GotoClass<CR>
 nnoremap <space>im :action ImplementMethods<CR>
 
+" tabs
+nnoremap <space>1 :action GoToTab1<CR>
+nnoremap <space>2 :action GoToTab2<CR>
+nnoremap <space>3 :action GoToTab3<CR>
+nnoremap <space>4 :action GoToTab4<CR>
+nnoremap <space>5 :action GoToTab5<CR>
+nnoremap <space>6 :action GoToTab6<CR>
+nnoremap <space>7 :action GoToTab7<CR>
+nnoremap <space>8 :action GoToTab8<CR>
+nnoremap <space>9 :action GoToTab9<CR>
+
+nnoremap <space><tab> :action GoToLastTab<CR>
+nnoremap <c-s-tab> gT
+nnoremap <c-tab> gt
 " https://github.com/JetBrains/ideavim/blob/master/src/com/maddyhome/idea/vim/package-info.java
 "
 " * 2. Normal mode
@@ -435,8 +441,6 @@ nnoremap <c-h> <c-w>h
 nnoremap <space>wh <c-w>h
 nnoremap <c-k> <c-w>k
 nnoremap <space>wk <c-w>k
-nnoremap <c-s-tab> gT
-nnoremap <c-tab> gt
 " * |CTRL-W_o|             {@link com.maddyhome.idea.vim.action.window.WindowOnlyAction}
 " * |CTRL-W_s|             {@link com.maddyhome.idea.vim.action.window.HorizontalSplitAction}
 nnoremap <space>ws <c-w>s

@@ -363,6 +363,24 @@ function! myspacevim#after() abort
   " Highlight the symbol and its references when holding the cursor.
   autocmd CursorHold * silent call CocActionAsync('highlight')
 
+  "let g:markdown_enable_spell_checking = 1
+  "let g:markdown_enable_conceal = 1
+
+  augroup enable_spell_wrap
+    autocmd!
+    autocmd FileType latex,tex,md,markdown setlocal spell wrap!
+  augroup END
+
+  nnoremap <expr> j v:count ? 'j' : 'gj'
+  nnoremap <expr> k v:count ? 'k' : 'gk'
+
+
+  " This is the default extra key bindings
+  let g:fzf_action = {
+    \ 'ctrl-t': 'tab split',
+    \ 'ctrl-x': 'split',
+    \ 'ctrl-v': 'vsplit' }
+  let g:fzf_buffers_jump = 1
   " Customize fzf colors to match your color scheme
   let g:fzf_colors =
   \ { 'fg':      ['fg', 'Normal'],
@@ -380,6 +398,22 @@ function! myspacevim#after() abort
     \ 'header':  ['fg', 'Comment'] }
 
   nnoremap <c-p> :FZF<cr>
+  " https://github.com/junegunn/fzf.vim/issues/544
+  tnoremap <expr> <Esc> (&filetype == "fzf") ? "<Esc>" : "<c-\><c-n>"
+  nnoremap <leader>g :Rg<CR>
+  " popup
+  if exists('$TMUX')
+    let g:fzf_layout = { 'tmux': '-p90%,70%' }
+  else
+    let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
+  endif
+  " Always enable preview window on the right with 60% width
+  let g:fzf_preview_window = 'right:60%'
+  " Rg command
+  command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
 
   augroup leaderf
     "let g:Lf_WindowPosition = 'popup'
