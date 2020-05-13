@@ -397,7 +397,7 @@ function! myspacevim#after() abort
     \ 'spinner': ['fg', 'Label'],
     \ 'header':  ['fg', 'Comment'] }
 
-  nnoremap <c-p> :FZF<cr>
+  nnoremap <c-p> :Files<cr>
   " https://github.com/junegunn/fzf.vim/issues/544
   tnoremap <expr> <Esc> (&filetype == "fzf") ? "<Esc>" : "<c-\><c-n>"
   nnoremap <leader>g :Rg<CR>

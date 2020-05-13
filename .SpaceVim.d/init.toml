@@ -65,6 +65,7 @@
     enable_vimfiler_filetypeicon = true
     enable_vimfiler_welcome = 0
     # https://github.com/SpaceVim/SpaceVim/blob/master/config/plugins/defx.vim
+    # https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/layers/core.vim
     filemanager = "defx" #"nerdtree" 
     filetree_direction = "left"
     project_rooter_patterns = ['.project','.git/', '_darcs/', '.hg/', '.bzr/', '.svn/']
@@ -82,6 +83,17 @@
     error_symbol = '✗'
     autocomplete_parens = true
     autocomplete_method = "coc"
+    max_column = 80
+    
+# bug??: https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/layers/autocomplete.vim#L77
+# defx needs the followings for vim8
+[[custom_plugins]]
+  name = "SpaceVim/nvim-yarp"
+  merged = false
+
+[[custom_plugins]]
+  name = "SpaceVim/vim-hug-neovim-rpc"
+  merged = false
 
 # Enable autocomplete layer
 # neoclide/coc
@@ -124,6 +136,10 @@
 # https://spacevim.org/layers/fzf/
 [[layers]]
   name = "fzf"
+# https://github.com/junegunn/fzf.vim
+[[custom_plugins]]
+  name = "junegunn/fzf.vim"
+  merged = false
 # 
 # https://spacevim.org/layers/leaderf/
 # https://github.com/Yggdroot/LeaderF
