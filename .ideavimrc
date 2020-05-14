@@ -25,7 +25,7 @@ set ttimeout
 set ttimeoutlen=400
 
 "nnoremap <SPACE> <Nop>
-let mapleader = "\\"
+"let mapleader="\\"
 let maplocalleader=","		
 set lookupkeys+=<C-K>
 " https://github.com/JetBrains/ideavim/blob/master/doc/emulated-plugins.md
@@ -57,8 +57,8 @@ set idearefactormode=visual
 " `s{char}{char}{label}`
 " Need one more keystroke, but on average, it may be more comfortable.
 nmap s <Plug>(easymotion-f2)
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
+nmap <leader>j <Plug>(easymotion-j)
+nmap <leader>k <Plug>(easymotion-k)
 
 "  Default Mapping |  <Plug> command       |
 "  -----------------------------------------------------------------
@@ -98,9 +98,23 @@ inoremap <C-e> <End>
 inoremap <C-d> <Delete>
 
 
+" built in search looks better
+nnoremap g/ :action Find<cr>
+" but preserve ideavim search
+nnoremap / /
+" clear the search buffer when hitting return
+nnoremap <cr> :nohlsearch<cr>
+
+" built-in navigation to navigated items works better
+nnoremap <c-o> :action Back<cr>
+nnoremap <c-i> :action Forward<cr>
+" but preserve ideavim defaults
+nnoremap g<c-o> <c-o>
+nnoremap g<c-i> <c-i>
+
 " <leader>vv brings up .vimrc
 " <leader>vr reloads it and makes all changes active (file has to be saved first)
-noremap <leader>oe :e! /home/ferhat/.ideavimrc<CR>
+noremap <leader>oe :e /home/ferhat/.ideavimrc<CR>
 noremap <leader>R :source /home/ferhat/.ideavimrc<CR>:echo 'vimrc reloaded'<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -122,9 +136,7 @@ vnoremap = =gv
 " IDEA specific
 " Action List: https://gist.github.com/ferhaterata/29fe8977145c7d7aadc8cb49eb0302a5
 nnoremap <leader>E :action Switcher<cr>
-nnoremap <leader>e :action GotoFile<CR>
 nnoremap <leader>a :action FindInPath<CR>
-map <Leader>s :action FileStructurePopup<CR>
 
 " This is Ctrl-W in the default keymap, but we are using it for Vim.
 vmap v :action EditorSelectWord<CR>
@@ -152,6 +164,8 @@ nnoremap <space>gs    :action Vcs.QuickListPopupAction<CR>
 vnoremap <space>gs    :action Vcs.QuickListPopupAction<CR>
 nnoremap <space>gS    :action ActivateVersionControlToolWindow<CR>
 vnoremap <space>gS    :action ActivateVersionControlToolWindow<CR>
+nnoremap [c :action VcsShowPrevChangeMarker<cr>
+nnoremap ]c :action VcsShowNextChangeMarker<cr>
 
 " check the action list
 nmap <space>al     :actionlist<CR>
@@ -174,10 +188,10 @@ nnoremap <space>k  :action HighlightUsagesInFile<cr>
 " file tree
 nnoremap <space>ft :action ActivateProjectToolWindow<CR>
 nnoremap <space>fT :action SelectInProjectView<CR>
+nnoremap <space>fo :action SelectInProjectView<CR>
 " file save
 nnoremap <space>fs :action SaveAll<CR>
 nnoremap <space>fS :action ReformatCode<CR><Esc>:w<CR>
-nnoremap <space>fc :action CheckStyleCurrentFileAction<cr>
 
 " bookmarks
 nnoremap <space>fb :action ShowBookmarks<CR>
@@ -185,14 +199,13 @@ nnoremap <space>tb :action ToggleBookmark<CR>
 
 " find in files
 nnoremap <space>fp :action FindInPath<CR>
-nnoremap <space>fd :action SmartSearchAction<CR>
 nnoremap <space>fu :action FindUsages<cr>
 nnoremap <space>fg :action Generate<CR>
 " Alt + F7 in idea. 
 " Find usages in file is Ctrl + F7. 
-map <Leader>f :action FindUsages<CR>
+map <leader>f :action FindUsages<CR>
 " Alt + Insert in idea.
-map <Leader>g :action Generate<CR>
+map <leader>g :action Generate<CR>
 
 " jumps
 nnoremap <space>jt :action FileStructurePopup<cr>
@@ -203,25 +216,39 @@ nnoremap <space>jj :action AceAction<CR>
 nnoremap <space>jl :action AceLineAction<CR>
 nnoremap <space>js :action GotoSuperMethod<CR>
 nnoremap <space>jS :action GotoSymbol<CR>
+nnoremap <space>jc :action GotoClass<CR>
 
 " debug and run
 nnoremap <space>db :action ToggleLineBreakpoint<cr>
 nnoremap <space>tt :action ToggleLineBreakpoint<CR>
 nnoremap <space>dD :action DebugClass<CR>
-nnoremap <space>dd :action Debug<CR>
-" Possibly redundant given "Run Anything" DoubleCtrl
-map      <Leader>r :action ChooseRunConfiguration<CR>
-nnoremap <space>rR :action RunClass<CR>
+noremap  <leader>r :action ChooseRunConfiguration<CR>
 nnoremap <space>rr :action Run<CR>
-nnoremap <space>ss :action Stop<CR>
+nnoremap <space>rC :action RunClass<CR>
+
+noremap  <leader>d :action ChooseRunConfiguration<CR>
+nnoremap <space>dd :action Debug<CR>
+nnoremap <leader>B :action ViewBreakpoints<CR>
+nnoremap <space>dB :action ViewBreakpoints<CR>
+nnoremap <leader>b :action ToggleLineBreakpoint<CR>
+nnoremap <space>db :action ToggleLineBreakpoint<CR>
+nnoremap <space>dc :action Resume<CR>
+nnoremap <leader>c :action Resume<CR>
+nnoremap <space>do :action StepOver<CR>
+nnoremap <leader>o :action StepOver<CR>
+nnoremap <space>di :action SmartStepInto<CR>
+nnoremap <leader>i :action SmartStepInto<CR>
+nnoremap <space>dv :action EvaluateExpression<CR>
+nnoremap <leader>v :action EvaluateExpression<CR>
+nnoremap <space>ds :action Stop<CR>
+nnoremap <leader>s :action Stop<CR>
 
 " errors
 nnoremap <space>ee :action ShowErrorDescription<CR>
-" Jump to next/previous error, show error description
-map      <Leader>e :action ShowErrorDescription<CR>
+nnoremap <leader>e :action ShowErrorDescription<CR>
 nnoremap <space>en :action GotoNextError<CR>
 
-nnoremap <space>cc :action GotoClass<CR>
+" implementation
 nnoremap <space>im :action ImplementMethods<CR>
 
 " tabs
@@ -238,6 +265,73 @@ nnoremap <space>9 :action GoToTab9<CR>
 nnoremap <space><tab> :action GoToLastTab<CR>
 nnoremap <c-s-tab> gT
 nnoremap <c-tab> gt
+nnoremap <space>\ :action VimFilePrevious<CR>
+
+" toggles
+nnoremap <space>tw :action EditorToggleUseSoftWraps<CR>
+nnoremap <space>tW :action EditorToggleShowWhitespaces<CR>
+nnoremap <leader>t :action FileStructurePopup<CR>
+nnoremap <space>tt :action FileStructurePopup<CR>
+" windows
+nnoremap <space>wd <c-w>c
+nnoremap <space>wc <c-w>c
+noremap <space>wC :action CloseAllEditorsButActive<CR>
+nmap <space>wm :action HideAllWindows<CR>
+nmap <space>wz :action ToggleDistractionFreeMode<CR
+" easy window navigation
+nnoremap <space>ww <c-w>w
+
+nnoremap <c-l> <c-w>l
+nnoremap <space>wl <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <space>wj <c-w>j
+nnoremap <c-h> <c-w>h
+nnoremap <space>wh <c-w>h
+nnoremap <c-k> <c-w>k
+nnoremap <space>wk <c-w>k
+
+nnoremap <space>wv <c-w>v
+nnoremap <space>ws <c-w>s
+
+nnoremap <space>wu :action ReopenClosedTab<cr>
+
+vmap <space>wh <c-w>h
+vmap <space>wl <c-w>l
+vmap <space>wk <c-w>k
+vmap <space>wj <c-w>j
+vmap <space>wv <c-w>v
+vmap <space>ws <c-w>s
+vmap <space>wc <c-w>c
+vmap <space>wm :action HideAllWindows<CR>
+vmap <space>wz :action ToggleDistractionFreeMode<CR>
+
+" gotos
+nmap gd :action GotoDeclaration<CR>
+nmap gD :action GotoDeclaration<CR>
+nmap gr :action ShowUsages<CR>
+nmap gR :action FindUsages<CR>
+nmap gi :action GotoImplementation<CR>
+nmap gs :action Vcs.QuickListPopupAction<CR>
+vmap gs :action Vcs.QuickListPopupAction<CR>
+nmap gh :action QuickJavaDoc<CR>
+" hierarchy
+nmap ghc :action CallHierarchy<CR>
+nmap ght :action TypeHierarchy<CR>
+nmap ghm :action MethodHierarchy<CR>
+"nmap gc :action CommentByLineComment<CR>
+"vmap gc :action CommentByLineComment<CR>
+nnoremap [q :action PreviousOccurence<cr>
+nnoremap ]q :action NextOccurence<cr>
+
+nnoremap [<space> O<esc>j
+nnoremap ]<space> o<esc>k
+
+nnoremap [m :action MethodUp<cr>
+nnoremap ]m :action MethodDown<cr>
+
+nnoremap [[ :action MethodUp<CR>
+nnoremap ]] :action MethodDown<CR>
+
 " https://github.com/JetBrains/ideavim/blob/master/src/com/maddyhome/idea/vim/package-info.java
 "
 " * 2. Normal mode
@@ -254,12 +348,6 @@ nnoremap <c-tab> gt
 " * |<Tab>|                TO BE IMPLEMENTED
 " * |CTRL-I|               {@link com.maddyhome.idea.vim.action.motion.mark.MotionJumpNextAction}
 " * |CTRL-O|               {@link com.maddyhome.idea.vim.action.motion.mark.MotionJumpPreviousAction}
-" built-in navigation to navigated items works better
-nnoremap <c-o> :action Back<cr>
-nnoremap <c-i> :action Forward<cr>
-" but preserve ideavim defaults
-nnoremap g<c-o> <c-o>
-nnoremap g<c-i> <c-i>
 " * |'|                    {@link com.maddyhome.idea.vim.action.motion.mark.MotionGotoMarkLineAction}
 " * |''|                   ?
 "
@@ -292,12 +380,6 @@ nnoremap g<c-i> <c-i>
 " * |/|                    {@link com.maddyhome.idea.vim.action.motion.search.SearchEntryFwdAction}
 " * |?|                    {@link com.maddyhome.idea.vim.action.motion.search.SearchEntryRevAction}
 " * |#|                    {@link com.maddyhome.idea.vim.action.motion.search.SearchWholeWordBackwardAction}
-" built in search looks better
-nnoremap g/ :action Find<cr>
-" but preserve ideavim search
-nnoremap / /
-" clear the search buffer when hitting return
-nnoremap <cr> :nohlsearch<cr>
 "
 " * |CTRL-N|               {@link com.maddyhome.idea.vim.action.motion.updown.MotionDownCtrlNAction}
 " * |CTRL-M|               {@link com.maddyhome.idea.vim.action.motion.updown.MotionDownFirstNonSpaceAction}
@@ -422,31 +504,14 @@ nnoremap <cr> :nohlsearch<cr>
 " * |CTRL-W_W|             {@link com.maddyhome.idea.vim.action.window.WindowPrevAction}
 " * |CTRL-W_w|             {@link com.maddyhome.idea.vim.action.window.WindowNextAction}
 " * |CTRL-W_c|             {@link com.maddyhome.idea.vim.action.window.CloseWindowAction}
-nnoremap <space>wd <c-w>c
-nnoremap <space>wc <c-w>c
-nmap <space>wm :action HideAllWindows<CR>
-nmap <space>wz :action ToggleDistractionFreeMode<CR
 " * |CTRL-W_h|             {@link com.maddyhome.idea.vim.action.window.WindowLeftAction}
 " * |CTRL-W_j|             {@link com.maddyhome.idea.vim.action.window.WindowDownAction}
 " * |CTRL-W_k|             {@link com.maddyhome.idea.vim.action.window.WindowUpAction}
 " * |CTRL-W_l|             {@link com.maddyhome.idea.vim.action.window.WindowRightAction}
-" easy window navigation
-nnoremap <space>ww <c-w>w
-
-nnoremap <c-l> <c-w>l
-nnoremap <space>wl <c-w>l
-nnoremap <c-j> <c-w>j
-nnoremap <space>wj <c-w>j
-nnoremap <c-h> <c-w>h
-nnoremap <space>wh <c-w>h
-nnoremap <c-k> <c-w>k
-nnoremap <space>wk <c-w>k
 " * |CTRL-W_o|             {@link com.maddyhome.idea.vim.action.window.WindowOnlyAction}
 " * |CTRL-W_s|             {@link com.maddyhome.idea.vim.action.window.HorizontalSplitAction}
-nnoremap <space>ws <c-w>s
 " * |CTRL-W_S|             {@link com.maddyhome.idea.vim.action.window.HorizontalSplitAction}
 " * |CTRL-W_v|             {@link com.maddyhome.idea.vim.action.window.VerticalSplitAction}
-nnoremap <space>wv <c-w>v
 "
 " * |CTRL-W_<Down>|        {@link com.maddyhome.idea.vim.action.window.WindowDownAction}
 " * |CTRL-W_<Up>|          {@link com.maddyhome.idea.vim.action.window.WindowUpAction}
@@ -457,37 +522,19 @@ nnoremap <space>wv <c-w>v
 " * |CTRL-W_CTRL-J|        {@link com.maddyhome.idea.vim.action.window.WindowDownAction}
 " * |CTRL-W_CTRL-K|        {@link com.maddyhome.idea.vim.action.window.WindowUpAction}
 " * |CTRL-W_CTRL-L|        {@link com.maddyhome.idea.vim.action.window.WindowRightAction}
-nnoremap <space>wu :action ReopenClosedTab<cr>
-
-vmap <space>wh <c-w>h
-vmap <space>wl <c-w>l
-vmap <space>wk <c-w>k
-vmap <space>wj <c-w>j
-vmap <space>wv <c-w>v
-vmap <space>ws <c-w>s
-vmap <space>wc <c-w>c
-vmap <space>wm :<Backspace><Backspace><Backspace><Backspace><Backspace>action HideAllWindows<CR>
-vmap <space>wz :<Backspace><Backspace><Backspace><Backspace><Backspace>action ToggleDistractionFreeMode<CR>
+"
 " * 2.3. Square bracket commands
 " *
 " * tag                    action
 " * -------------------------------------------------------------------------------------------------------------------
-nnoremap [<space> O<esc>j
-nnoremap ]<space> o<esc>k
 " * |[(|                   {@link com.maddyhome.idea.vim.action.motion.text.MotionUnmatchedParenOpenAction}
 " * |])|                   {@link com.maddyhome.idea.vim.action.motion.text.MotionUnmatchedParenCloseAction}
 " * |[M|                   {@link com.maddyhome.idea.vim.action.motion.text.MotionMethodPreviousEndAction}
 " * |]M|                   {@link com.maddyhome.idea.vim.action.motion.text.MotionMethodNextEndAction}
-nnoremap [q :action PreviousOccurence<cr>
-nnoremap ]q :action NextOccurence<cr>
 " * |[m|                   {@link com.maddyhome.idea.vim.action.motion.text.MotionMethodPreviousStartAction}
 " * |]m|                   {@link com.maddyhome.idea.vim.action.motion.text.MotionMethodNextStartAction}
-nnoremap [m :action MethodUp<cr>
-nnoremap ]m :action MethodDown<cr>
 " * |[[|                   {@link com.maddyhome.idea.vim.action.motion.text.MotionSectionBackwardStartAction}
 " * |]]|                   {@link com.maddyhome.idea.vim.action.motion.text.MotionSectionForwardEndAction}
-nnoremap [c :action VcsShowPrevChangeMarker<cr>
-nnoremap ]c :action VcsShowNextChangeMarker<cr>
 " * |[]|                   {@link com.maddyhome.idea.vim.action.motion.text.MotionSectionBackwardEndAction}
 " * |][|                   {@link com.maddyhome.idea.vim.action.motion.text.MotionSectionForwardStartAction}
 " * |[p|                   {@link com.maddyhome.idea.vim.action.copy.PutVisualTextAfterCursorNoIndentAction}
@@ -531,18 +578,7 @@ nnoremap ]c :action VcsShowNextChangeMarker<cr>
 " * |g^|                   {@link com.maddyhome.idea.vim.action.motion.leftright.MotionFirstScreenNonSpaceAction}
 " * |g_|                   {@link com.maddyhome.idea.vim.action.motion.leftright.MotionLastNonSpaceAction}
 " * |ga|                   {@link com.maddyhome.idea.vim.action.file.FileGetAsciiAction}
-"
 " * |gd|                   {@link com.maddyhome.idea.vim.action.motion.search.GotoDeclarationAction}
-nmap gD :action GotoDeclaration<CR>
-nmap gr :action ShowUsages<CR>
-nmap gR :action FindUsages<CR>
-nmap gi :action GotoImplementation<CR>
-nmap gs :action Vcs.QuickListPopupAction<CR>
-vmap gs :action Vcs.QuickListPopupAction<CR>
-nmap gh :action QuickJavaDoc<CR>
-"nmap gc :action CommentByLineComment<CR>
-"vmap gc :action CommentByLineComment<CR>
-"
 " * |ge|                   {@link com.maddyhome.idea.vim.action.motion.text.MotionWordEndLeftAction}
 " * |gg|                   {@link com.maddyhome.idea.vim.action.motion.updown.MotionGotoLineFirstAction}
 " * |gh|                   {@link com.maddyhome.idea.vim.action.motion.select.SelectEnableCharacterModeAction}
