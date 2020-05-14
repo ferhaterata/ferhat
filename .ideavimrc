@@ -131,6 +131,15 @@ vnoremap < <gv
 vnoremap > >gv
 vnoremap = =gv
 
+autocmd InsertEnter * :set norelativenumber number
+autocmd InsertLeave * :set relativenumber
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set norelativenumber number
+  else
+    set relativenumber
+  endif
+endfunc
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 " IDEA specific
@@ -196,16 +205,15 @@ nnoremap <space>fS :action ReformatCode<CR><Esc>:w<CR>
 " bookmarks
 nnoremap <space>fb :action ShowBookmarks<CR>
 nnoremap <space>tb :action ToggleBookmark<CR>
+nnoremap <space>nb :action GotoNextBookmark<CR>
+nnoremap <space>pb :action GotoPreviousBookmark<CR>
 
 " find in files
 nnoremap <space>fp :action FindInPath<CR>
 nnoremap <space>fu :action FindUsages<cr>
 nnoremap <space>fg :action Generate<CR>
-" Alt + F7 in idea. 
-" Find usages in file is Ctrl + F7. 
-map <leader>f :action FindUsages<CR>
-" Alt + Insert in idea.
-map <leader>g :action Generate<CR>
+nnoremap <leader>f :action FindUsages<CR>
+nnoremap <leader>g :action Generate<CR>
 
 " jumps
 nnoremap <space>jt :action FileStructurePopup<cr>
@@ -306,6 +314,8 @@ vmap <space>wm :action HideAllWindows<CR>
 vmap <space>wz :action ToggleDistractionFreeMode<CR>
 
 " gotos
+nmap g; :action JumpToLastChange<CR>
+nmap g, :action JumpToNextChange<CR>
 nmap gd :action GotoDeclaration<CR>
 nmap gD :action GotoDeclaration<CR>
 nmap gr :action ShowUsages<CR>
@@ -331,6 +341,9 @@ nnoremap ]m :action MethodDown<cr>
 
 nnoremap [[ :action MethodUp<CR>
 nnoremap ]] :action MethodDown<CR>
+
+nnoremap [e :action GotoPreviousError<CR>
+nnoremap ]e :action GotoNextError<CR>
 
 " https://github.com/JetBrains/ideavim/blob/master/src/com/maddyhome/idea/vim/package-info.java
 "
