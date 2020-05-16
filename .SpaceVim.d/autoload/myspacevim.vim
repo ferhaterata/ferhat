@@ -86,7 +86,13 @@ function! myspacevim#before() abort
      call SpaceVim#custom#SPC('nore', ['a', 't'], 'call myspacevim#openterminal()', 'open-shell', 1)
   endif
   call SpaceVim#custom#SPC('nnore', ['f', 'b'], 'SignatureListBufferMark', 'list bookmarks (signature)', 1)
-
+  " Floaterm
+  call SpaceVim#custom#SPCGroupName(['o'], '+open')
+  call SpaceVim#custom#SPC('nore', ['o', 't'], 'FloatermToggle', 'toggle the floating terminal', 1)
+  " cocexplorer
+  call SpaceVim#custom#SPC('nore', ['o', 'e'], 'CocCommand explorer', 'toggle the coc file explorer', 1)
+  call SpaceVim#custom#SPC('nore', ['o', 'f'], 'CocCommand explorer --preset floating', 'toggle the coc floating explorer', 1)
+  call SpaceVim#custom#SPC('nore', ['o', 'l'], 'CocList explPresets', 'toggle the coc floating explorer', 1)
 
   " bookmark key binding
   " nnoremap <silent> mm :<C-u>BookmarkToggle<Cr>
@@ -158,13 +164,30 @@ function! myspacevim#before() abort
 
   " to override a bug in spacevim
   function! StartifyEntryFormat()
-      return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
+    return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
   endfunction
+
+  " Floaterm
+  let g:floaterm_gitcommit='floaterm'
+  let g:floaterm_autoinsert=1
+  let g:floaterm_width=0.8
+  let g:floaterm_height=0.8
+  let g:floaterm_wintitle=0
+  let g:floaterm_autoclose=2
+  "let g:floaterm_keymap_new = '<Leader>tn'
+  let g:floaterm_keymap_toggle = '<space>ot'
+  "let g:floaterm_keymap_prev = '<Leader>tp'
+  "let g:floaterm_keymap_next = '<Leader>tn'
+  let g:floaterm_keymap_toggle = '<Leader>tn'
+  let g:floaterm_keymap_kill = '<Leader>tk'
+
 
 endfunction
 
 function! myspacevim#after() abort
 
+  nnoremap <expr><silent>q (&filetype == "floaterm") ? ":FloatermToggle<CR>" : ":<C-U>call SpaceVim#mapping#SmartClose()<CR>"
+  nnoremap <expr><silent><Esc> (&filetype == "floaterm") ? ":FloatermKill<CR>" : "<Esc>" 
 
   set showmode
   set updatetime=1000 " Update sign column every quarter second
@@ -176,6 +199,7 @@ function! myspacevim#after() abort
   " To use a custom highlight for the popup window,
   " change Pmenu to your highlight group
   highlight link EchoDocPopup Pmenu
+
   let g:echodoc#type = 'popup'
   if has('nvim')
     "neovim's floating text feature.
@@ -339,7 +363,6 @@ function! myspacevim#after() abort
   " Need one more keystroke, but on average, it may be more comfortable.
   nmap s <Plug>(easymotion-overwin-f2)
   " Turn on case-insensitive feature
-  let g:EasyMotion_smartcase = 1
    " type `l` and match `l`&`L`
   let g:EasyMotion_smartcase = 1
   " Smartsign (type `3` and match `3`&`#`)
@@ -347,6 +370,13 @@ function! myspacevim#after() abort
   " Gif config
   map <Leader>j <Plug>(easymotion-j)
   map <Leader>k <Plug>(easymotion-k)
+
+  let g:vimtex_view_general_viewer = 'okular'
+  let g:vimtex_view_automatic = 1
+  let g:vimtex_quickfix_open_on_warning = 1
+  let g:airline#extensions#vimtex#enabled = 1
+
+  let airline#extensions#tmuxline#snapshot_file = "~/.tmux-line.conf"
 
   " Use <C-L> to clear the highlighting of :set hlsearch.
   if maparg('<C-L>', 'n') ==# ''
@@ -359,9 +389,6 @@ function! myspacevim#after() abort
       highlight! Pmenu guibg=#282828 guifg=#ebdbb2
     endif
   endif
-  
-  " Highlight the symbol and its references when holding the cursor.
-  autocmd CursorHold * silent call CocActionAsync('highlight')
 
   "let g:markdown_enable_spell_checking = 1
   "let g:markdown_enable_conceal = 1
@@ -438,6 +465,7 @@ function! myspacevim#after() abort
   " coc.nvim uses jsonc as configuration file format, the same as VSCode
   " To get correct comment highlighting
   autocmd FileType json syntax match Comment +\/\/.\+$+
+
 
 endfunction
 

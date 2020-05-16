@@ -213,7 +213,16 @@ nnoremap <space>fp :action FindInPath<CR>
 nnoremap <space>fu :action FindUsages<cr>
 nnoremap <space>fg :action Generate<CR>
 nnoremap <leader>f :action FindUsages<CR>
+
+" generate
 nnoremap <leader>g :action Generate<CR>
+nnoremap <leader>gt :action GenerateTestMethod<CR>
+nnoremap <leader>gs :action GenerateSetUpMethod<CR>
+nnoremap <leader>gG :action GenerateGetter<CR>
+nnoremap <leader>gS :action GenerateSetter<CR>
+nnoremap <leader>ga :action GenerateGetterAndSetter<CR>
+nnoremap <leader>ge :action GenerateEquals<CR>
+nnoremap <leader>gc :action GenerateConstructor<CR>
 
 " jumps
 nnoremap <space>jt :action FileStructurePopup<cr>
@@ -324,6 +333,8 @@ nmap gi :action GotoImplementation<CR>
 nmap gs :action Vcs.QuickListPopupAction<CR>
 vmap gs :action Vcs.QuickListPopupAction<CR>
 nmap gh :action QuickJavaDoc<CR>
+nmap gt :action NextTab<CR>
+nmap gT :action PreviousTab<CR>
 " hierarchy
 nmap ghc :action CallHierarchy<CR>
 nmap ght :action TypeHierarchy<CR>

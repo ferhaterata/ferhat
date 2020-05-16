@@ -19,6 +19,10 @@ make && sudo make install
 command line interface to X selections (clipboard)  
 `sudo apt-get install xclip -y`   
 
+## ripgrep (rg)
+ripgrep recursively searches directories for a regex pattern  
+https://github.com/BurntSushi/ripgrep#installation   
+
 ## htop
 htop is an interactive text-mode process viewer for Unix systems. It aims to be a better 'top'.  
 https://github.com/hishamhm/htop  
@@ -126,6 +130,7 @@ https://github.com/pygments/pygments
 
 ## Vim
 Building Vim from source: https://github.com/ycm-core/YouCompleteMe/wiki/Building-Vim-from-source  
+`sudo apt remove my-vim-build`
 example configuration: 
   https://github.com/axiaoxin/vim-settings  
   https://dougblack.io/words/a-good-vimrc.html  
@@ -137,6 +142,7 @@ https://github.com/neovim/neovim/wiki/Installing-Neovim#appimage-universal-linux
 Building Vim from source: https://github.com/neovim/neovim/wiki/Installing-Neovim#install-from-source   
 Setting up Python for Neovim: https://github.com/deoplete-plugins/deoplete-jedi/wiki/Setting-up-Python-for-Neovim   
 `pip3 install --user neovim`
+`pip3 install neovim-remote`
  
 ## SpaceVim
 https://spacevim.org/  
@@ -150,7 +156,20 @@ https://spacevim.org/
   leaderF: https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/layers/leaderf.vim   
   fzf: https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/layers/fzf.vim   
 
-# sdcv
+## vifm ??
+https://github.com/vifm/vifm  
+
+## lazygit ?? 
+https://github.com/jesseduffield/lazygit/blob/master/README.md  
+
+## github cli
+GitHub’s official command line tool   
+https://cli.github.com  
+https://github.com/cli/cli/  
+Download the .deb file from the releases page  
+`sudo apt install ./gh_*_linux_amd64.deb` install the downloaded file  
+
+## sdcv !!
 StarDict Command-Line Version (SDCV) dictionary program  
 https://github.com/Dushistov/sdcv   
 https://vimawesome.com/plugin/vim-stardict  

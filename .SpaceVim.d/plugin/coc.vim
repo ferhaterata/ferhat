@@ -46,8 +46,41 @@ command! -nargs=0 Format :call CocAction('format')
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
 " Open explorer
 nmap <silent><leader>e :CocCommand explorer<CR>
+if has('nvim')
+  nmap <silent><leader>e :CocCommand explorer --preset floating<CR>
+endif
+
+" Introduce function text object
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+
+" Explorer
+let g:coc_explorer_global_presets = {
+\   'floating': {
+\      'position': 'floating',
+\   },
+\   'floatingLeftside': {
+\      'position': 'floating',
+\      'floating-position': 'left-center',
+\      'floating-width': 30,
+\   },
+\   'floatingRightside': {
+\      'position': 'floating',
+\      'floating-position': 'right-center',
+\      'floating-width': 30,
+\   },
+\   'simplify': {
+\     'file.child.template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
+\   }
+\ }
+
+highlight! link CocExplorerNormalFloat SignColumn
 
 let s:coc_extensions = [
     \ 'coc-marketplace',
@@ -65,5 +98,5 @@ let s:coc_extensions = [
     \]
 
 for extension in s:coc_extensions
-  call coc#add_extension(extension)
+  "call coc#add_extension(extension)
 endfor

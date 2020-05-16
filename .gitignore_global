@@ -57,13 +57,28 @@ desktop.ini
 # Vim Ignores
 ##################
 #*.un~
-#Session.vim
+Session.vim
 .netrwhist
 
-# IDE files #
+
+# JetBrains
+.idea/
+out/
+cmake-build-*/
+.idea_modules/
+
+# vscode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# other IDE  files #
 #############
-.vscode
-.idea
 .iml
 *.sublime-workspace
 
+# C/C++
+.cquery
+compile_commands.json
