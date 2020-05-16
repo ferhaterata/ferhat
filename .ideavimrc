@@ -89,9 +89,10 @@ inoremap jk <Esc>
 noremap j gj
 noremap k gk
 
-nnoremap L $
 nnoremap H ^
-
+nnoremap L $
+nnoremap <C-a> ^
+nnoremap <C-e> $
 " Bash like
 inoremap <C-a> <Home>
 inoremap <C-e> <End>
@@ -147,15 +148,20 @@ endfunc
 nnoremap <leader>E :action Switcher<cr>
 nnoremap <leader>a :action FindInPath<CR>
 
+nnoremap <C-Up>    :action MethodUp<CR>
+nnoremap <C-Down>  :action MethodDown<CR>
+
 " This is Ctrl-W in the default keymap, but we are using it for Vim.
 vmap v :action EditorSelectWord<CR>
-"vmap V :action EditorSelectWord<CR>
-"
+vmap V :action EditorUnSelectWord<CR>
+
 nnoremap <C-CR> :action ShowIntentionActions<CR>
 
 " quit
-nnoremap <space>q   :action CloseContent<cr>
-"nnoremap <space>q <Esc>:q<CR>
+nnoremap <space>q  :action CloseContent<cr>
+
+" Refresh
+nnoremap <F5>      :<C-u>action Synchronize<CR>
 
 " buffer
 nnoremap <space>bf :action ReformatCode<CR>
@@ -169,12 +175,20 @@ nnoremap <space>bi :action ActivateStructureToolWindow<CR>
 nnoremap <space>'  :action ActivateTerminalToolWindow<CR>
 
 " git
-nnoremap <space>gs    :action Vcs.QuickListPopupAction<CR>
-vnoremap <space>gs    :action Vcs.QuickListPopupAction<CR>
-nnoremap <space>gS    :action ActivateVersionControlToolWindow<CR>
-vnoremap <space>gS    :action ActivateVersionControlToolWindow<CR>
-nnoremap [c :action VcsShowPrevChangeMarker<cr>
-nnoremap ]c :action VcsShowNextChangeMarker<cr>
+nnoremap <space>gs :action Vcs.QuickListPopupAction<CR>
+vnoremap <space>gs :action Vcs.QuickListPopupAction<CR>
+nnoremap <space>gS :action ActivateVersionControlToolWindow<CR>
+vnoremap <space>gS :action ActivateVersionControlToolWindow<CR>
+nnoremap <Space>gb :action GitToolBox.ShowInlineBlame<CR> 
+vnoremap <Space>gb :action GitToolBox.ShowInlineBlame<CR> 
+nnoremap <Space>gd :action GitToolBox.BlameDetails<CR>
+vnoremap <Space>gd :action GitToolBox.BlameDetails<CR>
+nnoremap <Space>gd :action GitToolBox.BlameDetails<CR>
+nnoremap <Space>gd :action Compare.SameVersion<CR>
+" hunk actions
+nnoremap <Space>gp :action VcsShowCurrentChangeMarker<CR>
+nnoremap [c :action VcsShowPrevChangeMarker<CR>
+nnoremap ]c :action VcsShowNextChangeMarker<CR>
 
 " check the action list
 nmap <space>al     :actionlist<CR>
@@ -188,12 +202,15 @@ nnoremap <c-p>     :action SearchEverywhere<cr>
 " replace in project
 nnoremap <space>rp :action ReplaceInPath<CR>
 vnoremap <space>rp :action FindInPath<CR>
+" refactor
 nnoremap <space>rn :action RenameElement<CR>
+nnoremap <space>rm :action ExtractMethod<CR>
+nnoremap <space>oi :action OptimizeImports<CR>
 
 " file commands
 nnoremap <space>fr :action RecentFiles<CR>
 nnoremap <space>ff :action SearchEverywhere<CR>
-nnoremap <space>k  :action HighlightUsagesInFile<cr>
+nnoremap <space>k  :action HighlightUsagesInFile<CR>
 " file tree
 nnoremap <space>ft :action ActivateProjectToolWindow<CR>
 nnoremap <space>fT :action SelectInProjectView<CR>
@@ -216,13 +233,15 @@ nnoremap <leader>f :action FindUsages<CR>
 
 " generate
 nnoremap <leader>g :action Generate<CR>
-nnoremap <leader>gt :action GenerateTestMethod<CR>
-nnoremap <leader>gs :action GenerateSetUpMethod<CR>
-nnoremap <leader>gG :action GenerateGetter<CR>
-nnoremap <leader>gS :action GenerateSetter<CR>
-nnoremap <leader>ga :action GenerateGetterAndSetter<CR>
-nnoremap <leader>ge :action GenerateEquals<CR>
-nnoremap <leader>gc :action GenerateConstructor<CR>
+nnoremap <space>gt :action GenerateTestMethod<CR>
+nnoremap <space>gs :action GenerateSetUpMethod<CR>
+nnoremap <space>gG :action GenerateGetter<CR>
+nnoremap <space>gS :action GenerateSetter<CR>
+nnoremap <space>ga :action GenerateGetterAndSetter<CR>
+nnoremap <space>ge :action GenerateEquals<CR>
+nnoremap <space>gc :action GenerateConstructor<CR>
+nnoremap <space>gc :action OverrideMethods<CR>
+nnoremap <space>gi :action ImplementMethods<CR>
 
 " jumps
 nnoremap <space>jt :action FileStructurePopup<cr>
@@ -235,35 +254,51 @@ nnoremap <space>js :action GotoSuperMethod<CR>
 nnoremap <space>jS :action GotoSymbol<CR>
 nnoremap <space>jc :action GotoClass<CR>
 
+" cmake
+noremap  <leader>m :action CMake.BuildMenu<CR>
+nnoremap <space>ms :action CMake.ReloadCMakeProject<CR>
+nnoremap <space>mr :action CMake.ClearCacheAndReload<CR>
+nnoremap <space>mc :action CMake.CompileCurrentFile<CR>
+
 " debug and run
 nnoremap <space>db :action ToggleLineBreakpoint<cr>
 nnoremap <space>tt :action ToggleLineBreakpoint<CR>
 nnoremap <space>dD :action DebugClass<CR>
+
 noremap  <leader>r :action ChooseRunConfiguration<CR>
 nnoremap <space>rr :action Run<CR>
+nnoremap <space>rc :action RunToCursor<CR>
 nnoremap <space>rC :action RunClass<CR>
 
-noremap  <leader>d :action ChooseRunConfiguration<CR>
+noremap  <leader>d :action ChooseDebugConfiguration<CR>
 nnoremap <space>dd :action Debug<CR>
+
 nnoremap <leader>B :action ViewBreakpoints<CR>
 nnoremap <space>dB :action ViewBreakpoints<CR>
+
 nnoremap <leader>b :action ToggleLineBreakpoint<CR>
 nnoremap <space>db :action ToggleLineBreakpoint<CR>
-nnoremap <space>dc :action Resume<CR>
+
 nnoremap <leader>c :action Resume<CR>
-nnoremap <space>do :action StepOver<CR>
+nnoremap <space>dc :action Resume<CR>
+
 nnoremap <leader>o :action StepOver<CR>
-nnoremap <space>di :action SmartStepInto<CR>
+nnoremap <space>do :action StepOver<CR>
+
 nnoremap <leader>i :action SmartStepInto<CR>
-nnoremap <space>dv :action EvaluateExpression<CR>
+nnoremap <space>di :action SmartStepInto<CR>
+
 nnoremap <leader>v :action EvaluateExpression<CR>
-nnoremap <space>ds :action Stop<CR>
+nnoremap <space>dv :action EvaluateExpression<CR>
+
 nnoremap <leader>s :action Stop<CR>
+nnoremap <space>ds :action Stop<CR>
 
 " errors
 nnoremap <space>ee :action ShowErrorDescription<CR>
 nnoremap <leader>e :action ShowErrorDescription<CR>
 nnoremap <space>en :action GotoNextError<CR>
+nnoremap <space>ep :action GotoPreviousError<CR>
 
 " implementation
 nnoremap <space>im :action ImplementMethods<CR>
@@ -289,6 +324,7 @@ nnoremap <space>tw :action EditorToggleUseSoftWraps<CR>
 nnoremap <space>tW :action EditorToggleShowWhitespaces<CR>
 nnoremap <leader>t :action FileStructurePopup<CR>
 nnoremap <space>tt :action FileStructurePopup<CR>
+
 " windows
 nnoremap <space>wd <c-w>c
 nnoremap <space>wc <c-w>c
@@ -297,6 +333,8 @@ nmap <space>wm :action HideAllWindows<CR>
 nmap <space>wz :action ToggleDistractionFreeMode<CR
 " easy window navigation
 nnoremap <space>ww <c-w>w
+nnoremap <space>wo :action MoveEditorToOppositeTabGroup<CR>
+nnoremap <space>wr :action ChangeSplitOrientation<CR>
 
 nnoremap <c-l> <c-w>l
 nnoremap <space>wl <c-w>l
@@ -330,6 +368,7 @@ nmap gD :action GotoDeclaration<CR>
 nmap gr :action ShowUsages<CR>
 nmap gR :action FindUsages<CR>
 nmap gi :action GotoImplementation<CR>
+nmap gp :action VcsShowCurrentChangeMarker<CR>
 nmap gs :action Vcs.QuickListPopupAction<CR>
 vmap gs :action Vcs.QuickListPopupAction<CR>
 nmap gh :action QuickJavaDoc<CR>
@@ -355,6 +394,7 @@ nnoremap ]] :action MethodDown<CR>
 
 nnoremap [e :action GotoPreviousError<CR>
 nnoremap ]e :action GotoNextError<CR>
+
 
 " https://github.com/JetBrains/ideavim/blob/master/src/com/maddyhome/idea/vim/package-info.java
 "
