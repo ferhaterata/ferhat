@@ -181,6 +181,13 @@ function! myspacevim#before() abort
   let g:floaterm_keymap_toggle = '<Leader>tn'
   let g:floaterm_keymap_kill = '<Leader>tk'
 
+  " fzf-preview
+  " Use vim-devicons
+  let g:fzf_preview_use_dev_icons = 1
+  " devicons character width
+  let g:fzf_preview_dev_icon_prefix_length = 0
+  " FzfPreviewBuffers
+  " FzfPreviewProjectFiles
 
 endfunction
 
@@ -209,6 +216,7 @@ function! myspacevim#after() abort
 
   let g:gitgutter_max_signs = 99999
   let g:gitgutter_preview_win_floating = 1
+  let g:gitgutter_diff_args = '-w'
 
   nmap gp <Plug>(GitGutterPreviewHunk)
   nmap gs <Plug>(GitGutterStageHunk)
@@ -425,14 +433,18 @@ function! myspacevim#after() abort
     \ 'header':  ['fg', 'Comment'] }
 
   nnoremap <c-p> :Files<cr>
+  if has('nvim')
+    nnoremap <c-p> :FzfPreviewProjectFiles<cr>
+  endif
+
   " https://github.com/junegunn/fzf.vim/issues/544
   tnoremap <expr> <Esc> (&filetype == "fzf") ? "<Esc>" : "<c-\><c-n>"
   nnoremap <leader>g :Rg<CR>
   " popup
   if exists('$TMUX')
-    let g:fzf_layout = { 'tmux': '-p90%,70%' }
+    let g:fzf_layout = { 'tmux': '-p90%,90%' }
   else
-    let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
+    let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
   endif
   " Always enable preview window on the right with 60% width
   let g:fzf_preview_window = 'right:60%'

@@ -238,6 +238,11 @@
   on_cmd = ["RainbowParentheses", "RainbowParenthesesColors"]
   merged = false
 
+# https://github.com/RRethy/vim-illuminate
+[[custom_plugins]]
+  name = 'RRethy/vim-illuminate'
+  merged = false
+
 # https://github.com/tpope/vim-vinegar 
 # [[custom_plugins]]
   # name = 'tpope/vim-vinegar'
