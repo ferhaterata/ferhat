@@ -154,9 +154,9 @@ alias gr='g pull --rebase'
 alias t='tmux'
  
 # list directory
-alias ll='exa -lF --group-directories-first'
+alias ll='exa -lF --group-directories-first --icons'
 # show hidden and 'dot' files
-alias la='exa -alF --group-directories-first'
+alias la='exa -alF --group-directories-first --icons'
 alias l='exa -a'
 # show directory with git info
 alias lg='exa --long --git --git-ignore'
