@@ -362,7 +362,4 @@ FZF-EOF"
 
 # coc build: /home/ferhat/.cache/vimfiles/repos/github.com/neoclide/coc.nvim/
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-# vifm : https://github.com/cirala/vifmimg
-export PATH="$HOME/.config/vifm/bin:$PATH"
-
 
