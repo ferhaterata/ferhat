@@ -215,6 +215,7 @@ function! myspacevim#before() abort
 	let g:loaded_netrw       = 1
 	let g:loaded_netrwPlugin = 1
 
+
 endfunction
 
 function! myspacevim#after() abort
@@ -503,6 +504,8 @@ function! myspacevim#after() abort
   " To get correct comment highlighting
   autocmd FileType json syntax match Comment +\/\/.\+$+
 
+  " horizontal, vertical, tab
+  let g:tldr_split_type = 'horizontal'
 
 endfunction
 

@@ -15,6 +15,12 @@ sh autogen.sh
 make && sudo make install
 ````  
 
+## gitmux
+Git in your tmux status bar  
+https://github.com/arl/gitmux  
+Its binary is added to .local/bin folder.  
+
+
 ## xclip
 command line interface to X selections (clipboard)  
 `sudo apt-get install xclip -y`   
