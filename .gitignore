@@ -41,7 +41,7 @@
 
 # tmux
 !.tmux.conf
-!.tmux-line.conf
+#!.tmux-line.conf
 !.gitmux.conf
 
 # emacs
