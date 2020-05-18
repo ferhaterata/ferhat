@@ -178,20 +178,20 @@ set -o vi
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -f ~/.forgit.bash ] && source ~/.forgit.bash
 
-export FZF_DEFAULT_OPTS='--inline-info --no-height --no-reverse' 
+export FZF_DEFAULT_OPTS='--inline-info --no-height --reverse' 
 #--layout=reverse --height 40% --border --inline-info --no-height --no-reverse
 
 # Use ~~ as the trigger sequence instead of the default **
 # export FZF_COMPLETION_TRIGGER='~~'
 
 # CTRL-T - Paste the selected files and directories onto the command-line
-export FZF_CTRL_T_OPTS="--preview '(bat --style=numbers --color=always {} 2> /dev/null || cat {} || exa -aF --oneline --classify --group-directories-first --color=always {}) 2> /dev/null | head -200'"
+export FZF_CTRL_T_OPTS="--preview '(bat --style=numbers --color=always {} 2> /dev/null || cat {} || exa -aF --oneline --classify --icons --group-directories-first --color=always {}) 2> /dev/null | head -200'"
 
 # CTRL-R - Paste the selected command from history onto the command-line
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 
 # ALT-C - cd into the selected directory
-export FZF_ALT_C_OPTS="--preview 'exa -aF --oneline --classify --group-directories-first --color=always {} | head -200'"
+export FZF_ALT_C_OPTS="--preview 'exa -aF --oneline --classify --group-directories-first --color=always --icons {} | head -200'"
 
 # Options to fzf command
 export FZF_COMPLETION_OPTS='+c -x'

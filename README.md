@@ -74,7 +74,6 @@ https://github.com/rupa/z
 ## forgit
 A utility tool powered by fzf for using git interactively.  
 https://github.com/wfxr/forgit  
-tracking .forgit.bash   
 
 ## ag
 The Silver Searcher: A code-searching tool similar to ack, but faster.    
@@ -170,14 +169,8 @@ https://github.com/vifm/vifm-colors
 rm -rf ~/.config/vifm/colors
 git clone https://github.com/vifm/vifm-colors ~/.config/vifm/colors
 ```
-https://github.com/cirala/vifmimg
-```
-pip3 install ueberzug
-sudo apt install imagemagick
-sudo apt install poppler-utils
-```
 
-## lazygit ?? 
+## lazygit 
 https://github.com/jesseduffield/lazygit/blob/master/README.md  
 
 ## github cli
@@ -186,10 +179,4 @@ https://cli.github.com
 https://github.com/cli/cli/  
 Download the .deb file from the releases page  
 `sudo apt install ./gh_*_linux_amd64.deb` install the downloaded file  
-
-## sdcv !!
-StarDict Command-Line Version (SDCV) dictionary program  
-https://github.com/Dushistov/sdcv   
-https://vimawesome.com/plugin/vim-stardict  
-`sudo apt install sdcv`   
 
