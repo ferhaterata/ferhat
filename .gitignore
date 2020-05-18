@@ -42,6 +42,7 @@
 # tmux
 !.tmux.conf
 !.tmux-line.conf
+!.gitmux.conf
 
 # emacs
 !.emacs
@@ -92,3 +93,9 @@ doom.d/.directory
 !.local/share/fonts/adobe-fonts
 .local/share/fonts/adobe-fonts/source-code-pro/*
  
+# specific binaries
+!.local/bin
+.local/bin/*
+!.local/bin/gitmux
+!.local/bin/lazygit
+
