@@ -563,5 +563,4 @@ set grepprg='rg --line-number %i %a %s'
 
 fileviewer *[^/] pygmentize -O style=monokai -f console256 -g
 
-fileviewer */ exa --icons --group-directories-first --tree --level=3
-
+fileviewer */ exa --oneline --classify --group-directories-first --color=always --tree --level=3 --icons
