@@ -157,16 +157,24 @@ https://spacevim.org/
   fzf: https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/layers/fzf.vim   
 
 ## vifm
-https://github.com/vifm/vifm  
+https://github.com/vifm/vifm   
 https://wiki.vifm.info/index.php/Obtaining_Vifm  
 `sudo apt install libncursesw5-dev`  
 ```
 ./configure --sysconfdir=/etc
 make
 sudo checkinstall
-
+```
+https://github.com/vifm/vifm-colors  
+```
 rm -rf ~/.config/vifm/colors
 git clone https://github.com/vifm/vifm-colors ~/.config/vifm/colors
+```
+https://github.com/cirala/vifmimg
+```
+pip3 install ueberzug
+sudo apt install imagemagick
+sudo apt install poppler-utils
 ```
 
 ## lazygit ?? 
