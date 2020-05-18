@@ -282,6 +282,11 @@
   name = 'bohlender/vim-smt2'
   merged = false
 
+# https://github.com/wlemuel/vim-tldr
+[[custom_plugins]]
+  name = 'wlemuel/vim-tldr'
+  merged = false
+
 # https://github.com/voldikss/vim-floaterm
 [[custom_plugins]]
   name = 'voldikss/vim-floaterm'

@@ -521,9 +521,10 @@ nnoremap <silent> <space>s :resetsort<cr>
 
 " Exit vifm
 nnoremap <silent> <space>qq :q<cr>
+nnoremap <silent> qq :q<cr>
 
 " fzf
-nnoremap <C-p> :fzf<cr>
+nnoremap <c-p> :FZFlocate<cr>
 
 " Move focus between panes
 noremap <C-k> <C-w>k
