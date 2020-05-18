@@ -22,6 +22,9 @@
 !.config/ranger/scope.sh
 !.config/ranger/commands.py
 
+# vifm configurations
+!.config/vifm
+
 # bash configurations
 !.bashrc
 !.bash_profile
@@ -88,4 +91,4 @@ doom.d/.directory
 .local/share/fonts/*/.uuid
 !.local/share/fonts/adobe-fonts
 .local/share/fonts/adobe-fonts/source-code-pro/*
-
+ 
