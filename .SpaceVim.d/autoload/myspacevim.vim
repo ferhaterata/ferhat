@@ -2,6 +2,11 @@ function! myspacevim#before() abort
 	set ignorecase
 	set smartcase
 
+  if !has('nvim')
+    set ttymouse=xterm2
+  endif 
+  set mouse=a
+
   set ttimeoutlen=10 "Terminus changes this to 10ms
   " in insert mode completion blinks in vim and konsole
   " let &t_SI = "\<Esc>[6 q"
@@ -89,6 +94,7 @@ function! myspacevim#before() abort
   " Floaterm
   call SpaceVim#custom#SPCGroupName(['o'], '+open')
   call SpaceVim#custom#SPC('nore', ['o', 't'], 'FloatermToggle', 'toggle the floating terminal', 1)
+  call SpaceVim#custom#SPC('nore', ['o', 'v'], 'FloatermNew vifm', 'open vifm file manager', 1)
   " cocexplorer
   call SpaceVim#custom#SPC('nore', ['o', 'e'], 'CocCommand explorer', 'toggle the coc file explorer', 1)
   call SpaceVim#custom#SPC('nore', ['o', 'f'], 'CocCommand explorer --preset floating', 'toggle the coc floating explorer', 1)
@@ -189,12 +195,30 @@ function! myspacevim#before() abort
   " FzfPreviewBuffers
   " FzfPreviewProjectFiles
 
+  " vim-illuminate
+  " Time in milliseconds (default 250)
+  let g:Illuminate_delay = 250
+  " Don't highlight word under cursor (default: 1)
+  let g:Illuminate_highlightUnderCursor = 0
+  " let g:Illuminate_ftHighlightGroups = {
+    " \ 'vim:blacklist': ['vimVar', 'vimString', 'vimLineComment',
+    " \         'vimFuncName', 'vimFunction', 'vimUserFunc', 'vimFunc']
+    " \ }
+  let g:Illuminate_ftblacklist = ['nerdtree']
+  let g:Illuminate_ftwhitelist = ['vim', 'sh', 'python', 'tmux', 'markdown', 'text', 'tex']
+
+  "vifm
+  let g:vifm_replace_netrw=true
+  let g:vifm_replace_netrw_cmd = true
+  " netrw
+	let g:loaded_netrw       = 1
+	let g:loaded_netrwPlugin = 1
+
 endfunction
 
 function! myspacevim#after() abort
 
-  nnoremap <expr><silent>q (&filetype == "floaterm") ? ":FloatermToggle<CR>" : ":<C-U>call SpaceVim#mapping#SmartClose()<CR>"
-  nnoremap <expr><silent><Esc> (&filetype == "floaterm") ? ":FloatermKill<CR>" : "<Esc>" 
+  nnoremap <expr><silent>q (&filetype == "floaterm") ? ":FloatermKill<CR>" : ":<C-U>call SpaceVim#mapping#SmartClose()<CR>"
 
   set showmode
   set updatetime=1000 " Update sign column every quarter second

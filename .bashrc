@@ -360,43 +360,9 @@ fshow() {
 FZF-EOF"
 }
 
-############################ stardict - sdcv - vim-stardict
-# Instead of /usr/share/stardict/dic you can use any directory
-# you want, just set the STARDICT_DATA_DIR environment variable.
-# For example, if you have dictionaries in /mnt/data/stardict-dicts/dic,
-# set STARDICT_DATA_DIR to /mnt/data/stardict-dicts.
-export STARDICT_DATA_DIR="${HOME}/.dict"
-# Export vim-stardict installation directory
-# NOTE: Only do this if your vim-stardict installation directory is other
-# than ${HOME}/.vim/bundle/vim-stardict. In other words, uncomment these
-# lines if you are not using Vundle, Pathogen or NeoBundle to manage your
-# Vim plugins:
-export STARDICT_DIR="${HOME}/.vim-my/plugged/vim-stardict"
-export SDCV_PAGER=""
-# For Bash: Source the stardict.sh file in the vim-stardict installation
-# directory.
-# For Zsh: The path to the stardict.zsh file is
-# "${HOME}"/.vim/bundle/vim-stardict/bindings/zsh/stardict.zsh
-if [[ -f "${STARDICT_DIR}"/bindings/bash/stardict.sh ]]; then
-    source "${STARDICT_DIR}"/bindings/bash/stardict.sh
-fi
+# coc build: /home/ferhat/.cache/vimfiles/repos/github.com/neoclide/coc.nvim/
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+# vifm : https://github.com/cirala/vifmimg
+export PATH="$HOME/.config/vifm/bin:$PATH"
 
-# To avoid typing the long & daunting 'stardict' & 'vstardict'
-# commands, you can alias it to something else
-alias dict="stardict" # --data-dir ${HOME}/.dict
-alias vdict="vstardict" # --data-dir ${HOME}/.dict
 
-# OPTIONAL: You can change the colors of output of vim-stardict inside
-# Bash (see below for the comprehensive list of color codes in Bash):
-# export STARDICT_RESULT="\033[0;31m"               # Defaut value
-# export STARDICT_WORD="\033[0;91m"                 # Defaut value
-# export STARDICT_WORD_TYPE="\033[0;32m"            # Defaut value
-# export STARDICT_WORD_MEANING="\033[0;34m"         # Defaut value
-# export STARDICT_WORD_EXAMPLE="\033[0;33m"         # Defaut value
-# export STARDICT_DICT_NAME="\033[0;95m"            # Defaut value
-
-# OPTIONAL: You can change the path to the python executable that
-# vim-stardict uses for Bash/Zsh lookup (which is "/usr/bin/python"
-# by default).
-# export STARDICT_PYTHON_PATH="/usr/bin/python"     # Defaut value
-############################

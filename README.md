@@ -156,8 +156,18 @@ https://spacevim.org/
   leaderF: https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/layers/leaderf.vim   
   fzf: https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/layers/fzf.vim   
 
-## vifm ??
+## vifm
 https://github.com/vifm/vifm  
+https://wiki.vifm.info/index.php/Obtaining_Vifm  
+`sudo apt install libncursesw5-dev`  
+```
+./configure --sysconfdir=/etc
+make
+sudo checkinstall
+
+rm -rf ~/.config/vifm/colors
+git clone https://github.com/vifm/vifm-colors ~/.config/vifm/colors
+```
 
 ## lazygit ?? 
 https://github.com/jesseduffield/lazygit/blob/master/README.md  

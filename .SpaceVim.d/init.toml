@@ -140,6 +140,10 @@
 [[custom_plugins]]
   name = "junegunn/fzf.vim"
   merged = false
+# https://github.com/yuki-ycino/fzf-preview.vim
+[[custom_plugins]]
+  name = "yuki-ycino/fzf-preview.vim"
+  merged = false
 # 
 # https://spacevim.org/layers/leaderf/
 # https://github.com/Yggdroot/LeaderF
@@ -268,11 +272,6 @@
   name = 'mg979/vim-visual-multi'
   merged = false
 
-# https://github.com/phongvcao/vim-stardict.git
-[[custom_plugins]]
-  name = 'phongvcao/vim-stardict'
-  merged = false
-
 # https://github.com/wincent/terminus.git
 # [[custom_plugins]]
 #  name = 'wincent/terminus.git'
@@ -281,6 +280,16 @@
 # https://github.com/bohlender/vim-smt2
 [[custom_plugins]]
   name = 'bohlender/vim-smt2'
+  merged = false
+
+# https://github.com/voldikss/vim-floaterm
+[[custom_plugins]]
+  name = 'voldikss/vim-floaterm'
+  merged = false
+
+# https://github.com/vifm/vifm.vim
+[[custom_plugins]]
+  name = 'vifm/vifm.vim'
   merged = false
 
 # https://github.com/ferhaterata/open-pdf 
