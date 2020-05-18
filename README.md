@@ -130,6 +130,7 @@ https://github.com/pygments/pygments
 ## Vim
 Building Vim from source: https://github.com/ycm-core/YouCompleteMe/wiki/Building-Vim-from-source  
 `sudo apt remove my-vim-build`
+`sudo checkinstall # my-vifm-build`
 example configuration: 
   https://github.com/axiaoxin/vim-settings  
   https://dougblack.io/words/a-good-vimrc.html  
@@ -162,7 +163,7 @@ https://wiki.vifm.info/index.php/Obtaining_Vifm
 ```
 ./configure --sysconfdir=/etc
 make
-sudo checkinstall
+sudo checkinstall # my-vifm-build
 ```
 https://github.com/vifm/vifm-colors  
 ```
@@ -179,4 +180,16 @@ https://cli.github.com
 https://github.com/cli/cli/  
 Download the .deb file from the releases page  
 `sudo apt install ./gh_*_linux_amd64.deb` install the downloaded file  
+
+## tldr 
+A collection of simplified and community-driven man pages.  
+https://github.com/tldr-pages/tldr   
+https://github.com/tldr-pages/tldr-cpp-client  
+```
+sudo apt-get install libcurl4-openssl-dev
+sudo apt-get install libzip-dev  
+sudo apt-get install pkg-config  
+make                # build tldr
+sudo checkinstall   # my-tldr-c-client-build
+```
 

@@ -94,7 +94,8 @@ function! myspacevim#before() abort
   " Floaterm
   call SpaceVim#custom#SPCGroupName(['o'], '+open')
   call SpaceVim#custom#SPC('nore', ['o', 't'], 'FloatermToggle', 'toggle the floating terminal', 1)
-  call SpaceVim#custom#SPC('nore', ['o', 'v'], 'FloatermNew vifm', 'open vifm file manager', 1)
+  call SpaceVim#custom#SPC('nore', ['o', 'v'], 'FloatermNew vifm', 'open floatin vifm file manager', 1)
+  call SpaceVim#custom#SPC('nore', ['o', 'V'], 'Vifm', 'open vifm file manager', 1)
   " cocexplorer
   call SpaceVim#custom#SPC('nore', ['o', 'e'], 'CocCommand explorer', 'toggle the coc file explorer', 1)
   call SpaceVim#custom#SPC('nore', ['o', 'f'], 'CocCommand explorer --preset floating', 'toggle the coc floating explorer', 1)
