@@ -134,8 +134,8 @@ function! myspacevim#before() abort
     \ }
 
   " NERDCommenter
-  nmap <silent> gc <Plug>NERDCommenterInvert
-  xmap <silent> gc <Plug>NERDCommenterInvert
+  nmap <silent> gcc <Plug>NERDCommenterInvert
+  xmap <silent> gcc <Plug>NERDCommenterInvert
   " Mundo
   nnoremap <silent> <F7> :MundoToggle<CR>
   nnoremap <silent> U :MundoToggle<CR>

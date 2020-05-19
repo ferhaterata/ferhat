@@ -72,6 +72,9 @@ doom.d/.directory
 .SpaceVim/*
 !.SpaceVim/coc-settings.json
 
+
+!vimium-options.json
+
 # ssh configurations
 #!.ssh/
 #.ssh/*
