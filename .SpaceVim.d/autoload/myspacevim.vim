@@ -167,7 +167,7 @@ function! myspacevim#before() abort
     \ { 'type': 'commands',  'header': ['   Commands']       },
     \ ]
 
-  let g:startify_bookmarks = [ {'i': '~/.init.toml'},  {'b': '~/.bashrc'}  ]
+  let g:startify_bookmarks = [{'c': '.'}, {'i': '~/.init.toml'},  {'b': '~/.bashrc'}  ]
 
   " to override a bug in spacevim
   function! StartifyEntryFormat()
@@ -210,15 +210,16 @@ function! myspacevim#before() abort
 
   "vifm
   let g:vifm_replace_netrw=true
-  let g:vifm_replace_netrw_cmd = true
-  " netrw
-	let g:loaded_netrw       = 1
-	let g:loaded_netrwPlugin = 1
+  let g:vifm_replace_netrw_cmd = "vifm"
 
 
 endfunction
 
 function! myspacevim#after() abort
+
+  " netrw
+	let g:loaded_netrw       = 1
+	let g:loaded_netrwPlugin = 1
 
   nnoremap <expr><silent>q (&filetype == "floaterm") ? ":FloatermKill<CR>" : ":<C-U>call SpaceVim#mapping#SmartClose()<CR>"
 
