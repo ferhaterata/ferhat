@@ -565,6 +565,9 @@ set grepprg='rg --line-number %i %a %s'
 "
 " let $VIFM_SERVER_NAME = v:servername
 
-fileviewer *[^/] pygmentize -O style=monokai -f console256 -g
+fileviewer .*/ exa --classify --group-directories-first --color=always --tree --level=3 --icons
 
-fileviewer */ exa --oneline --classify --group-directories-first --color=always --tree --level=3 --icons
+fileviewer *[^/] pygmentize -O style=native -f console256 -g
+
+fileviewer */ exa --classify --group-directories-first --color=always --tree --level=3 --icons
+
