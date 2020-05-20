@@ -163,7 +163,7 @@ alias lg='exa --long --git --git-ignore'
 # list directory with their inode, block count, and hard link count
 alias lle='exa -lhd --group --inode --links --blocks'
 
-alias lt='exa -lF --group-directories-first --tree'
+alias lt='exa -lF --group-directories-first --tree --icons'
 
 alias mv='mv -i'
 alias rm='rm -i'

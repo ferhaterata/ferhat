@@ -167,7 +167,12 @@ function! myspacevim#before() abort
     \ { 'type': 'commands',  'header': ['   Commands']       },
     \ ]
 
-  let g:startify_bookmarks = [{'c': '.'}, {'i': '~/.init.toml'},  {'b': '~/.bashrc'}  ]
+  " let g:startify_bookmarks = [{'c': './'}, {'i': '~/.init.toml'},  {'b': '~/.bashrc'}  ]
+
+  let g:startify_commands = [
+      \ {'v': ['Vifm', ':Vifm']},
+      \ {'f': ['Coc-explorer', ':CocCommand explorer']},
+      \ ]
 
   " to override a bug in spacevim
   function! StartifyEntryFormat()
@@ -208,18 +213,19 @@ function! myspacevim#before() abort
   let g:Illuminate_ftblacklist = ['nerdtree']
   let g:Illuminate_ftwhitelist = ['vim', 'sh', 'python', 'tmux', 'markdown', 'text', 'tex']
 
-  "vifm
-  let g:vifm_replace_netrw=true
-  let g:vifm_replace_netrw_cmd = "vifm"
-
+  let g:airline#extensions#tmuxline#enabled = 0
 
 endfunction
 
 function! myspacevim#after() abort
 
+  "vifm
+  let g:vifm_replace_netrw = 1 
+  " let g:vifm_replace_netrw_cmd = "Vifm"
+
   " netrw
-	let g:loaded_netrw       = 1
-	let g:loaded_netrwPlugin = 1
+	let g:loaded_netrw       = 0
+	" let g:loaded_netrwPlugin = 1
 
   nnoremap <expr><silent>q (&filetype == "floaterm") ? ":FloatermKill<CR>" : ":<C-U>call SpaceVim#mapping#SmartClose()<CR>"
 
@@ -332,6 +338,9 @@ function! myspacevim#after() abort
   inoremap <C-a> <Home>
   inoremap <C-e> <End>
   inoremap <C-d> <Delete>
+
+  nnoremap <C-a> <Home>
+  nnoremap <C-e> <End>
 
   "nnoremap <silent> <Tab> :normal %<CR>
   "xnoremap <silent> <Tab> :normal %<CR>m`gv``

@@ -312,6 +312,8 @@
   name = "format"
 
 # https://spacevim.org/layers/tmux/
+# https://github.com/edkolev/tmuxline.vim
+# https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/layers/tmux.vim
 [[layers]]
   name = "tmux"
 # tmux_navigator_modifier = "alt"
