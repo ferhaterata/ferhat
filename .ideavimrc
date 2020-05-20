@@ -325,6 +325,7 @@ nnoremap <space>tW :action EditorToggleShowWhitespaces<CR>
 nnoremap <leader>t :action FileStructurePopup<CR>
 nnoremap <space>tt :action FileStructurePopup<CR>
 nnoremap <space>tf :action ToggleFullScreen<CR>
+nnoremap <space>tw :action EditorToggleUseSoftWraps<CR>
 
 " windows
 nnoremap <space>wd <c-w>c
