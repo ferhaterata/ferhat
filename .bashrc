@@ -118,10 +118,10 @@ fi
 
 if [ -x "`which nvim 2>&1`" ]; then
     export EDITOR=nvim
-    alias vim='nvim'
+    # alias vim='nvim'
 elif [ -x "`which vim 2>&1`" ]; then
     export EDITOR=vim
-    alias vi='vim'
+    # alias vi='vim'
 fi
 
 if [ -f ~/.github_token ]; then
