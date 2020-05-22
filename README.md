@@ -1,6 +1,6 @@
 # ferhat's dot files
 
-## tmux
+## tmux (watching)
 terminal m
 https://github.com/tmux/tmux   
 cheatsheat: https://gist.github.com/andreyvit/2921703  
@@ -15,19 +15,23 @@ sh autogen.sh
 make && sudo make install
 ````  
 
-## gitmux
+## gitmux (watching)
 Git in your tmux status bar  
 https://github.com/arl/gitmux  
 Its binary is added to .local/bin folder.  
-
 
 ## xclip
 command line interface to X selections (clipboard)  
 `sudo apt-get install xclip -y`   
 
-## ripgrep (rg)
+## ripgrep (rg) (watching)
 ripgrep recursively searches directories for a regex pattern  
 https://github.com/BurntSushi/ripgrep#installation   
+
+## ag (watching)
+The Silver Searcher: A code-searching tool similar to ack, but faster.    
+https://github.com/ggreer/the_silver_searcher   
+`sudo apt-get install silversearcher-ag`  
 
 ## htop
 htop is an interactive text-mode process viewer for Unix systems. It aims to be a better 'top'.  
@@ -38,11 +42,8 @@ https://github.com/hishamhm/htop
 browse or page through a text file   
 `sudo apt install most`
 
-## highlight
-Universal source code to formatted text converter  
-`sudo apt-get install -y highlight`  
 
-## exa
+## exa (watching)
 A modern replacement for ls.  
 https://the.exa.website/#installation  
 `sudo apt install rustc`  
@@ -50,7 +51,7 @@ https://the.exa.website/#installation
 `git clone https://github.com/­ogham/exa.git`  
 `sudo make install`  
 
-## fzf 
+## fzf (watching)
 A command-line fuzzy finder   
 https://github.com/junegunn/fzf   
 https://wiki.archlinux.org/index.php/Fzf  
@@ -58,17 +59,12 @@ https://wiki.archlinux.org/index.php/Fzf
 `~/.fzf/install`  
 update: `cd ~/.fzf && git pull && ./install`  
 
-## bat
-a cat(1) clone with syntax highlighting and Git integration.   
-https://github.com/sharkdp/bat
-https://github.com/sharkdp/bat/releases   
-`sudo dpkg -i bat_0.13.0_amd64.deb # adapt version number and architecture`   
 
-## devicon-lookup 
+## devicon-lookup (watching)
 https://github.com/coreyja/devicon-lookup  
 `cargo install devicon-lookup`  
 
-## fd
+## fd (watching)
 https://github.com/sharkdp/fd  
 https://github.com/sharkdp/fd/releases  
 `sudo dpkg -i fd_7.5.0_amd64.deb  # adapt version number and architecture`    
@@ -85,10 +81,6 @@ https://github.com/rupa/z
 A utility tool powered by fzf for using git interactively.  
 https://github.com/wfxr/forgit  
 
-## ag
-The Silver Searcher: A code-searching tool similar to ack, but faster.    
-https://github.com/ggreer/the_silver_searcher   
-`sudo apt-get install silversearcher-ag`  
 
 ## fast-p
 Quickly find and open a pdf among a collection of thousands of unsorted pdfs through fzf (fuzzy finder)  
@@ -132,12 +124,22 @@ Go to your project directory, and run `ctags -R`
 When editing, put your cursor over a variable, method or class and hit `Ctrl-]` to jump to its definition.  
 https://courses.cs.washington.edu/courses/cse451/10au/tutorials/tutorial_ctags.html
 
-## python-pygments
+## highlight
+Universal source code to formatted text converter  
+`sudo apt-get install -y highlight`  
+
+## bat (watching)
+a cat(1) clone with syntax highlighting and Git integration.   
+https://github.com/sharkdp/bat
+https://github.com/sharkdp/bat/releases   
+`sudo dpkg -i bat_0.13.0_amd64.deb # adapt version number and architecture`   
+
+## python-pygments (watching)
 Pygments is a generic syntax highlighter written in Python   
 https://github.com/pygments/pygments  
 `sudo apt-get install python-pygments`  
 
-## Vim
+## Vim (watching) (my-vim-build)
 Building Vim from source: https://github.com/ycm-core/YouCompleteMe/wiki/Building-Vim-from-source  
 `sudo apt remove my-vim-build`
 `sudo checkinstall # my-vifm-build`
@@ -145,9 +147,8 @@ example configuration:
   https://github.com/axiaoxin/vim-settings  
   https://dougblack.io/words/a-good-vimrc.html  
   Better Defaults: https://github.com/liuchengxu/vim-better-default/wiki/a-brief-introduction-to-key-bindings  
-  
 
-## NeoVim
+## NeoVim (watching)
 https://github.com/neovim/neovim/wiki/Installing-Neovim#appimage-universal-linux-package  
 Building Vim from source: https://github.com/neovim/neovim/wiki/Installing-Neovim#install-from-source   
 Setting up Python for Neovim: https://github.com/deoplete-plugins/deoplete-jedi/wiki/Setting-up-Python-for-Neovim   
@@ -166,7 +167,7 @@ https://spacevim.org/
   leaderF: https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/layers/leaderf.vim   
   fzf: https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/layers/fzf.vim   
 
-## vifm
+## vifm (watching) (my-vifm-build)
 https://github.com/vifm/vifm   
 https://wiki.vifm.info/index.php/Obtaining_Vifm  
 `sudo apt install libncursesw5-dev`  
@@ -184,14 +185,14 @@ git clone https://github.com/vifm/vifm-colors ~/.config/vifm/colors
 ## lazygit 
 https://github.com/jesseduffield/lazygit/blob/master/README.md  
 
-## github cli
+## github cli (watching)
 GitHub’s official command line tool   
 https://cli.github.com  
 https://github.com/cli/cli/  
 Download the .deb file from the releases page  
 `sudo apt install ./gh_*_linux_amd64.deb` install the downloaded file  
 
-## tldr 
+## tldr (watching) (my-tldr-c-build)
 A collection of simplified and community-driven man pages.  
 https://github.com/tldr-pages/tldr   
 https://github.com/tldr-pages/tldr-cpp-client  
@@ -202,4 +203,18 @@ sudo apt-get install pkg-config
 make                # build tldr
 sudo checkinstall   # my-tldr-c-client-build
 ```
+
+
+# ferhat's solver builds
+`sudo apt install checkinstall`  
+
+## minisat (watching) (my-minisat-build)
+https://github.com/stp/minisat   
+
+## klee (watching) (my-z3-build)
+
+
+## z3 (watching)
+
+
 

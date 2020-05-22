@@ -468,7 +468,7 @@ function! myspacevim#after() abort
     \ 'spinner': ['fg', 'Label'],
     \ 'header':  ['fg', 'Comment'] }
 
-  nnoremap <c-p> :Files<cr>
+  nnoremap <c-p> :call Fzf_files_with_dev_icons()<cr>
   if has('nvim')
     nnoremap <c-p> :FzfPreviewProjectFiles<cr>
   endif
@@ -489,6 +489,21 @@ function! myspacevim#after() abort
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
+
+" Files + devicons
+function! Fzf_files_with_dev_icons()
+  let l:fzf_files_options = '--preview "bat --color always --style numbers {2..} | head -'.&lines.'"'
+   function! s:edit_devicon_prepended_file(item)
+    let l:file_path = a:item[4:-1]
+    execute 'e' l:file_path
+  endfunction
+  let l:command = "fd --type f --color=always --hidden --follow --exclude .git" 
+  call fzf#run({
+        \ 'source': l:command.' | devicon-lookup',
+        \ 'sink':   function('s:edit_devicon_prepended_file'),
+        \ 'options': '--ansi --cycle --bind "ctrl-f:jump,ctrl-d:preview-page-down,ctrl-u:preview-page-up,tab:down,shift-tab:up,ctrl-t:top" ' . l:fzf_files_options,
+        \ 'tmux': '-p90%,80%' })
+endfunction
 
   augroup leaderf
     "let g:Lf_WindowPosition = 'popup'
