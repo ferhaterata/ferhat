@@ -154,7 +154,7 @@ command! vgrep vim "+grep %a"
 command! reload :write | restart
 
 " https://wiki.vifm.info/index.php/How_to_integrate_fzf_for_fuzzy_finding
-command! FZFlocate :set noquickview | :execute 'goto ' fnameescape(term('locate $HOME | fzf-tmux 2>/dev/tty'))
+command! FZFlocate :set noquickview | :execute 'goto ' fnameescape(term('pwd | fzf-my 2>/dev/tty'))
 
 " Toggle detailed/brief information about files
 command! togglefilesinfo

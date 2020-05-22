@@ -100,4 +100,5 @@ doom.d/.directory
 .local/bin/*
 !.local/bin/gitmux
 !.local/bin/lazygit
+!.local/bin/fzf-my
 

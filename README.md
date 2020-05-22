@@ -64,6 +64,10 @@ https://github.com/sharkdp/bat
 https://github.com/sharkdp/bat/releases   
 `sudo dpkg -i bat_0.13.0_amd64.deb # adapt version number and architecture`   
 
+## devicon-lookup 
+https://github.com/coreyja/devicon-lookup  
+`cargo install devicon-lookup`  
+
 ## fd
 https://github.com/sharkdp/fd  
 https://github.com/sharkdp/fd/releases  

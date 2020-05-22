@@ -178,11 +178,20 @@ set -o vi
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -f ~/.forgit.bash ] && source ~/.forgit.bash
 
+
+# fd --type file | devicon-lookup -c | fzf --bind ctrl-d:preview-page-down,ctrl-u:preview-page-up --preview "bat --color always --style numbers {2..}" | cut -f 2- -d " "
+#fd --type f --color=always --hidden --follow --exclude .git | devicon-lookup -c | fzf-tmux -p 90%,60% --ansi --cycle --bind "ctrl-r:execute(vim {}),ctrl-f:jump,ctrl-d:preview-page-down,ctrl-u:preview-page-up,tab:down,shift-tab:up,ctrl-t:top" --preview "bat --color always --style numbers {2..}" | cut -f 2- -d " "
+
 export FZF_DEFAULT_OPTS='--inline-info --no-height --reverse' 
-#--layout=reverse --height 40% --border --inline-info --no-height --no-reverse
 
 # Use ~~ as the trigger sequence instead of the default **
 # export FZF_COMPLETION_TRIGGER='~~'
+
+#export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"' 
+#export FZF_DEFAULT_COMMAND='fd --hidden --follow --exclude .git'
+
+# To apply the command to CTRL-T as well
+#export FZF_CTRL_T_COMMAND=''
 
 # CTRL-T - Paste the selected files and directories onto the command-line
 export FZF_CTRL_T_OPTS="--preview '(bat --style=numbers --color=always {} 2> /dev/null || cat {} || exa -aF --oneline --classify --icons --group-directories-first --color=always {}) 2> /dev/null | head -200'"
@@ -284,18 +293,17 @@ function cd() {
     while true; do
         local lsd=$(echo ".." && ls -p | grep '/$' | sed 's;/$;;')
         local dir="$(printf '%s\n' "${lsd[@]}" |
-            fzf --reverse --preview '
+            fzf --reverse --ansi --cycle --bind "ctrl-f:jump,ctrl-d:preview-page-down,ctrl-u:preview-page-up,tab:down,shift-tab:up,ctrl-t:top" --preview '
                 __cd_nxt="$(echo {})";
                 __cd_path="$(echo $(pwd)/${__cd_nxt} | sed "s;//;/;")";
                 echo $__cd_path;
                 echo;
-                exa -aF --oneline --classify --group-directories-first --color=always "${__cd_path}";
+                exa -aF --classify --group-directories-first --color=always --tree --level=3 --icons "${__cd_path}";
         ')"
         [[ ${#dir} != 0 ]] || return 0
         builtin cd "$dir" &> /dev/null
     done
 }
-
 
 
 # fbr - checkout git branch (including remote branches), sorted by most recent commit, limit 30 last branches
@@ -362,4 +370,7 @@ FZF-EOF"
 
 # coc build: /home/ferhat/.cache/vimfiles/repos/github.com/neoclide/coc.nvim/
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# cargo build
+export PATH="$HOME/.cargo/bin:$PATH"
 

@@ -73,7 +73,7 @@
     # To disable this feature, set the option enable_language_specific_leader to false.
     enable_language_specific_leader = false
     enable_statusline_tag = true
-    disabled_plugins = ["nerdtree-git-plugin", "statusline"]
+    disabled_plugins = ["nerdtree-git-plugin", "statusline", "tmuxline.vim"]
     # in order to use s for easymotion 
     windows_leader = ''
     github_username = 'ferhat.erata'
@@ -123,7 +123,7 @@
 [[layers]]
   name = 'shell'
   default_position = 'bottom'
-  default_height = 30
+  default_height = 35
 
 # https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/layers/core.vim
 [[layers]]
@@ -168,6 +168,8 @@
 [[layers]]
   name = "VersionControl"
 
+# https://github.com/wsdjeg/git.vim
+# https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/layers/git.vim
 [[layers]]
   name = "git"
   git-plugin = "fugitive" #gina

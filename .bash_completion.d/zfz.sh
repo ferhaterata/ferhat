@@ -163,7 +163,7 @@ __fz_generate_matches() {
 
 __fz_filter() {
     FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse \
-      --bind 'shift-tab:up,tab:down'" fzf
+      --bind 'ctrl-f:jump,ctrl-d:preview-page-down,ctrl-u:preview-page-up,tab:down,shift-tab:up,ctrl-t:top'" fzf
 }
 
 __fz_bash_completion() {
