@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# fzf-my: starts fzf in a tmux pane
+# usage: fzf-my
+
+fd --type f --color=always --hidden --follow --exclude .git | devicon-lookup -c | fzf-tmux -p 90%,80% --ansi --cycle --bind "ctrl-f:jump,ctrl-d:preview-page-down,ctrl-u:preview-page-up,tab:down,shift-tab:up,ctrl-t:top" --preview "bat --color always --style numbers {2..}" | cut -f 2- -d " " 
