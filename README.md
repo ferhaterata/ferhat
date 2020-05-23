@@ -204,17 +204,164 @@ make                # build tldr
 sudo checkinstall   # my-tldr-c-client-build
 ```
 
+# ferhat's c/c++ tool builds
+
+## GNU's bison (watching)
+General-purpose parser generator  
+https://github.com/akimd/bison  
+
+## Flex (watching)
+The Fast Lexical Analyzer - scanner generator for lexing in C and C++  
+https://github.com/westes/flex  
+
+## Cmake (watching) 
+The cross-platform, open-source build system.  
+https://github.com/Kitware/CMake  
+`sudo snap install cmake --classic`  
+
+## Valgrind 
+Instrumentation framework for building dynamic analysis tool  
+https://valgrind.org/
+`sudo snap install valgrind --classic`
 
 # ferhat's solver builds
-`sudo apt install checkinstall`  
 
-## minisat (watching) (my-minisat-build)
+## SAT solvers
+
+### minisat (watching) (my-minisat-build)
 https://github.com/stp/minisat   
+```
+git clone https://github.com/stp/minisat.git
+cd minisat
+mkdir build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX=/usr/local/ ../
+sudo checkinstall
+```
 
-## klee (watching) (my-z3-build)
+### CryptoMiniSat (watching) 
+https://github.com/msoos/cryptominisat  
+https://github.com/meelgroup/approxmc#how-to-build  
+https://github.com/msoos/cryptominisat#compiling-in-linux  
+https://github.com/msoos/cryptominisat#gaussian-elimination  
+```
+sudo apt-get install zlib1g-dev libboost-program-options-dev libm4ri-dev libsqlite3-dev help2man
+git clone https://github.com/msoos/cryptominisat
+cd cryptominisat
+mkdir build && cd build
+cmake -DUSE_GAUSS=ON ..
+make
+sudo make install
+sudo ldconfig
+```
 
+### Cadical (watching)
+CaDiCaL Simplified Satisfiability Solver   
+https://github.com/arminbiere/cadical  
+```
+git clone https://github.com/arminbiere/cadical.git
+cd cadical
+./configure
+make
+make test
+cd build
+sudo cp cadical /usr/bin/cadical
 
-## z3 (watching)
+mkdir debug; cd debug 
+../configure -l # include code to really see what the solver is doing
+make
+sudo cp cadical /usr/bin/cadical-debug
+```
 
+## #SAT model counters
+http://beyondnp.org/pages/solvers/model-counters-exact/  
+
+### sharpSat (watching)
+https://github.com/marcthurley/sharpSAT
+```
+git clone https://github.com/marcthurley/sharpSAT.git
+./setupdev.sh
+cd build/Release
+make
+sudo cp sharpSAT /usr/bin/sharpSAT
+```
+
+### ApproxMC (watching) 
+Approximate Model Counter  
+https://github.com/meelgroup/approxmc  
+https://www.msoos.org/tag/model-counting/
+```
+git clone https://github.com/meelgroup/approxmc/
+cd approxmc
+mkdir build && cd build
+cmake ..
+make
+sudo make install
+```
+
+## SMT solvers
+
+### stp (watching) (my-stp-build)
+Simple Theorem Prover, an efficient SMT solver for bitvectors  
+https://github.com/stp/stp  
+https://stp.github.io/  
+```
+git clone https://github.com/stp/stp.git
+cd stp
+git checkout tags/2.3.3
+mkdir build
+cd build
+cmake ..
+make
+sudo checkinstall
+```
+You can make this persistent by editing the /etc/security/limits.conf file or 
+adding the ulimit command into e.g, .bashrc.
+
+### z3 (watching) 
+The Z3 Theorem Prover 
+https://github.com/Z3Prover/z3/blob/master/README.md   
+```
+opam install zanith
+git clone https://github.com/Z3Prover/z3.git
+cd z3
+python scripts/mk_make.py --ml --java
+cd build
+make
+sudo make install
+;;sudo make uninstall
+```
+
+### cvc4 (watching) 
+CVC4 is an efficient open-source automatic theorem prover for satisfiability modulo theories (SMT) problems.  
+https://github.com/CVC4/CVC4   
+https://github.com/CVC4/CVC4/blob/master/INSTALL.md   
+```
+git clone https://github.com/CVC4/CVC4
+./contrib/get-antlr-3.4  # download and build ANTLR
+# ./contrib/get-cryptominisat 
+./contrib/get-symfpu     
+./contrib/get-cadical
+./contrib/get-lfsc-checker
+./contrib/get-abc
+./configure.sh --cryptominisat --cadical --symfpu --lfsc --abc
+cd build 
+make -j2                 # use -jN for parallel build with N threads
+make check               # to run default set of tests
+sudo make install        # to install into the prefix specified above
+```
+
+## Symbolic Simulation
+
+### klee (watching) (my-klee-build)
+KLEE Symbolic Execution Engine  
+http://klee.github.io/  
+https://github.com/klee/klee  
+https://docs.google.com/document/d/1BDNfhUsCNRfYN3C2fm_R5UOkGKo3XvX3ty5oDj4fqOI/edit#heading=h.hjduzuuy8ufg  
+```
+LLVM_VERSION=6.0 SANITIZER_BUILD= BASE=/home/ferhat/.local/lib/ ./scripts/build/build.sh libcxx
+
+cmake -DENABLE_SOLVER_STP=ON -DENABLE_SOLVER_Z3=ON -DENABLE_KLEE_UCLIBC=ON -DENABLE_POSIX_RUNTIME=ON -DKLEE_UCLIBC_PATH=/home/ferhat/git/klee-uclibc/ -DENABLE_KLEE_LIBCXX=ON -DKLEE_LIBCXX_DIR=/home/ferhat/.local/lib/libc++-install-60/ -DKLEE_LIBCXX_INCLUDE_DIR=/home/ferhat/.local/lib/libc++-install-60/include/c++/v1/ -DENABLE_UNIT_TESTS=ON -DGTEST_SRC_DIR=/home/ferhat/git/googletest-release-1.7.0/ -DLIT_TOOL=/home/ferhat/.local/lib/python2.7/site-packages -DENABLE_KLEE_ASSERTS=OFF /home/ferhat/git/klee/ 
+```
 
 

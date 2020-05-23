@@ -284,6 +284,11 @@
   name = 'bohlender/vim-smt2'
   merged = false
 
+# https://github.com/alexeyignatiev/vim-dimacs
+[[custom_plugins]]
+  name = 'alexeyignatiev/vim-dimacs'
+  merged = false
+
 # https://github.com/wlemuel/vim-tldr
 [[custom_plugins]]
   name = 'wlemuel/vim-tldr'
