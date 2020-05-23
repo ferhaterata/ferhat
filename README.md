@@ -42,7 +42,6 @@ https://github.com/hishamhm/htop
 browse or page through a text file   
 `sudo apt install most`
 
-
 ## exa (watching)
 A modern replacement for ls.  
 https://the.exa.website/#installation  
@@ -58,7 +57,6 @@ https://wiki.archlinux.org/index.php/Fzf
 `git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf`
 `~/.fzf/install`  
 update: `cd ~/.fzf && git pull && ./install`  
-
 
 ## devicon-lookup (watching)
 https://github.com/coreyja/devicon-lookup  
@@ -80,7 +78,6 @@ https://github.com/rupa/z
 ## forgit
 A utility tool powered by fzf for using git interactively.  
 https://github.com/wfxr/forgit  
-
 
 ## fast-p
 Quickly find and open a pdf among a collection of thousands of unsorted pdfs through fzf (fuzzy finder)  
@@ -182,7 +179,7 @@ rm -rf ~/.config/vifm/colors
 git clone https://github.com/vifm/vifm-colors ~/.config/vifm/colors
 ```
 
-## lazygit 
+## lazygit (watching)
 https://github.com/jesseduffield/lazygit/blob/master/README.md  
 
 ## github cli (watching)
@@ -240,10 +237,10 @@ sudo checkinstall
 ```
 
 ### CryptoMiniSat (watching) 
-https://github.com/msoos/cryptominisat  
-https://github.com/meelgroup/approxmc#how-to-build  
-https://github.com/msoos/cryptominisat#compiling-in-linux  
-https://github.com/msoos/cryptominisat#gaussian-elimination  
+https://github.com/msoos/cryptominisat    
+https://github.com/meelgroup/approxmc#how-to-build    
+https://github.com/msoos/cryptominisat#compiling-in-linux    
+https://github.com/msoos/cryptominisat#gaussian-elimination    
 ```
 sudo apt-get install zlib1g-dev libboost-program-options-dev libm4ri-dev libsqlite3-dev help2man
 git clone https://github.com/msoos/cryptominisat
@@ -277,7 +274,7 @@ sudo cp cadical /usr/bin/cadical-debug
 http://beyondnp.org/pages/solvers/model-counters-exact/  
 
 ### sharpSat (watching)
-https://github.com/marcthurley/sharpSAT
+https://github.com/marcthurley/sharpSAT  
 ```
 git clone https://github.com/marcthurley/sharpSAT.git
 ./setupdev.sh
@@ -287,9 +284,9 @@ sudo cp sharpSAT /usr/bin/sharpSAT
 ```
 
 ### ApproxMC (watching) 
-Approximate Model Counter  
-https://github.com/meelgroup/approxmc  
-https://www.msoos.org/tag/model-counting/
+Approximate Model Counter   
+https://github.com/meelgroup/approxmc   
+https://www.msoos.org/tag/model-counting/  
 ```
 git clone https://github.com/meelgroup/approxmc/
 cd approxmc
@@ -360,7 +357,7 @@ https://github.com/klee/klee
 https://docs.google.com/document/d/1BDNfhUsCNRfYN3C2fm_R5UOkGKo3XvX3ty5oDj4fqOI/edit#heading=h.hjduzuuy8ufg  
 ```
 LLVM_VERSION=6.0 SANITIZER_BUILD= BASE=/home/ferhat/.local/lib/ ./scripts/build/build.sh libcxx
-
+ 
 cmake -DENABLE_SOLVER_STP=ON -DENABLE_SOLVER_Z3=ON -DENABLE_KLEE_UCLIBC=ON -DENABLE_POSIX_RUNTIME=ON -DKLEE_UCLIBC_PATH=/home/ferhat/git/klee-uclibc/ -DENABLE_KLEE_LIBCXX=ON -DKLEE_LIBCXX_DIR=/home/ferhat/.local/lib/libc++-install-60/ -DKLEE_LIBCXX_INCLUDE_DIR=/home/ferhat/.local/lib/libc++-install-60/include/c++/v1/ -DENABLE_UNIT_TESTS=ON -DGTEST_SRC_DIR=/home/ferhat/git/googletest-release-1.7.0/ -DLIT_TOOL=/home/ferhat/.local/lib/python2.7/site-packages -DENABLE_KLEE_ASSERTS=OFF /home/ferhat/git/klee/ 
 ```
 
