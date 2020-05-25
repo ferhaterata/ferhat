@@ -25,6 +25,11 @@
 # vifm configurations
 !.config/vifm
 
+# bat configuration
+!.config/bat
+.config/bat/*
+!.config/bat/config
+
 # bash configurations
 !.bashrc
 !.bash_profile
