@@ -174,6 +174,8 @@ alias pbpaste='xclip -selection clipboard -o'
 #https://sanctum.geek.nz/arabesque/vi-mode-in-bash/
 set -o vi
 
+export BAT_THEME="TwoDark" #ansi-dark
+
 ###################################################
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -f ~/.forgit.bash ] && source ~/.forgit.bash

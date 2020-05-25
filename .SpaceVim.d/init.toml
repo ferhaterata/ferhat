@@ -415,6 +415,12 @@
     objc = "c11"
     objcpp = "c++1z"
 
+# https://github.com/rhysd/vim-llvm
+# https://github.com/llvm/llvm-project/tree/master/llvm/utils/vim
+[[custom_plugins]]
+  name = 'rhysd/vim-llvm'
+  merged = false
+
 # https://spacevim.org/layers/lang/latex/
 # pip install proselint # https://github.com/amperser/proselint/
 # https://github.com/lervag/vimtex
