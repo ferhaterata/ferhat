@@ -431,9 +431,13 @@
   name = "lang#latex" 
   
 # https://spacevim.org/layers/lang/markdown/
+# https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/layers/lang/markdown.vim
+# https://github.com/SpaceVim/vim-markdown
+# https://github.com/joker1007/vim-markdown-quote-syntax
 # https://github.com/mzlogin/vim-markdown-toc
 # https://github.com/lvht/tagbar-markdown
-# https://github.com/gabrielelana/vim-markdown
+# https://github.com/iamcco/mathjax-support-for-mkdp
+# https://github.com/iamcco/markdown-preview.vim
 [[layers]]
   name = "lang#markdown"
 # sudo npm -g install remark
@@ -443,6 +447,14 @@
 # sudo npm -g install wcwidth
 # sudo apt install php*
 
+# https://github.com/vim-pandoc/vim-pandoc-syntax
+[[custom_plugins]]
+  name = 'vim-pandoc/vim-pandoc-syntax'
+  merged = false
+# https://github.com/vim-pandoc/vim-pandoc
+[[custom_plugins]]
+  name = 'vim-pandoc/vim-pandoc'
+  merged = false
 # 
 [[layers]]
   name = "lang#ocaml"

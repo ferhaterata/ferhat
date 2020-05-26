@@ -174,8 +174,6 @@ alias pbpaste='xclip -selection clipboard -o'
 #https://sanctum.geek.nz/arabesque/vi-mode-in-bash/
 set -o vi
 
-export BAT_THEME="TwoDark" #ansi-dark
-
 ###################################################
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -f ~/.forgit.bash ] && source ~/.forgit.bash
@@ -196,7 +194,7 @@ export FZF_DEFAULT_OPTS='--inline-info --no-height --reverse'
 #export FZF_CTRL_T_COMMAND=''
 
 # CTRL-T - Paste the selected files and directories onto the command-line
-export FZF_CTRL_T_OPTS="--preview '(bat --style=numbers --color=always {} 2> /dev/null || cat {} || exa -aF --oneline --classify --icons --group-directories-first --color=always {}) 2> /dev/null | head -200'"
+export FZF_CTRL_T_OPTS="--preview '(bat --style="changes" --color=always {} 2> /dev/null || cat {} || exa -aF --oneline --classify --icons --group-directories-first --color=always {}) 2> /dev/null | head -200'"
 
 # CTRL-R - Paste the selected command from history onto the command-line
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
@@ -375,4 +373,6 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # cargo build
 export PATH="$HOME/.cargo/bin:$PATH"
+
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
