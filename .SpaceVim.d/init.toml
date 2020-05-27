@@ -448,13 +448,14 @@
 # sudo apt install php*
 
 # https://github.com/vim-pandoc/vim-pandoc-syntax
-[[custom_plugins]]
-  name = 'vim-pandoc/vim-pandoc-syntax'
-  merged = false
+# [[custom_plugins]]
+  # name = 'vim-pandoc/vim-pandoc-syntax'
+  # merged = false
 # https://github.com/vim-pandoc/vim-pandoc
-[[custom_plugins]]
-  name = 'vim-pandoc/vim-pandoc'
-  merged = false
+# [custom_plugins]]
+  # name = 'vim-pandoc/vim-pandoc'
+  # merged = false
+
 # 
 [[layers]]
   name = "lang#ocaml"
