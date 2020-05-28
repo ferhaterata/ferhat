@@ -1,7 +1,44 @@
 # ferhat's dot files
 
+## prerequisites
+```bash
+sudo apt install curl
+sudo apt install perl
+sudo apt install m4
+
+sudo apt install wget
+sudo apt install xclip
+sudo apt install silversearcher-ag
+sudo apt install highlight
+
+sudo apt install ctags
+sudo apt install global
+
+sudo apt install build-essential
+sudo apt install autoconf
+sudo apt install automake
+sudo apt install cmdtest 
+sudo apt install pkg-config
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+sudo snap install valgrind --classic
+sudo snap install cmake --classic
+
+sudo apt install libevent-dev 
+sudo apt install libzip-dev
+sudo apt install libcurl4-openssl-dev
+sudo apt install libncursesw5-dev
+
+sudo apt install python2 
+sudo apt install python3
+sudo apt install software-properties-common 
+sudo apt install python-pygments
+sudo apt install npm 
+
+```
+
 ## tmux (watching)
-terminal m
+terminal multiplexer
 https://github.com/tmux/tmux   
 cheatsheat: https://gist.github.com/andreyvit/2921703  
 tmux + vim: https://www.bugsnag.com/blog/tmux-and-vim  
@@ -13,6 +50,7 @@ cd tmux
 sh autogen.sh
 ./configure
 make && sudo make install
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ````  
 
 ## gitmux (watching)
