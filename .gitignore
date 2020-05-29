@@ -78,6 +78,7 @@ doom.d/.directory
 !.SpaceVim/coc-settings.json
 
 !vimium-options.json
+!okular.shortcuts
 
 # ssh configurations
 #!.ssh/
