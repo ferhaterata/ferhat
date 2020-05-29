@@ -460,3 +460,8 @@
 [[layers]]
   name = "lang#ocaml"
 
+# https://github.com/rightson/vim-p4-syntax
+[[custom_plugins]]
+  name = 'rightson/vim-p4-syntax'
+  merged = false
+
