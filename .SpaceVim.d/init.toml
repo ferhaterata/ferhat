@@ -457,7 +457,7 @@
   # name = 'vim-pandoc/vim-pandoc-syntax'
   # merged = false
 # https://github.com/vim-pandoc/vim-pandoc
-# [custom_plugins]]
+# [[custom_plugins]]
   # name = 'vim-pandoc/vim-pandoc'
   # merged = false
 
