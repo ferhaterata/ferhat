@@ -376,3 +376,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
+# shorten prompt
+export PROMPT_DIRTRIM=1
+

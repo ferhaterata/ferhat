@@ -274,6 +274,11 @@
   name = 'mg979/vim-visual-multi'
   merged = false
 
+# https://github.com/wellle/targets.vim
+[[custom_plugins]]
+  name = 'wellle/targets.vim'
+  merged = false
+
 # https://github.com/wincent/terminus.git
 # [[custom_plugins]]
 #  name = 'wincent/terminus.git'
