@@ -184,6 +184,20 @@ example configuration:
   Better Defaults: https://github.com/liuchengxu/vim-better-default/wiki/a-brief-introduction-to-key-bindings  
 
 ## NeoVim (watching)
+````
+# https://github.com/neovim/neovim/wiki/Building-Neovim#third-party-dependencies
+mkdir .deps
+cd .deps
+cmake ../third-party
+make
+
+mkdir build
+cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release
+make
+
+sudo make install
+````
 https://github.com/neovim/neovim/wiki/Installing-Neovim#appimage-universal-linux-package  
 Building Vim from source: https://github.com/neovim/neovim/wiki/Installing-Neovim#install-from-source   
 Setting up Python for Neovim: https://github.com/deoplete-plugins/deoplete-jedi/wiki/Setting-up-Python-for-Neovim   
