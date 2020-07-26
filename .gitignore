@@ -79,7 +79,7 @@ doom.d/.directory
 
 !vimium-options.json
 !okular.shortcuts
-!.xmodmap
+!.Xmodmap
 
 # ssh configurations
 #!.ssh/
