@@ -12,12 +12,36 @@
     {
       "pattern": "https?://www.typing.com/*",
       "passKeys": ""
+    },
+    {
+      "pattern": "https?://euc-excel.officeapps.live.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://outlook.office365.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://www.youtube.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://outlook.office.com/*",
+      "passKeys": "d"
+    },
+    {
+      "pattern": "https?://docs.google.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://web.whatsapp.com/*",
+      "passKeys": ""
     }
   ],
   "filterLinkHints": true,
   "waitForEnterForFilteredHints": true,
   "hideHud": false,
-  "keyMappings": "# Insert your preferred key mappings here.\nmap <C-o> goBack\nmap <C-i> goForward\nmap u restoreTab\nmap <C-d> scrollPageDown\nmap <C-u> scrollPageUp\nmap d removeTab\nmap <C-h> goUp\nmap - goUp\nmap <C-j> previousTab\nmap <C-k> nextTab\nmap R reload hard",
+  "keyMappings": "# Insert your preferred key mappings here.\nmap <C-o> goBack\nmap <C-i> goForward\nmap u restoreTab\nmap <C-d> scrollPageDown\nmap <C-u> scrollPageUp\n# map d removeTab\nmap <C-h> goUp\nmap - goUp\nmap <C-j> previousTab\nmap <C-k> nextTab\nmap R reload hard",
   "linkHintCharacters": "sadfjklewcmpgh",
   "linkHintNumbers": "0123456789asqwe!@#$%^",
   "newTabUrl": "about:newtab",
