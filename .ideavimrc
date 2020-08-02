@@ -351,6 +351,7 @@ nnoremap <space>wv <c-w>v
 nnoremap <space>ws <c-w>s
 
 nnoremap <space>wu :action ReopenClosedTab<CR>
+nnoremap <c-w>u    :action ReopenClosedTab<CR>
 
 vmap <space>wh <c-w>h
 vmap <space>wl <c-w>l

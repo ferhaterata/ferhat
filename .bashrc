@@ -72,6 +72,10 @@ xterm*|rxvt*)
     ;;
 esac
 
+#/usr/bin/setxkbmap -option 'caps:ctrl_modifier' 
+#/usr/bin/xcape -e 'Caps_Lock=Escape' -t 200
+#/usr/bin/xcape -e 'Control_L=Escape'  
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -143,12 +147,15 @@ alias ....='cd ../../..'
 # Git Specific
 # git commit all with message -- no quotes needed
 alias g='git'
-alias gs='g status'
-alias gd='g diff'
-alias ga='g add'
+alias gs='g status -sb'
+alias gb='g branch'
+alias gbg='g branch | grep'
 alias gc='g commit -m'
 alias gp='g push'
 alias gr='g pull --rebase'
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+alias grim="git rebase -i master"
+alias gcl="git config --list"
 
 # tmux stuff
 alias t='tmux'
@@ -157,11 +164,11 @@ alias t='tmux'
 alias ll='exa -lF --group-directories-first --icons'
 # show hidden and 'dot' files
 alias la='exa -alF --group-directories-first --icons'
-alias l='exa -a'
+alias l='exa -a --group-directories-first --icons'
 # show directory with git info
-alias lg='exa --long --git --git-ignore'
+alias lg='exa --git --git-ignore --group-directories-first --icons'
 # list directory with their inode, block count, and hard link count
-alias lle='exa -lhd --group --inode --links --blocks'
+alias lle='exa -lhd --group --inode --links --blocks --group-directories-first'
 
 alias lt='exa -lF --group-directories-first --tree --icons'
 
@@ -180,7 +187,7 @@ set -o vi
 
 
 # fd --type file | devicon-lookup -c | fzf --bind ctrl-d:preview-page-down,ctrl-u:preview-page-up --preview "bat --color always --style numbers {2..}" | cut -f 2- -d " "
-#fd --type f --color=always --hidden --follow --exclude .git | devicon-lookup -c | fzf-tmux -p 90%,60% --ansi --cycle --bind "ctrl-r:execute(vim {}),ctrl-f:jump,ctrl-d:preview-page-down,ctrl-u:preview-page-up,tab:down,shift-tab:up,ctrl-t:top" --preview "bat --color always --style numbers {2..}" | cut -f 2- -d " "
+# fd --type f --color=always --hidden --follow --exclude .git | devicon-lookup -c | fzf-tmux -p 90%,60% --ansi --cycle --bind "ctrl-r:execute(vim {}),ctrl-f:jump,ctrl-d:preview-page-down,ctrl-u:preview-page-up,tab:down,shift-tab:up,ctrl-t:top" --preview "bat --color always --style numbers {2..}" | cut -f 2- -d " "
 
 export FZF_DEFAULT_OPTS='--inline-info --no-height --reverse' 
 
