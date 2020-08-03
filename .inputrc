@@ -16,6 +16,8 @@ $if mode=vi
   "\e[B": history-search-forward
   C-j: history-search-forward
   C-k: history-search-backward
+  C-n: history-search-forward
+  C-p: history-search-backward
 
   # remap escape
   "jk": vi-movement-mode 
