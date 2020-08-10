@@ -84,7 +84,7 @@ function! myspacevim#before() abort
   call SpaceVim#custom#SPC('nore', ['b', 'v'], 'BufExplorerVerticalSplit', 'open horizontal BufExplorer', 1)
   call SpaceVim#custom#SPC('nore', ['b', 'h'], 'BufExplorerHorizontalSplit', 'open vertical BufExplorer', 1)
   " --popup-height=0.75
-  call SpaceVim#custom#SPC('nore', ['[SPC]'], 'FzfPreviewFromResources project_mru git' , 'find files in current project', 1)
+  call SpaceVim#custom#SPC('nore', ['[SPC]'],  'CocCommand fzf-preview.FromResources project_mru git' , 'find files in current project', 1)
   call SpaceVim#custom#SPC('nore', ['f', 'r'], 'CocCommand fzf-preview.MruFiles' , 'open recent files', 1)
   call SpaceVim#custom#SPC('nore', ['f', 'f'], 'CocCommand fzf-preview.DirectoryFiles', 'find files in the directory of the current buffer', 1)
   call SpaceVim#custom#SPC('nore', ['b', 'b'], 'Leaderf buffer --popup ' , 'buffer list', 1)
@@ -256,7 +256,7 @@ function! myspacevim#after() abort
   let g:gitgutter_max_signs = 99999
   let g:gitgutter_preview_win_floating = 1
   let g:gitgutter_diff_args = '-w'
-
+  
   nmap gp <Plug>(GitGutterPreviewHunk)
   nmap gs <Plug>(GitGutterStageHunk)
   nmap gu <Plug>(GitGutterUndoHunk)
@@ -446,7 +446,8 @@ function! myspacevim#after() abort
 
   augroup enable_spell_wrap
     autocmd!
-    autocmd FileType latex,tex,md,markdown setlocal spell wrap!
+    autocmd FileType latex,tex,md,markdown setlocal spell
+    autocmd FileType latex,tex,md,markdown setlocal wrap!
   augroup END
 
   nnoremap <expr> j v:count ? 'j' : 'gj'
@@ -476,9 +477,9 @@ function! myspacevim#after() abort
     \ 'header':  ['fg', 'Comment'] }
 
   nnoremap <c-p> :call Fzf_files_with_dev_icons()<cr>
-  if has('nvim')
-    nnoremap <c-p> :FzfPreviewProjectFiles<cr>
-  endif
+  " if has('nvim')
+    " nnoremap <c-p> :CocCommand fzf-preview.ProjectFiles<cr>
+  " endif
 
   " https://github.com/junegunn/fzf.vim/issues/544
   tnoremap <expr> <Esc> (&filetype == "fzf") ? "<Esc>" : "<c-\><c-n>"
@@ -497,20 +498,20 @@ function! myspacevim#after() abort
   \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
 
-" Files + devicons
-function! Fzf_files_with_dev_icons()
-  let l:fzf_files_options = '--preview "bat --color always --style numbers {2..} | head -'.&lines.'"'
-   function! s:edit_devicon_prepended_file(item)
-    let l:file_path = a:item[4:-1]
-    execute 'e' l:file_path
+  " Files + devicons
+  function! Fzf_files_with_dev_icons()
+    let l:fzf_files_options = '--preview "bat --color always --style numbers {2..} | head -'.&lines.'"'
+    function! s:edit_devicon_prepended_file(item)
+      let l:file_path = a:item[4:-1]
+      execute 'e' l:file_path
+    endfunction
+    let l:command = "fd --type f --color=always --hidden --follow --exclude .git" 
+    call fzf#run({
+          \ 'source': l:command.' | devicon-lookup',
+          \ 'sink':   function('s:edit_devicon_prepended_file'),
+          \ 'options': '--ansi --cycle --bind "ctrl-f:jump,ctrl-d:preview-page-down,ctrl-u:preview-page-up,tab:down,shift-tab:up,ctrl-t:top" ' . l:fzf_files_options,
+          \ 'tmux': '-p90%,80%' })
   endfunction
-  let l:command = "fd --type f --color=always --hidden --follow --exclude .git" 
-  call fzf#run({
-        \ 'source': l:command.' | devicon-lookup',
-        \ 'sink':   function('s:edit_devicon_prepended_file'),
-        \ 'options': '--ansi --cycle --bind "ctrl-f:jump,ctrl-d:preview-page-down,ctrl-u:preview-page-up,tab:down,shift-tab:up,ctrl-t:top" ' . l:fzf_files_options,
-        \ 'tmux': '-p90%,80%' })
-endfunction
 
   augroup leaderf
     "let g:Lf_WindowPosition = 'popup'
@@ -526,7 +527,7 @@ endfunction
     let g:colors_name = 'gruvbox_material'
   augroup END
 
-  let g:clang_library_path='/usr/lib/llvm-6.0/lib/' 
+  let g:clang_library_path='/usr/lib/llvm-10/lib/' 
 
   call add(g:indentLine_fileTypeExclude, 'coc-explorer')
 
