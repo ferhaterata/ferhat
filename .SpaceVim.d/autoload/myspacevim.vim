@@ -84,9 +84,9 @@ function! myspacevim#before() abort
   call SpaceVim#custom#SPC('nore', ['b', 'v'], 'BufExplorerVerticalSplit', 'open horizontal BufExplorer', 1)
   call SpaceVim#custom#SPC('nore', ['b', 'h'], 'BufExplorerHorizontalSplit', 'open vertical BufExplorer', 1)
   " --popup-height=0.75
-  call SpaceVim#custom#SPC('nore', ['[SPC]'], 'Leaderf file --fullPath '
-        \ . SpaceVim#plugins#projectmanager#current_root() . " --popup " , 'find files in current project', 1)
-  call SpaceVim#custom#SPC('nore', ['f', 'r'], 'Leaderf mru --popup' , 'open recent files', 1)
+  call SpaceVim#custom#SPC('nore', ['[SPC]'], 'FzfPreviewFromResources project_mru git' , 'find files in current project', 1)
+  call SpaceVim#custom#SPC('nore', ['f', 'r'], 'CocCommand fzf-preview.MruFiles' , 'open recent files', 1)
+  call SpaceVim#custom#SPC('nore', ['f', 'f'], 'CocCommand fzf-preview.DirectoryFiles', 'find files in the directory of the current buffer', 1)
   call SpaceVim#custom#SPC('nore', ['b', 'b'], 'Leaderf buffer --popup ' , 'buffer list', 1)
   if has('nvim')
      call SpaceVim#custom#SPC('nore', ['a', 't'], 'call myspacevim#openterminal()', 'open-shell', 1)
@@ -197,10 +197,15 @@ function! myspacevim#before() abort
   " fzf-preview
   " Use vim-devicons
   let g:fzf_preview_use_dev_icons = 1
-  " devicons character width
-  let g:fzf_preview_dev_icon_prefix_length = 0
-  " FzfPreviewBuffers
-  " FzfPreviewProjectFiles
+  augroup fzf_preview
+    autocmd!
+    autocmd User fzf_preview#initialized call s:fzf_preview_settings()
+  augroup END
+
+  function! s:fzf_preview_settings() abort
+    let g:fzf_preview_command = 'COLORTERM=truecolor ' . g:fzf_preview_command
+    let g:fzf_preview_grep_preview_cmd = 'COLORTERM=truecolor ' . g:fzf_preview_grep_preview_cmd
+  endfunction
 
   " vim-illuminate
   " Time in milliseconds (default 250)

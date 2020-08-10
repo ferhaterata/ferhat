@@ -113,6 +113,7 @@
 # https://github.com/neoclide/coc-snippets
 # https://github.com/clangd/coc-clangd 
 # https://github.com/weirongxu/coc-explorer
+# https://github.com/yuki-ycino/fzf-preview.vim
 [[layers]]
   name = 'autocomplete'
   auto_completion_return_key_behavior = "smart"
@@ -144,6 +145,8 @@
 [[custom_plugins]]
   name = "yuki-ycino/fzf-preview.vim"
   merged = false
+  rev = "release"
+
 # 
 # https://spacevim.org/layers/leaderf/
 # https://github.com/Yggdroot/LeaderF

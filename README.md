@@ -35,8 +35,14 @@ sudo apt install software-properties-common
 sudo apt install python-pygments
 sudo apt install npm 
 
-sudo apt-get install xcape
+sudo apt install xcape
 
+# root cern qt5
+sudo apt install qt5-default
+sudo apt install mesa-common-dev
+sudo apt install qtwebengine5-dev
+sudo apt install qtwebengine5-dev-tools (?)
+sudo apt install qtwebengine5-dev-dbgsym (?)
 ```
 
 ## tmux (watching)
@@ -274,6 +280,19 @@ https://github.com/Kitware/CMake
 Instrumentation framework for building dynamic analysis tool  
 https://valgrind.org/
 `sudo snap install valgrind --classic`
+
+## Cern's Root 
+Data Analysis Framework  
+https://github.com/root-project/root#building  
+https://root.cern/install/build_from_source/  
+````
+cd ~/git
+git clone git@github.com:root-project/root.git
+mkdir root-build
+cd root-build
+cmake -DCMAKE_CXX_STANDARD=17 -Dgnuinstall=ON -Dcefweb=ON -Dgviz=ON -Drpath=ON -Dqt5web=ON ../root
+sudo cmake --build . --target install
+````
 
 # ferhat's solver builds
 

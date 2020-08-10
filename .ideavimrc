@@ -169,7 +169,7 @@ nnoremap <space>m= :action ReformatCode<CR>
 nnoremap <space>bd <Esc>:q<CR>
 nnoremap <space>bb :action RecentFiles<CR>
 nnoremap <space>bu :action ReopenClosedTab<CR>
-nnoremap <space>bi :action ActivateStructureToolWindow<CR>
+nnoremap <space>bi :action Switcher<CR>
 
 " terminal
 nnoremap <space>'  :action ActivateTerminalToolWindow<CR>
@@ -206,6 +206,10 @@ vnoremap <space>rp :action FindInPath<CR>
 nnoremap <space>rn :action RenameElement<CR>
 nnoremap <space>rm :action ExtractMethod<CR>
 nnoremap <space>oi :action OptimizeImports<CR>
+nnoremap <space>rf :action RenameFile<CR>
+
+" open
+nnoremap <space>or :action $LRU<CR>
 
 " file commands
 nnoremap <space>fr :action RecentFiles<CR>
@@ -314,10 +318,11 @@ nnoremap <space>7 :action GoToTab7<CR>
 nnoremap <space>8 :action GoToTab8<CR>
 nnoremap <space>9 :action GoToTab9<CR>
 
-nnoremap <space><tab> :action GoToLastTab<CR>
+" https://plugins.jetbrains.com/plugin/11127-tabswitch2/
+nnoremap <space><tab> :action TabSwitchPlugin.SwitchTab<CR>
 nnoremap <c-s-tab> gT
 nnoremap <c-tab> gt
-nnoremap <space>\ :action VimFilePrevious<CR>
+" nnoremap <space>\ :action VimFilePrevious<CR>
 
 " toggles
 nnoremap <space>tw :action EditorToggleUseSoftWraps<CR>
@@ -374,6 +379,7 @@ nmap gR :action FindUsages<CR>
 nmap gi :action GotoImplementation<CR>
 nmap gp :action VcsShowCurrentChangeMarker<CR>
 nmap gs :action Vcs.QuickListPopupAction<CR>
+nmap gu :action Vcs.RollbackChangedLines<CR>
 vmap gs :action Vcs.QuickListPopupAction<CR>
 nmap gh :action QuickJavaDoc<CR>
 nmap gt :action NextTab<CR>
