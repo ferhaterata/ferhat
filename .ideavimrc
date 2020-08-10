@@ -175,6 +175,7 @@ nnoremap <space>bi :action Switcher<CR>
 
 " terminal
 nnoremap <space>'  :action ActivateTerminalToolWindow<CR>
+nnoremap <space>ot :action ActivateTerminalToolWindow<CR>
 
 " git
 nnoremap <space>gs :action Vcs.QuickListPopupAction<CR>
@@ -239,6 +240,7 @@ nnoremap <leader>f :action FindUsages<CR>
 
 " generate
 nnoremap <leader>g :action Generate<CR>
+nnoremap <space>gg :action Generate<CR>
 nnoremap <space>gt :action GenerateTestMethod<CR>
 nnoremap <space>gs :action GenerateSetUpMethod<CR>
 nnoremap <space>gG :action GenerateGetter<CR>
