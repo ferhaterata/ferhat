@@ -47,6 +47,8 @@ let g:argtextobj_pairs="(:),{:},<:>"
 set textobj-entire                "https://github.com/kana/vim-textobj-entire"
 " Commands: https://github.com/AlexPl292/IdeaVim-EasyMotion#supported-commands 
 set easymotion                    "https://github.com/AlexPl292/IdeaVim-EasyMotion"
+" https://github.com/machakann/vim-highlightedyank
+set highlightedyank
 
 " https://github.com/JetBrains/ideavim/wiki/Select-mode
 set idearefactormode=visual
@@ -204,7 +206,6 @@ nnoremap <space>rp :action ReplaceInPath<CR>
 vnoremap <space>rp :action FindInPath<CR>
 " refactor
 nnoremap <space>rn :action RenameElement<CR>
-nnoremap <space>rm :action ExtractMethod<CR>
 nnoremap <space>oi :action OptimizeImports<CR>
 nnoremap <space>rf :action RenameFile<CR>
 
@@ -220,7 +221,8 @@ nnoremap <space>ft :action ActivateProjectToolWindow<CR>
 nnoremap <space>fT :action SelectInProjectView<CR>
 nnoremap <space>fo :action SelectInProjectView<CR>
 " file save
-nnoremap <space>fs :action SaveAll<CR>
+" nnoremap <space>fs :action SaveAll<CR>
+nnoremap <space>fs :action ReformatCode<CR><Esc>:w<CR>
 nnoremap <space>fS :action ReformatCode<CR><Esc>:w<CR>
 
 " bookmarks
@@ -269,8 +271,11 @@ nnoremap <space>db :action ToggleLineBreakpoint<cr>
 nnoremap <space>tt :action ToggleLineBreakpoint<CR>
 nnoremap <space>dD :action DebugClass<CR>
 
+" :action ToolbarRunGroup
 noremap  <leader>r :action ChooseRunConfiguration<CR>
+nnoremap <space>rm :action ToolbarRunGroup<CR>
 nnoremap <space>rr :action Run<CR>
+nnoremap <space>rs :action Stop<CR>
 nnoremap <space>rc :action RunToCursor<CR>
 nnoremap <space>rC :action RunClass<CR>
 
