@@ -233,4 +233,5 @@ Uuid={71118ef8-49fc-4d4b-8062-9f2cb75a782b}
 
 [Main]
 AllowMerge=false
+ImportId=Global Navigation
 Version=2
