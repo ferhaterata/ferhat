@@ -184,10 +184,9 @@ https://github.com/pygments/pygments
 
 ## Vim (watching) (my-vim-build)
 Building Vim from source: https://github.com/ycm-core/YouCompleteMe/wiki/Building-Vim-from-source  
-`sudo apt remove my-vim-build`  
-`sudo checkinstall # my-vim-build`  
-
 ````
+sudo apt remove my-vim-focal-build
+
 ./configure --with-features=huge \
             --enable-multibyte \
             --enable-rubyinterp=yes \
@@ -195,14 +194,12 @@ Building Vim from source: https://github.com/ycm-core/YouCompleteMe/wiki/Buildin
             --with-python3-config-dir=$(python3-config --configdir) \
             --enable-perlinterp=yes \
             --enable-luainterp=yes \
-            --enable-gui=gtk \
+            --enable-gui=gtk2 \
             --enable-cscope \
             --prefix=/usr/local
-````
-example configuration: 
-  https://github.com/axiaoxin/vim-settings  
-  https://dougblack.io/words/a-good-vimrc.html  
-  Better Defaults: https://github.com/liuchengxu/vim-better-default/wiki/a-brief-introduction-to-key-bindings  
+
+sudo checkinstall # my-vim-focal-build
+```` 
 
 ## NeoVim (watching)
 ````
