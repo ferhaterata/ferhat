@@ -44,6 +44,10 @@ sudo apt install qtwebengine5-dev
 sudo apt install qtwebengine5-dev-tools (?)
 sudo apt install qtwebengine5-dev-dbgsym (?)
 ```
+
+## GnuPG
+https://gnupg.org/download/index.html   
+
 ## Vim (watching) (my-vim-build)
 Building Vim from source: https://github.com/ycm-core/YouCompleteMe/wiki/Building-Vim-from-source  
 ````
