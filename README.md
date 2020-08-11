@@ -219,8 +219,14 @@ sudo make install
 https://github.com/neovim/neovim/wiki/Installing-Neovim#appimage-universal-linux-package  
 Building Vim from source: https://github.com/neovim/neovim/wiki/Installing-Neovim#install-from-source   
 Setting up Python for Neovim: https://github.com/deoplete-plugins/deoplete-jedi/wiki/Setting-up-Python-for-Neovim   
-`pip3 install --user neovim`
-`pip3 install neovim-remote`
+````
+pip2 install --user neovim
+pip3 install --user neovim  
+pip3 install neovim-remote  
+sudo gem install neovim
+sudo apt install cpanminus
+sudo cpanm Neovim::Ext
+````
  
 ## SpaceVim
 https://spacevim.org/  
@@ -241,7 +247,7 @@ https://wiki.vifm.info/index.php/Obtaining_Vifm
 ```
 ./configure --sysconfdir=/etc
 make
-sudo checkinstall # my-vifm-build
+sudo checkinstall # my-vifm-focal-build
 ```
 https://github.com/vifm/vifm-colors  
 ```
