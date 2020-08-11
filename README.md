@@ -44,6 +44,51 @@ sudo apt install qtwebengine5-dev
 sudo apt install qtwebengine5-dev-tools (?)
 sudo apt install qtwebengine5-dev-dbgsym (?)
 ```
+## Vim (watching) (my-vim-build)
+Building Vim from source: https://github.com/ycm-core/YouCompleteMe/wiki/Building-Vim-from-source  
+````
+sudo apt remove my-vim-focal-build
+
+./configure --with-features=huge \
+            --enable-multibyte \
+            --enable-rubyinterp=yes \
+            --enable-python3interp=yes \
+            --with-python3-config-dir=$(python3-config --configdir) \
+            --enable-perlinterp=yes \
+            --enable-luainterp=yes \
+            --enable-gui=gtk2 \
+            --enable-cscope \
+            --prefix=/usr/local
+
+sudo checkinstall # my-vim-focal-build
+```` 
+
+## NeoVim (watching)
+````
+# https://github.com/neovim/neovim/wiki/Building-Neovim#third-party-dependencies
+mkdir .deps
+cd .deps
+cmake ../third-party
+make
+
+mkdir build
+cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release
+make
+
+sudo make install
+````
+https://github.com/neovim/neovim/wiki/Installing-Neovim#appimage-universal-linux-package  
+Building Vim from source: https://github.com/neovim/neovim/wiki/Installing-Neovim#install-from-source   
+Setting up Python for Neovim: https://github.com/deoplete-plugins/deoplete-jedi/wiki/Setting-up-Python-for-Neovim   
+````
+pip2 install --user neovim
+pip3 install --user neovim  
+pip3 install neovim-remote  
+sudo gem install neovim
+sudo apt install cpanminus
+sudo cpanm Neovim::Ext
+````
 
 ## tmux (watching)
 terminal multiplexer
@@ -181,52 +226,6 @@ https://github.com/sharkdp/bat/releases
 Pygments is a generic syntax highlighter written in Python   
 https://github.com/pygments/pygments  
 `sudo apt-get install python-pygments`  
-
-## Vim (watching) (my-vim-build)
-Building Vim from source: https://github.com/ycm-core/YouCompleteMe/wiki/Building-Vim-from-source  
-````
-sudo apt remove my-vim-focal-build
-
-./configure --with-features=huge \
-            --enable-multibyte \
-            --enable-rubyinterp=yes \
-            --enable-python3interp=yes \
-            --with-python3-config-dir=$(python3-config --configdir) \
-            --enable-perlinterp=yes \
-            --enable-luainterp=yes \
-            --enable-gui=gtk2 \
-            --enable-cscope \
-            --prefix=/usr/local
-
-sudo checkinstall # my-vim-focal-build
-```` 
-
-## NeoVim (watching)
-````
-# https://github.com/neovim/neovim/wiki/Building-Neovim#third-party-dependencies
-mkdir .deps
-cd .deps
-cmake ../third-party
-make
-
-mkdir build
-cd build
-cmake .. -DCMAKE_BUILD_TYPE=Release
-make
-
-sudo make install
-````
-https://github.com/neovim/neovim/wiki/Installing-Neovim#appimage-universal-linux-package  
-Building Vim from source: https://github.com/neovim/neovim/wiki/Installing-Neovim#install-from-source   
-Setting up Python for Neovim: https://github.com/deoplete-plugins/deoplete-jedi/wiki/Setting-up-Python-for-Neovim   
-````
-pip2 install --user neovim
-pip3 install --user neovim  
-pip3 install neovim-remote  
-sudo gem install neovim
-sudo apt install cpanminus
-sudo cpanm Neovim::Ext
-````
  
 ## SpaceVim
 https://spacevim.org/  
