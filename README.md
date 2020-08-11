@@ -116,8 +116,24 @@ cd tmux
 sh autogen.sh
 ./configure
 make && sudo make install
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm       
 ````  
+
+## vifm (watching) (my-vifm-build)
+https://github.com/vifm/vifm   
+https://wiki.vifm.info/index.php/Obtaining_Vifm  
+```
+sudo apt install libncursesw5-dev
+autoreconf -f -i
+./configure --sysconfdir=/etc
+make
+sudo checkinstall # my-vifm-focal-build
+```
+https://github.com/vifm/vifm-colors  
+```
+rm -rf ~/.config/vifm/colors
+git clone https://github.com/vifm/vifm-colors ~/.config/vifm/colors
+```
 
 ## gitmux (watching)
 Git in your tmux status bar  
@@ -251,21 +267,6 @@ https://spacevim.org/
   g: https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/mapping/g.vim   
   leaderF: https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/layers/leaderf.vim   
   fzf: https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/layers/fzf.vim   
-
-## vifm (watching) (my-vifm-build)
-https://github.com/vifm/vifm   
-https://wiki.vifm.info/index.php/Obtaining_Vifm  
-`sudo apt install libncursesw5-dev`  
-```
-./configure --sysconfdir=/etc
-make
-sudo checkinstall # my-vifm-focal-build
-```
-https://github.com/vifm/vifm-colors  
-```
-rm -rf ~/.config/vifm/colors
-git clone https://github.com/vifm/vifm-colors ~/.config/vifm/colors
-```
 
 ## lazygit (watching)
 https://github.com/jesseduffield/lazygit/blob/master/README.md  
