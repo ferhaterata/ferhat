@@ -48,6 +48,11 @@ sudo apt install qtwebengine5-dev-dbgsym (?)
 ## GnuPG
 https://gnupg.org/download/index.html   
 ````
+./configure
+make
+sudo make install
+````
+````
 libgpg-error-1.38
 libassuan-2.5.3
 libksba-1.4.0
@@ -322,6 +327,11 @@ cd root-build
 cmake -DCMAKE_CXX_STANDARD=17 -Dgnuinstall=ON -Dcefweb=ON -Dgviz=ON -Drpath=ON -Dqt5web=ON ../root
 sudo cmake --build . --target install
 ````
+
+## LLVM-11 
+LLVM Debian/Ubuntu nightly packages   
+https://apt.llvm.org/  
+Install (stable branch)  
 
 # ferhat's solver builds
 
