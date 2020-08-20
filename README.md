@@ -69,7 +69,7 @@ sudo apt remove my-vim-focal-build
             --with-python3-config-dir=$(python3-config --configdir) \
             --enable-perlinterp=yes \
             --enable-luainterp=yes \
-            --enable-gui=gtk2 \
+            --enable-gui=gtk3 \
             --enable-cscope \
             --prefix=/usr/local
 
