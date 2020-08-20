@@ -147,7 +147,7 @@ Its binary is added to .local/bin folder.
 
 ## xclip
 command line interface to X selections (clipboard)  
-`sudo apt-get install xclip -y`   
+`sudo apt install xclip`   
 
 ## ripgrep (rg) (watching)
 ripgrep recursively searches directories for a regex pattern  
@@ -156,7 +156,7 @@ https://github.com/BurntSushi/ripgrep#installation
 ## ag (watching)
 The Silver Searcher: A code-searching tool similar to ack, but faster.    
 https://github.com/ggreer/the_silver_searcher   
-`sudo apt-get install silversearcher-ag`  
+`sudo apt install silversearcher-ag`  
 
 ## htop
 htop is an interactive text-mode process viewer for Unix systems. It aims to be a better 'top'.  
@@ -223,7 +223,7 @@ https://wiki.archlinux.org/index.php/Readline
 * [Readline VI Editing Mode Cheat Sheet](https://catonmat.net/ftp/bash-vi-editing-mode-cheat-sheet.pdf)
 * [Readline Emacs Editing Mode Cheat Sheet](https://catonmat.net/ftp/readline-emacs-editing-mode-cheat-sheet.pdf)
 
-## Ranger
+## Ranger (-)
 A VIM-inspired filemanager for the console.  
 https://github.com/ranger/ranger  
 https://wiki.archlinux.org/index.php/ranger  
