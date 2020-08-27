@@ -473,4 +473,19 @@ LLVM_VERSION=6.0 SANITIZER_BUILD= BASE=/home/ferhat/.local/lib/ ./scripts/build/
 cmake -DENABLE_SOLVER_STP=ON -DENABLE_SOLVER_Z3=ON -DENABLE_KLEE_UCLIBC=ON -DENABLE_POSIX_RUNTIME=ON -DKLEE_UCLIBC_PATH=/home/ferhat/git/klee-uclibc/ -DENABLE_KLEE_LIBCXX=ON -DKLEE_LIBCXX_DIR=/home/ferhat/.local/lib/libc++-install-60/ -DKLEE_LIBCXX_INCLUDE_DIR=/home/ferhat/.local/lib/libc++-install-60/include/c++/v1/ -DENABLE_UNIT_TESTS=ON -DGTEST_SRC_DIR=/home/ferhat/git/googletest-release-1.7.0/ -DLIT_TOOL=/home/ferhat/.local/lib/python2.7/site-packages -DENABLE_KLEE_ASSERTS=OFF /home/ferhat/git/klee/ 
 ```
 
+## Docker
 
+https://docs.docker.com/engine/install/ubuntu/   
+Verify docker has correctly been intalled using : $ sudo docker run hello-world
+Also do the following post-installation steps for user priviledges (as given in the website) :
+`$ sudo groupadd docker`
+`$ sudo adduser $USER docker`
+If you are installing it for a different user replace $USER with the username.
+To stop the docker use ‹Ctrl+d›
+Yor XData docker conatiner is now setup and running. Use 'exit' command in terminal to exit from docker and stop the container. To detach the terminal without stopping the docker type ‹Ctrl+p› followed by ‹Ctrl+q›.
+
+XDATA: 
+```
+docker build -t xdata:1 .
+docker run -it -p 3302:8080 --name ferhat-xdata xdata:1
+```
