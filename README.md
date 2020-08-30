@@ -489,3 +489,19 @@ XDATA:
 docker build -t xdata:1 .
 docker run -it -p 3302:8080 --name ferhat-xdata xdata:1
 ```
+
+## Thunderbird
+
+Download thunderbird and extract archive:  
+`sudo mv thunderbird /opt/thunderbird && sudo ln -s /opt/thunderbird/thunderbird /usr/bin/thunderbird`  
+
+To update Thunderbird, you have to launch it as an administrator:  
+`sudo thunderbird`  
+
+To uninstall Thunderbird, enter:  
+`sudo rm -rf /opt/thunderbird /usr/bin/thunderbird`  
+
+
+## Desktop files
+
+Application launchers search for apps in $XDG_DATA_HOME directory (default ~/.local/share) and $XDG_DATA_DIRS colon-separated list (default /usr/local/share/:/usr/share/).   
