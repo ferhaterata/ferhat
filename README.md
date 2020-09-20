@@ -507,6 +507,12 @@ Here is the explanation of this command:
 `ubuntu` – create the container from the latest Ubuntu image  
 `/bin/bash` – start a bash shell session  
 
+POSTRESQL:
+````
+fdocker run --name postgres-docker -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres
+docker exec -it postgres-docker bash
+````
+
 ## Thunderbird
 
 Download thunderbird and extract archive:  
