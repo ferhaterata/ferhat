@@ -488,7 +488,24 @@ XDATA:
 ```
 docker build -t xdata:1 .
 docker run -it -p 3302:8080 --name ferhat-xdata xdata:1
+
+docker start ferhat-xdata
+docker stop ferhat-xdata
+
+docker ps -a
+
+docker exec -it ferhat-xdata bash
+
 ```
+`docker run -it --rm ubuntu /bin/bash`  
+
+Here is the explanation of this command:  
+`docker run` – run a command in a Docker container  
+`-t` – allocate a psuedo tty (terminal)  
+`-i` – keep STDIN open in order to interact with the terminal  
+`--rm` – remove/delete the container once it exits (optional)  
+`ubuntu` – create the container from the latest Ubuntu image  
+`/bin/bash` – start a bash shell session  
 
 ## Thunderbird
 
