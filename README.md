@@ -493,8 +493,8 @@ docker start ferhat-xdata
 docker stop ferhat-xdata
 
 docker ps -a
-
 docker exec -it ferhat-xdata bash
+sudo docker inspect -f "{{ .NetworkSettings.IPAddress }}" ferhat-xdata-ssh
 
 ```
 `docker run -it --rm ubuntu /bin/bash`  
