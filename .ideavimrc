@@ -46,9 +46,14 @@ let g:argtextobj_pairs="(:),{:},<:>"
 " Additional text objects: ae, ie
 set textobj-entire                "https://github.com/kana/vim-textobj-entire"
 " Commands: https://github.com/AlexPl292/IdeaVim-EasyMotion#supported-commands 
-set easymotion                    "https://github.com/AlexPl292/IdeaVim-EasyMotion"
+"set easymotion                    "https://github.com/AlexPl292/IdeaVim-EasyMotion"
+"https://github.com/Mishkun/ideavim-sneak
+set sneak
 " https://github.com/machakann/vim-highlightedyank
 set highlightedyank
+
+" https://github.com/tommcdo/vim-exchange
+set exchange
 
 " https://github.com/JetBrains/ideavim/wiki/Select-mode
 set idearefactormode=visual
@@ -58,7 +63,7 @@ set idearefactormode=visual
 " nmap s <Plug>(easymotion-f)
 " `s{char}{char}{label}`
 " Need one more keystroke, but on average, it may be more comfortable.
-nmap s <Plug>(easymotion-f2)
+"nmap s <Plug>(easymotion-f2)
 nmap <leader>j <Plug>(easymotion-j)
 nmap <leader>k <Plug>(easymotion-k)
 
@@ -90,6 +95,22 @@ inoremap jk <Esc>
 "Allow normal up/down movement across wrapped lines
 noremap j gj
 noremap k gk
+
+" In insert or command mode, move normally by using Ctrl
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+cnoremap <C-h> <Left>
+cnoremap <C-j> <Down>
+cnoremap <C-k> <Up>
+cnoremap <C-l> <Right>
+" If you just need to modify a small amount of text or a word, 
+" you can use <Ctrl-O>h/j/k/
+
+"Make backspace delete in normal
+nnoremap <BS> <BS>x
+xnoremap <BS> x
 
 nnoremap H ^
 nnoremap L $
@@ -134,6 +155,32 @@ vnoremap < <gv
 vnoremap > >gv
 vnoremap = =gv
 
+" R language
+" RInsertAssignmentAction
+inoremap <C-,> <space><lt>-<space>
+inoremap <C-.> <space>-><space>
+noremap <A-CR> :action org.jetbrains.r.actions.RunSelection<CR>
+noremap <space>Rr :action org.jetbrains.r.actions.RRunAction<CR>
+noremap <space>Rd :action org.jetbrains.r.actions.RDebugAction<CR>
+" org.jetbrains.r.actions.RRunAction                 <C-S-CR>
+" org.jetbrains.r.actions.RDebugAction               <A-C-S-CR>
+" org.jetbrains.r.actions.RunSelection               <A-CR>
+" org.jetbrains.r.actions.DebugSelection             <A-C-CR>
+
+" org.jetbrains.r.rendering.chunk.DebugChunkAction   <A-C-X>
+" org.jetbrains.r.rendering.chunk.InterruptChunkExecutionAction <A-C-S>
+" org.jetbrains.r.rendering.chunk.RunChunkAction     <A-C-C>
+" org.jetbrains.r.rendering.chunk.RunChunkActionsCloseActiveTab
+" org.jetbrains.r.rendering.chunk.RunChunksAboveAction <A-C-B>
+" org.jetbrains.r.rendering.chunk.RunChunksBelowAction
+
+" KDE Show/Hide Main Menu
+nnoremap <C-M> :action ViewMainMenu<CR>
+
+" IntelliJ Terminal/Console
+" CloseActiveTab
+" ReopenClosedTab
+
 autocmd InsertEnter * :set norelativenumber number
 autocmd InsertLeave * :set relativenumber
 function! NumberToggle()
@@ -142,7 +189,7 @@ function! NumberToggle()
   else
     set relativenumber
   endif
-endfunc
+endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 " IDEA specific
@@ -151,7 +198,9 @@ nnoremap <leader>E :action Switcher<cr>
 nnoremap <leader>a :action FindInPath<CR>
 
 nnoremap <C-Up>    :action MethodUp<CR>
+nnoremap <C-[>    :action MethodUp<CR>
 nnoremap <C-Down>  :action MethodDown<CR>
+nnoremap <C-]>    :action MethodDown<CR>
 
 " This is Ctrl-W in the default keymap, but we are using it for Vim.
 vmap v :action EditorSelectWord<CR>
@@ -176,6 +225,14 @@ nnoremap <space>bi :action Switcher<CR>
 " terminal
 nnoremap <space>'  :action ActivateTerminalToolWindow<CR>
 nnoremap <space>ot :action ActivateTerminalToolWindow<CR>
+" nnoremap <C-W>N    :action Terminal.SwitchFocusToEditor<CR>
+" Terminal.SwitchFocusToEditor                       <Esc>
+" EditorEnter                                        <CR>
+" EditorEscape                                       <Esc>
+" NavBar-cancel                                      <Esc>
+" NavBar-return                                      <CR>
+" PopupMenu-cancel                                   <Esc>
+" PopupMenu-return                                   <CR
 
 " git
 nnoremap <space>gs :action Vcs.QuickListPopupAction<CR>
@@ -212,6 +269,7 @@ nnoremap <space>rf :action RenameFile<CR>
 
 " open
 nnoremap <space>or :action $LRU<CR>
+nnoremap <space>of :action ShowFilePath<CR>
 
 " file commands
 nnoremap <space>fr :action RecentFiles<CR>
@@ -223,8 +281,8 @@ nnoremap <space>fT :action SelectInProjectView<CR>
 nnoremap <space>fo :action SelectInProjectView<CR>
 " file save
 " nnoremap <space>fs :action SaveAll<CR>
-nnoremap <space>fs :action ReformatCode<CR><Esc>:w<CR>
-nnoremap <space>fS :action ReformatCode<CR><Esc>:w<CR>
+nnoremap <space>fs :action ReformatCode<CR><Esc>:w<CR><i><Esc><Right> # TODO This is due to a recent bug
+nnoremap <space>fS :action ReformatCode<CR><Esc>:w<CR><i><Esc>
 
 " bookmarks
 nnoremap <space>fb :action ShowBookmarks<CR>
@@ -375,28 +433,32 @@ vmap <space>wc <c-w>c
 vmap <space>wm :action HideAllWindows<CR>
 vmap <space>wz :action ToggleDistractionFreeMode<CR>
 
-" gotos
+" goto
 nmap g; :action JumpToLastChange<CR>
 nmap g, :action JumpToNextChange<CR>
-nmap gd :action GotoDeclaration<CR>
-nmap gD :action GotoDeclaration<CR>
+
+"nmap gd :action GotoDeclaration<CR>
+"nmap gD :action GotoDeclaration<CR>
+nmap gi :action GotoImplementation<CR>
+
+nmap gu :action GotoSuperMethod<CR>
 nmap gf :action GotoFile<CR>
 nmap gr :action ShowUsages<CR>
 nmap gR :action FindUsages<CR>
-nmap gi :action GotoImplementation<CR>
+
 nmap gp :action VcsShowCurrentChangeMarker<CR>
 nmap gs :action Vcs.QuickListPopupAction<CR>
 nmap gu :action Vcs.RollbackChangedLines<CR>
 vmap gs :action Vcs.QuickListPopupAction<CR>
-nmap gh :action QuickJavaDoc<CR>
+
 nmap gt :action NextTab<CR>
 nmap gT :action PreviousTab<CR>
+
 " hierarchy
 nmap ghc :action CallHierarchy<CR>
 nmap ght :action TypeHierarchy<CR>
 nmap ghm :action MethodHierarchy<CR>
-"nmap gc :action CommentByLineComment<CR>
-"vmap gc :action CommentByLineComment<CR>
+
 nnoremap <space>; :action CommentByLineComment<CR>
 
 nnoremap [q :action PreviousOccurence<CR>

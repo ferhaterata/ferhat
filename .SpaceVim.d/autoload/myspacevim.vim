@@ -80,6 +80,7 @@ function! myspacevim#before() abort
   let g:gista#client#default_username = 'ferhaterata'
   "https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/layers/core.vim
   call SpaceVim#custom#SPC('nore', ['a', 'u'], 'MundoToggle', 'toggle undo tree', 1)
+  call SpaceVim#custom#SPC('nore', ['a', 'a'], 'normal! ggVG', 'select all', 1)
   call SpaceVim#custom#SPC('nore', ['b', 'i'], 'ToggleBufExplorer', 'toggle buffer explorer', 1)
   call SpaceVim#custom#SPC('nore', ['b', 'v'], 'BufExplorerVerticalSplit', 'open horizontal BufExplorer', 1)
   call SpaceVim#custom#SPC('nore', ['b', 'h'], 'BufExplorerHorizontalSplit', 'open vertical BufExplorer', 1)
@@ -134,9 +135,23 @@ function! myspacevim#before() abort
     \ 'ListBufferMarkers'  :  "m?"
     \ }
 
+  " SpaceVim supports NERDCommenter; however, I prefer Commentary
   " NERDCommenter
-  nmap <silent> gcc <Plug>NERDCommenterInvert
-  xmap <silent> gcc <Plug>NERDCommenterInvert
+  " nmap <silent> gcc <Plug>NERDCommenterInvert
+  " xmap <silent> gcc <Plug>NERDCommenterInvert
+  
+  " https://github.com/tpope/vim-commentary/blob/f8238d70f873969fb41bf6a6b07ca63a4c0b82b1/plugin/commentary.vim#L106
+  if !hasmapto('<Plug>Commentary') || maparg('gc','n') ==# ''
+    xmap gc  <Plug>Commentary
+    nmap gc  <Plug>Commentary
+    omap gc  <Plug>Commentary
+    nmap gcc <Plug>CommentaryLine
+    if maparg('c','n') ==# '' && !exists('v:operator')
+      nmap cgc <Plug>ChangeCommentary
+    endif
+    nmap gcu <Plug>Commentary<Plug>Commentary
+  endif
+
   " Mundo
   nnoremap <silent> <F7> :MundoToggle<CR>
   nnoremap <silent> U :MundoToggle<CR>
@@ -344,9 +359,22 @@ function! myspacevim#after() abort
   inoremap <C-a> <Home>
   inoremap <C-e> <End>
   inoremap <C-d> <Delete>
+  
+  " In insert or command mode, move normally by using Ctrl
+  inoremap <C-h> <Left>
+  inoremap <C-j> <Down>
+  inoremap <C-k> <Up>
+  inoremap <C-l> <Right>
+  cnoremap <C-h> <Left>
+  cnoremap <C-j> <Down>
+  cnoremap <C-k> <Up>
+  cnoremap <C-l> <Right>
+  " If you just need to modify a small amount of text or a word, 
+  " you can use <Ctrl-O>h/j/k/
 
-  nnoremap <C-a> <Home>
-  nnoremap <C-e> <End>
+  "Make backspace delete in normal
+  nnoremap <BS> <BS>x
+  xnoremap <BS> x
 
   "nnoremap <silent> <Tab> :normal %<CR>
   "xnoremap <silent> <Tab> :normal %<CR>m`gv``
