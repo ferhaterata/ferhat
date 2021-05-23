@@ -16,8 +16,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=10000 #HISTSIZE=1000
+HISTFILESIZE=15000 #HISTFILESIZE=2000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -144,19 +144,6 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
-# Git Specific
-# git commit all with message -- no quotes needed
-alias g='git'
-alias gs='g status -sb'
-alias gb='g branch'
-alias gbg='g branch | grep'
-alias gc='g commit -m'
-alias gp='g push'
-alias gr='g pull --rebase'
-alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
-alias grim="git rebase -i master"
-alias gcl="git config --list"
-
 # tmux stuff
 alias t='tmux'
  
@@ -261,21 +248,6 @@ fi
 # fuzzy jump
 # j [dir name slug]<TAB>
 # jj [dir name slug]<TAB>
-
-fe() {
-  local IFS=$'\n'
-  local files
-  files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
-  [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
-}
-
-fcd() {
-  local dir
-  dir=$(find ${1:-.} -path '*/\.*' -prune \
-                  -o -type d -print 2> /dev/null | fzf +m) &&
-  cd "$dir"
-}
-
 
 # https://github.com/bellecp/fast-p
 p () {
@@ -385,4 +357,9 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # shorten prompt
 export PROMPT_DIRTRIM=1
+
+#ADD OpenCV in PKG_CONFIG
+PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:
+export PKG_CONFIG_PATH
+
 

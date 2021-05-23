@@ -73,7 +73,7 @@
     # To disable this feature, set the option enable_language_specific_leader to false.
     enable_language_specific_leader = false
     enable_statusline_tag = true
-    disabled_plugins = ["nerdtree-git-plugin", "statusline", "tmuxline.vim"]
+    disabled_plugins = ["nerdtree-git-plugin", "statusline", "tmuxline.vim", "srcery-vim"]
     # in order to use s for easymotion 
     windows_leader = ''
     github_username = 'ferhat.erata'
@@ -119,7 +119,7 @@
   auto_completion_return_key_behavior = "smart"
   auto_completion_tab_key_behavior = "smart"
   auto_completion_enable_snippets_in_popup = true
-  auto_completion_complete_with_key_sequence = "jk"
+  auto_completion_complete_with_key_sequence = "nil"
 
 [[layers]]
   name = 'shell'
@@ -471,5 +471,10 @@
 # https://github.com/rightson/vim-p4-syntax
 [[custom_plugins]]
   name = 'rightson/vim-p4-syntax'
+  merged = false
+
+# https://github.com/tpope/vim-commentary
+[[custom_plugins]]
+  name = 'tpope/vim-commentary'
   merged = false
 
