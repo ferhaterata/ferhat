@@ -30,9 +30,12 @@ fi
 # OPAM configuration
 . /home/ferhat/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
-# KLEE LLVM
+# KLEE 
 #PATH=/usr/lib/llvm-6.0/bin/:$PATH
 #PATH=/home/ferhat/git/klee/build/bin/:$PATH
+export LD_LIBRARY_PATH=/usr/local/lib/:$LD_LIBRARY_PATH
+export C_INCLUDE_PATH=/usr/local/include/klee/:$C_INCLUDE_PATH
+
 
 # Scaling problems in Plasma using GTK
 export PLASMA_USE_QT_SCALING=1
